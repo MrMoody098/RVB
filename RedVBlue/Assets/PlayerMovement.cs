@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour {
     Transform cam;
     GrapplingGun gg;
     //Other
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
 
     //Rotation and look
     private float xRotation;
