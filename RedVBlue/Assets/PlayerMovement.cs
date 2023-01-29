@@ -1,6 +1,7 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
+using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -10,14 +11,17 @@ public class PlayerMovement : MonoBehaviour {
     public Transform playerCam;
     public Transform orientation;
 
+    Transform cam;
+    GrapplingGun gg;
     //Other
     private Rigidbody rb;
 
     //Rotation and look
     private float xRotation;
-    private float sensitivity = 50f;
+    [Range(0f,200f)]
+    public float sensitivity = 50f;
     private float sensMultiplier = 1f;
-
+    
     //Movement
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
@@ -55,6 +59,12 @@ public class PlayerMovement : MonoBehaviour {
     private bool isWalled = false;
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        cam = transform.Find("camera").transform;
+        cam.transform.parent = null;
+        gg = cam.transform.GetComponentInChildren<GrapplingGun>();
+        print(gg.name);
+       
+
     }
     
     void Start() {
@@ -73,7 +83,9 @@ public class PlayerMovement : MonoBehaviour {
         Look();
         if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
         else if(!rb.useGravity) { rb.useGravity = true; isWalled = false; }
-        print(rb.velocity);
+
+        checkIsGrounded();
+        ///print(rb.velocity); //disiplays movement vector
     }
 
     /// <summary>
@@ -112,7 +124,8 @@ public class PlayerMovement : MonoBehaviour {
         if (isWalled) {
             if (Input.GetButton("Jump"))
             {
-                rb.velocity = transform.Find("orientation").forward * 10;
+                
+                rb.velocity = GameObject.Find("camera").transform.forward * jumpForce;
                 wallTimer = 0;
             }return;} 
 
@@ -162,24 +175,12 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Jump() {
-        if (grounded && readyToJump) {
-            readyToJump = false;
 
-            //Add jump forces
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
-            
-            //If jumping while falling, reset y velocity.
-            Vector3 vel = rb.velocity;
-            if (rb.velocity.y < 0.5f)
-                rb.velocity = new Vector3(vel.x, 0, vel.z);
-            else if (rb.velocity.y > 0) 
-                rb.velocity = new Vector3(vel.x, vel.y / 2, vel.z);
-            
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-        //if on a wall code
-      
+        if (grounded)
+        {
+
+            rb.velocity = Vector3.up * jumpForce;
+        }    
     }
     
     private void ResetJump() {
@@ -248,50 +249,67 @@ public class PlayerMovement : MonoBehaviour {
         return new Vector2(xMag, yMag);
     }
 
-    private bool IsFloor(Vector3 v) {
-        float angle = Vector3.Angle(Vector3.up, v);
-        return angle < maxSlopeAngle;
-    }
+    //private bool IsFloor(Vector3 v) {
+    //    float angle = Vector3.Angle(Vector3.up, v);
+    //    return angle < maxSlopeAngle;
+    //}
 
-    private bool cancellingGrounded;
+    //private bool cancellingGrounded;
     
     /// <summary>
     /// Handle ground detection
     /// </summary>
-    private void OnCollisionStay(Collision other) {
-        //Make sure we are only checking for walkable layers
-        int layer = other.gameObject.layer;
-        if (whatIsGround != (whatIsGround | (1 << layer))) return;
+    //private void OnCollisionStay(Collision other) {
+    //    //Make sure we are only checking for walkable layers
+    //    int layer = other.gameObject.layer;
+    //    if (whatIsGround != (whatIsGround | (1 << layer))) return;
 
-        //Iterate through every collision in a physics update
-        for (int i = 0; i < other.contactCount; i++) {
-            Vector3 normal = other.contacts[i].normal;
-            //FLOOR
-            if (IsFloor(normal)) {
-                grounded = true;
-                cancellingGrounded = false;
-                normalVector = normal;
-                CancelInvoke(nameof(StopGrounded));
-            }
+    //    //Iterate through every collision in a physics update
+    //    for (int i = 0; i < other.contactCount; i++) {
+    //        Vector3 normal = other.contacts[i].normal;
+    //        //FLOOR
+    //        if (IsFloor(normal)) {
+    //            grounded = true;
+    //            cancellingGrounded = false;
+    //            normalVector = normal;
+    //            CancelInvoke(nameof(StopGrounded));
+    //        }
+    //    }
+
+    //    //Invoke ground/wall cancel, since we can't check normals with CollisionExit
+    //    float delay = 3f;
+    //    if (!cancellingGrounded) {
+    //        cancellingGrounded = true;
+    //        Invoke(nameof(StopGrounded), Time.deltaTime * delay);
+    //    }
+    //}
+    public void checkIsGrounded()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position,  - transform.up);
+        if (Physics.Raycast(ray, out hit, 1.3f,~LayerMask.NameToLayer("ground")))
+        {
+            grounded = true;
         }
-
-        //Invoke ground/wall cancel, since we can't check normals with CollisionExit
-        float delay = 3f;
-        if (!cancellingGrounded) {
-            cancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        }
+        else { grounded = false; }
+        print(grounded);
     }
-
-    private void StopGrounded() {
-        grounded = false;
-    }
+    //private void StopGrounded() {
+    //    grounded = false;
+    //}
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if (!grounded && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
-        if (collision.gameObject.name == "fallOffPoint") { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; }
+    {   //stick to wall
+        if (!grounded && !gg.IsGrappling() && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
+        { 
+            wallTimer = wallTimerTime;
+            rb.velocity = Vector3.zero; 
+            
+        }
+   
+        //falling off map ressets position
+        if (collision.gameObject.name == "fallOffPoint") 
+        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; }
     }
    
 
