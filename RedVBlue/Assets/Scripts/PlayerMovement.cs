@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour {
         cam = transform.Find("camera").transform;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-        print(gg.name);
+        //print(gg.name);
        
 
     }

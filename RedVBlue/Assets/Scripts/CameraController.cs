@@ -1,12 +1,13 @@
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-
-    public Transform player;
-    Camera camera;
+    
+    private Camera camera;
     public bool isChangeFOV = true;
     PlayerMovement pm;
     public float baseFov = 80;
+    [Range(.2f,1f)]
+    public float fovChangeIntencity = .4f;
     float camVel = 0;
     private void Awake()
     {
@@ -15,7 +16,7 @@ public class CameraController : MonoBehaviour {
     }
     void LateUpdate() //late update will remove jitter
     {
-        transform.position = player.transform.position;
+        transform.position = pm.transform.position;
 
         if (isChangeFOV)
         {fovChange();}
@@ -28,6 +29,6 @@ public class CameraController : MonoBehaviour {
        { camVel *= .75f; }
        else { camVel = pm.rb.velocity.magnitude; }
         
-       camera.fieldOfView = baseFov + camVel*.6f;
+       camera.fieldOfView = baseFov + camVel*fovChangeIntencity;
     }
 }
