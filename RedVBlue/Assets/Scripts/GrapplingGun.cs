@@ -10,7 +10,9 @@ public class GrapplingGun : MonoBehaviour {
     private SpringJoint joint;
 
     void Awake() {
-        lr = GetComponent<LineRenderer>();
+        lr = GetComponentInChildren<LineRenderer>();
+        lr.SetPosition(0, Vector3.zero);
+        lr.SetPosition(1, Vector3.zero);
     }
 
     void Update() {
@@ -50,7 +52,7 @@ public class GrapplingGun : MonoBehaviour {
             joint.massScale = 4.5f;
 
             lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
+            currentGrapplePosition = gunTip.localPosition;
         }
     }
 
@@ -69,10 +71,11 @@ public class GrapplingGun : MonoBehaviour {
         //If not grappling, don't draw rope
         if (!joint) return;
 
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
+
+        //currentGrapplePosition = Vector3.Lerp(currentGrapplePosition,transform.InverseTransformPoint( grapplePoint), Time.deltaTime * 8f);
         
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
+        lr.SetPosition(0, Vector3.zero);
+        lr.SetPosition(1, transform.InverseTransformPoint(grapplePoint)); //currentGrapplePosition);
     }
 
     public bool IsGrappling() {

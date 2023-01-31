@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\RotateGun.cs" />
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\newLineDrawerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

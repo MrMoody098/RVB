@@ -58,13 +58,12 @@ public class PlayerMovement : MonoBehaviour {
     public float wallTimerTime = 2;
     private float wallTimer = 0;
     private bool isWalled = false;
+    private bool isAbleToMove = true;
     void Awake() {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-        //print(gg.name);
-       
 
     }
     
@@ -121,10 +120,11 @@ public class PlayerMovement : MonoBehaviour {
     private void StopCrouch() {
         GetComponent<CapsuleCollider>().height *= 3;
         //transform.localScale = playerScale;
-       // transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
     private void Movement() {
+        if (!isAbleToMove) { return; }
         if (isWalled) {
             if (Input.GetButton("Jump"))
             {
@@ -139,14 +139,14 @@ public class PlayerMovement : MonoBehaviour {
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
-        
+
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
 
-        //Counteract sliding and sloppy movement
+        ////Counteract sliding and sloppy movement
         CounterMovement(x, y, mag);
-        
+
         //If holding jump && ready to jump, then jump
         if (readyToJump && jumping) Jump();
 
@@ -158,8 +158,8 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
-        
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+
+        ////If speed is larger than maxspeed, cancel out the input so you don't go over max speed
         if (x > 0 && xMag > maxSpeed) x = 0;
         if (x < 0 && xMag < -maxSpeed) x = 0;
         if (y > 0 && yMag > maxSpeed) y = 0;
@@ -173,9 +173,9 @@ public class PlayerMovement : MonoBehaviour {
             multiplier = 0.5f;
             multiplierV = 0.5f;
         }
-        
+
         // Movement while sliding
-        if (grounded && crouching) multiplierV = 0f;
+        if (grounded && crouching) { multiplierV = .5f; }
 
         //Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
@@ -206,32 +206,32 @@ public class PlayerMovement : MonoBehaviour {
         orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
     }
 
-    private void CounterMovement(float x, float y, Vector2 mag) {
+    private void CounterMovement(float x, float y, Vector2 mag)
+    {
         if (!grounded || jumping) return;
 
-        //Slow down sliding
-        if (crouching) {
-            rb.AddForce(moveSpeed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
-            return;
-        }
 
         //Counter movement
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) {
+        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
+        {
             rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0)) {
+        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
+        {
             rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
-        
+
         //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
-        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed) {
+        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
+        {
             float fallspeed = rb.velocity.y;
             Vector3 n = rb.velocity.normalized * maxSpeed;
             rb.velocity = new Vector3(n.x, fallspeed, n.z);
         }
     }
 
-    public Vector2 FindVelRelativeToLook() {
+    public Vector2 FindVelRelativeToLook()
+    {
         float lookAngle = orientation.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
 
@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour {
         float magnitue = rb.velocity.magnitude;
         float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
         float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
-        
+
         return new Vector2(xMag, yMag);
     }
 
@@ -251,21 +251,14 @@ public class PlayerMovement : MonoBehaviour {
         RaycastHit hit;
         Ray ray = new Ray(transform.position,  - transform.up);
         if (Physics.Raycast(ray, out hit, 1.3f,~LayerMask.NameToLayer("ground")))
-        {
-            grounded = true;
-        }
-        else { grounded = false; }
-      
+        {grounded = true;}
+        else { grounded = false; } //checks what is under our feet
     }
 
     private void OnCollisionEnter(Collision collision)
-    {   //stick to wall
+    {   //stick to wall if we are not on the ground and not grappling and hit into a wall
         if (!grounded && !gg.IsGrappling() && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        { 
-            wallTimer = wallTimerTime;
-            rb.velocity = Vector3.zero; 
-            
-        }
+        {wallTimer = wallTimerTime; rb.velocity = Vector3.zero;}
    
         //falling off map ressets position
         if (collision.gameObject.name == "fallOffPoint") 
