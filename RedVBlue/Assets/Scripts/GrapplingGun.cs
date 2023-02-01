@@ -70,7 +70,10 @@ public class GrapplingGun : MonoBehaviour {
     void DrawRope() {
         //If not grappling, don't draw rope
         if (!joint) return;
-
+        if (Input.GetButton("Fire3"))
+        {
+            joint.maxDistance -= Time.deltaTime * 200;
+            joint.minDistance -= Time.deltaTime * 200; }
 
         //currentGrapplePosition = Vector3.Lerp(currentGrapplePosition,transform.InverseTransformPoint( grapplePoint), Time.deltaTime * 8f);
         

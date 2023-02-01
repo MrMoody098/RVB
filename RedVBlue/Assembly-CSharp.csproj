@@ -58,13 +58,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterAttributes.cs" />
     <Compile Include="Assets\Scripts\firing.cs" />
+    <Compile Include="Assets\newLineDrawerTest.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\RotateGun.cs" />
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\newLineDrawerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\ZShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
