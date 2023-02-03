@@ -1,8 +1,9 @@
 // Some stupid rigidbody based movement by Dani
 
 using System;
-using System.Data.SqlTypes;
+
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour {
@@ -59,11 +60,15 @@ public class PlayerMovement : MonoBehaviour {
     private float wallTimer = 0;
     private bool isWalled = false;
     private bool isAbleToMove = true;
+    private PlayerInput input;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
+        input = GetComponent<PlayerInput>();
+        input.camera = cam.GetComponentInChildren<Camera>();
 
     }
     
@@ -71,6 +76,8 @@ public class PlayerMovement : MonoBehaviour {
         playerScale =  transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+       
     }
 
     
@@ -78,7 +85,7 @@ public class PlayerMovement : MonoBehaviour {
         Movement();
     }
 
-    private void Update() {
+    private void Update() { 
         MyInput();
         Look();
         if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
@@ -95,7 +102,11 @@ public class PlayerMovement : MonoBehaviour {
        // if (isWalled) { return; }
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
-        jumping = Input.GetButton("Jump");
+
+        if (Gamepad.current != null) //stops the gamepad null reference
+        { jumping = Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed; }
+        else { jumping = Keyboard.current.spaceKey.isPressed; }
+
         crouching = Input.GetKey(KeyCode.LeftControl);
       
         //Crouching
@@ -204,6 +215,7 @@ public class PlayerMovement : MonoBehaviour {
         //Perform the rotations
         playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+
     }
 
     private void CounterMovement(float x, float y, Vector2 mag)
@@ -265,5 +277,17 @@ public class PlayerMovement : MonoBehaviour {
         { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; }
     }
    
+    private void setLookRotation(Transform self, Transform other, float speed)
+    {
+        Vector3 direction = other.transform.position - self.transform.position;
+
+        float dot = Vector3.Dot(direction, direction.normalized);
+        if (dot < .95f)
+        {
+            self.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(self.forward,direction, speed*Time.deltaTime,0));
+        }
+        else { self.transform.LookAt(other); }
+        
+    }
 
 }
