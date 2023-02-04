@@ -60,15 +60,14 @@ public class PlayerMovement : MonoBehaviour {
     private float wallTimer = 0;
     private bool isWalled = false;
     private bool isAbleToMove = true;
-    private PlayerInput input;
+
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-        input = GetComponent<PlayerInput>();
-        input.camera = cam.GetComponentInChildren<Camera>();
+       
 
     }
     
@@ -103,16 +102,16 @@ public class PlayerMovement : MonoBehaviour {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        if (Gamepad.current != null) //stops the gamepad null reference
-        { jumping = Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed; }
-        else { jumping = Keyboard.current.spaceKey.isPressed; }
-
+        // if (Gamepad.current != null) //stops the gamepad null reference
+        //  { jumping = Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed; }
+        //  else { jumping = Keyboard.current.spaceKey.isPressed; }
+        jumping = Keyboard.current.spaceKey.isPressed;
         crouching = Input.GetKey(KeyCode.LeftControl);
-      
+
         //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (crouching)
             StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (crouching)
             StopCrouch();
     }
 
