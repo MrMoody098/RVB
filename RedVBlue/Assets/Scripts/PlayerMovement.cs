@@ -61,10 +61,11 @@ public class PlayerMovement : MonoBehaviour {
     private float wallTimer = 0;
     private bool isWalled = false;
     private bool isAbleToMove = true;
-
+    CapsuleCollider collider;
     PhotonView view;
 
     void Awake() {
+        collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.GetComponent<CameraController>().pm = this;
@@ -131,24 +132,25 @@ public class PlayerMovement : MonoBehaviour {
         //Crouching
         if (crouching)
             StartCrouch();
-        if (crouching)
+        else
             StopCrouch();
     }
 
     private void StartCrouch() {
+        
         // transform.localScale = crouchScale;
-        GetComponent<CapsuleCollider>().height /= 3; 
+         collider.height /= 3; 
         //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
        // transform.position = Vector3.MoveTowards(transform.position, transform.position - new Vector3(0, -.5f), 20 * Time.deltaTime);
-        if (rb.velocity.magnitude > 0.5f) {
-            if (grounded) {
-                rb.AddForce(orientation.transform.forward * slideForce);
-            }
-        }
+        //if (rb.velocity.magnitude > 0.5f) {
+        //    if (grounded) {
+        //        rb.AddForce(orientation.transform.forward * slideForce);
+        //    }
+        //}
     }
 
     private void StopCrouch() {
-        GetComponent<CapsuleCollider>().height *= 3;
+        collider.height *= 3;
         //transform.localScale = playerScale;
         //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
