@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
+using Photon.Pun;
 public class PlayerMovement : MonoBehaviour {
 
     //Assingables
@@ -61,13 +62,15 @@ public class PlayerMovement : MonoBehaviour {
     private bool isWalled = false;
     private bool isAbleToMove = true;
 
+    PhotonView view;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-       
+
+        view = GetComponent<PhotonView>();
 
     }
     
@@ -81,16 +84,25 @@ public class PlayerMovement : MonoBehaviour {
 
     
     private void FixedUpdate() {
-        Movement();
+        if (view.IsMine)
+        {
+            if (Input.GetButtonDown("Escape")) { Application.Quit(); }
+            Movement();
+        }
+
     }
 
     private void Update() { 
-        MyInput();
-        Look();
-        if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
-        else if(!rb.useGravity) { rb.useGravity = true; isWalled = false; }
+        if(view.IsMine)
+        {
+            MyInput();
+            Look();
+            if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
+            else if(!rb.useGravity) { rb.useGravity = true; isWalled = false; }
 
-        checkIsGrounded();
+            checkIsGrounded();
+        }
+
         ///print(rb.velocity); //disiplays movement vector
     }
 
