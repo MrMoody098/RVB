@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     
-    private Camera camera;
+    public Camera camera;
     public bool isChangeFOV = true;
-    PlayerMovement pm;
+    public PlayerMovement pm;
     public float baseFov = 80;
     [Range(.2f,1f)]
     public float fovChangeIntencity = .4f;
     float camVel = 0;
     private void Awake()
     {
-        pm = FindObjectOfType<PlayerMovement>();
         camera = GetComponentInChildren<Camera>();
     }
     void LateUpdate() //late update will remove jitter

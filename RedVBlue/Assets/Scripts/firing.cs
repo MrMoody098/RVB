@@ -5,7 +5,7 @@ public class firing : MonoBehaviour
     private Vector3 currentGrapplePosition;
     private LineRenderer lr;
     private Vector3 hitPoint;
-    private Transform camera, player;
+    public Transform camera, player;
 
     public float Gundamage;
     public int ammo;
@@ -13,7 +13,7 @@ public class firing : MonoBehaviour
     private void Awake()
     {
         camera = GetComponentInParent<Camera>().transform.parent;
-        player = FindObjectOfType<PlayerMovement>().transform;
+       // player = GetComponentInParent<PlayerMovement>().transform;
     }
 
     void Update()
