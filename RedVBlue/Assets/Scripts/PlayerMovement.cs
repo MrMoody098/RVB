@@ -84,10 +84,17 @@ public class PlayerMovement : MonoBehaviour {
 
     
     private void FixedUpdate() {
-        if (view.IsMine)
+            if (view.IsMine)
         {
             if (Input.GetButtonDown("Cancel")) { Application.Quit(); }
             Movement();
+        }
+
+        else 
+        {
+            
+            cam.GetComponentInChildren<Camera>().targetDisplay= 2;
+
         }
 
     }
