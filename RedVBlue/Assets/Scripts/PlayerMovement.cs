@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
+        cam.GetComponent<CameraController>().pm = this;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
 
