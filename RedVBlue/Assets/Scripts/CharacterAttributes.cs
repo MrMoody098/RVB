@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class CharacterAttributes : MonoBehaviour
 {
     public float health;
@@ -21,7 +21,13 @@ public class CharacterAttributes : MonoBehaviour
     }
     public void DownHealth(float amount)
     {
-        if (health < 1) { alive = false; }
+        if (health < 1) { alive = false; Dead(); }
         else { health -= amount; }
+    }
+    public void Dead()
+    {
+        PhotonNetwork.Destroy(gameObject);
+        DestroyImmediate(gameObject);
+
     }
 }
