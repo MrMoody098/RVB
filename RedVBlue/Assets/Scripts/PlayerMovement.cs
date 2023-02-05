@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate() {
         if (view.IsMine)
         {
-            if (Input.GetButtonDown("Escape")) { Application.Quit(); }
+            if (Input.GetButtonDown("Cancel")) { Application.Quit(); }
             Movement();
         }
 
