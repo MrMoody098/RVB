@@ -8,7 +8,7 @@ using UnityEngine.VFX;
 
 using Photon.Pun;
 public class PlayerMovement : MonoBehaviour {
-
+    private CharacterAttributes characterAttributes;
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour {
         cam.GetComponent<CameraController>().pm = this;
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-
+        characterAttributes = GetComponent<CharacterAttributes>();
         view = GetComponent<PhotonView>();
 
     }
@@ -293,7 +293,7 @@ public class PlayerMovement : MonoBehaviour {
    
         //falling off map ressets position
         if (collision.gameObject.name == "fallOffPoint") 
-        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; }
+        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
     }
    
     private void setLookRotation(Transform self, Transform other, float speed)

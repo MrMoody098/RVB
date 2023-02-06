@@ -28,6 +28,6 @@ public class CharacterAttributes : MonoBehaviour
     {
         PhotonNetwork.Destroy(gameObject);
         DestroyImmediate(gameObject);
-
+        PhotonNetwork.LoadLevel("Lobby");
     }
 }
