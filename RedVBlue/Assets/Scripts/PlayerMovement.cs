@@ -7,12 +7,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 using Photon.Pun;
-public class PlayerMovement : MonoBehaviour {
-    private CharacterAttributes characterAttributes;
+public class PlayerMovement : MonoBehaviour
+{
+
     //Assingables
     public Transform playerCam;
     public Transform orientation;
-
+    private CharacterAttributes characterAttributes;
     Transform cam;
     GrapplingGun gg;
     //Other
@@ -21,10 +22,10 @@ public class PlayerMovement : MonoBehaviour {
 
     //Rotation and look
     private float xRotation;
-    [Range(0f,200f)]
+    [Range(0f, 200f)]
     public float sensitivity = 50f;
     private float sensMultiplier = 1f;
-    
+
     //Movement
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
@@ -54,59 +55,61 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
     //dashing
-    [Range (0,50)]
-    public float wallDashForce= 15;
-    [Range(0,10)]
+    [Range(0, 50)]
+    public float wallDashForce = 15;
+    [Range(0, 10)]
     public float wallTimerTime = 2;
     private float wallTimer = 0;
     private bool isWalled = false;
     private bool isAbleToMove = true;
-
+    CapsuleCollider collider;
     PhotonView view;
 
-    void Awake() {
+    void Awake()
+    {
+        collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.GetComponent<CameraController>().pm = this;
+
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-        characterAttributes = GetComponent<CharacterAttributes>();
-        view = GetComponent<PhotonView>();
+        gg.GetComponent<firing>().player = transform;
 
+        view = GetComponent<PhotonView>();
+        characterAttributes = getComponenent<CharaterAtrributes>();
     }
-    
-    void Start() {
-        playerScale =  transform.localScale;
+
+    void Start()
+    {
+        playerScale = transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-       
+
     }
 
-    
-    private void FixedUpdate() {
-            if (view.IsMine)
+
+    private void FixedUpdate()
+    {
+        if (view.IsMine)
         {
             if (Input.GetButtonDown("Cancel")) { Application.Quit(); }
             Movement();
         }
-
-        else 
-        {
-            
-            cam.GetComponentInChildren<Camera>().targetDisplay= 2;
-
-        }
+        else
+        { cam.GetComponentInChildren<Camera>().targetDisplay = 2; }
 
     }
 
-    private void Update() { 
-        if(view.IsMine)
+    private void Update()
+    {
+        if (view.IsMine)
         {
             MyInput();
             Look();
             if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
-            else if(!rb.useGravity) { rb.useGravity = true; isWalled = false; }
+            else if (!rb.useGravity) { rb.useGravity = true; rb.useGravity = true; isWalled = false; }
 
             checkIsGrounded();
         }
@@ -117,55 +120,47 @@ public class PlayerMovement : MonoBehaviour {
     /// <summary>
     /// Find user input. Should put this in its own class but im lazy
     /// </summary>
-    private void MyInput() {
-       // if (isWalled) { return; }
+    private void MyInput()
+    {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        // if (Gamepad.current != null) //stops the gamepad null reference
-        //  { jumping = Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed; }
-        //  else { jumping = Keyboard.current.spaceKey.isPressed; }
         jumping = Keyboard.current.spaceKey.isPressed;
-        crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching
-        if (crouching)
-            StartCrouch();
-        if (crouching)
-            StopCrouch();
+        crouching = false;
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        { collider.height /= 3; moveSpeed *= .5f; crouching = true; }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        { collider.height *= 3; moveSpeed *= 2f; crouching = false; }
     }
 
-    private void StartCrouch() {
-        // transform.localScale = crouchScale;
-        GetComponent<CapsuleCollider>().height /= 3; 
-        //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-       // transform.position = Vector3.MoveTowards(transform.position, transform.position - new Vector3(0, -.5f), 20 * Time.deltaTime);
-        if (rb.velocity.magnitude > 0.5f) {
-            if (grounded) {
-                rb.AddForce(orientation.transform.forward * slideForce);
-            }
-        }
-    }
 
-    private void StopCrouch() {
-        GetComponent<CapsuleCollider>().height *= 3;
-        //transform.localScale = playerScale;
-        //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-    }
-
-    private void Movement() {
+    private void Movement()
+    {
         if (!isAbleToMove) { return; }
-        if (isWalled) {
+        if (isWalled)
+        {
             if (Input.GetButton("Jump"))
             {
-                //jump forward
-                rb.velocity = GameObject.Find("camera").transform.forward * jumpForce;
-
-                //i wish to calculate exactly where this jump is going to land
-
-                //wall timer at zero means no sticking to wall
+                rb.velocity = cam.transform.forward * jumpForce;
+                isWalled = false;
+                rb.useGravity = true;
                 wallTimer = 0;
-            }return;} 
+            }
+            return;
+        }
+
+        if (crouching && grounded) { rb.drag = 0; }
+        else { rb.drag = 1; }
+
+        rb.velocity += x * orientation.right * moveSpeed * Time.deltaTime;
+        rb.velocity += y * orientation.forward * moveSpeed * Time.deltaTime;
+
+
+        if (!grounded) { return; }
+        if (Keyboard.current.spaceKey.isPressed)
+        { rb.velocity += Vector3.up * jumpForce; }
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -177,14 +172,12 @@ public class PlayerMovement : MonoBehaviour {
         ////Counteract sliding and sloppy movement
         CounterMovement(x, y, mag);
 
-        //If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
-
         //Set max speed
         float maxSpeed = this.maxSpeed;
-        
+
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded && readyToJump) {
+        if (crouching && grounded)
+        {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
@@ -195,38 +188,25 @@ public class PlayerMovement : MonoBehaviour {
         if (y > 0 && yMag > maxSpeed) y = 0;
         if (y < 0 && yMag < -maxSpeed) y = 0;
 
-        //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
-        
-        // Movement in air
-        if (!grounded) {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
-        }
-
-        // Movement while sliding
-        if (grounded && crouching) { multiplierV = .5f; }
-
-        //Apply forces to move player
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
-    private void Jump() {
+    private void Jump()
+    {
 
         if (grounded)
-        {rb.velocity = Vector3.up * jumpForce;}    
+        { rb.velocity = Vector3.up * jumpForce; }
     }
-    
+
     private float desiredX;
-    private void Look() {
+    private void Look()
+    {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
         //Find current look rotation
         Vector3 rot = playerCam.transform.localRotation.eulerAngles;
         desiredX = rot.y + mouseX;
-        
+
         //Rotate, and also make sure we dont over- or under-rotate.
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
@@ -280,22 +260,22 @@ public class PlayerMovement : MonoBehaviour {
     public void checkIsGrounded()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position,  - transform.up);
-        if (Physics.Raycast(ray, out hit, 1.3f,~LayerMask.NameToLayer("ground")))
-        {grounded = true;}
+        Ray ray = new Ray(transform.position, -transform.up);
+        if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
+        { grounded = true; }
         else { grounded = false; } //checks what is under our feet
     }
 
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
         if (!grounded && !gg.IsGrappling() && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        {wallTimer = wallTimerTime; rb.velocity = Vector3.zero;}
-   
+        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
+
         //falling off map ressets position
-        if (collision.gameObject.name == "fallOffPoint") 
+        if (collision.gameObject.name == "fallOffPoint")
         { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
     }
-   
+
     private void setLookRotation(Transform self, Transform other, float speed)
     {
         Vector3 direction = other.transform.position - self.transform.position;
@@ -303,10 +283,10 @@ public class PlayerMovement : MonoBehaviour {
         float dot = Vector3.Dot(direction, direction.normalized);
         if (dot < .95f)
         {
-            self.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(self.forward,direction, speed*Time.deltaTime,0));
+            self.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(self.forward, direction, speed * Time.deltaTime, 0));
         }
         else { self.transform.LookAt(other); }
-        
+
     }
 
 }
