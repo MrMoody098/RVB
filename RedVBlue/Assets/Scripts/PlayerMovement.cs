@@ -69,8 +69,10 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         cam = transform.Find("camera").transform;
         cam.GetComponent<CameraController>().pm = this;
+
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
+        gg.GetComponent<firing>().player = transform;
 
         view = GetComponent<PhotonView>();
 
@@ -86,18 +88,13 @@ public class PlayerMovement : MonoBehaviour {
 
     
     private void FixedUpdate() {
-            if (view.IsMine)
+        if (view.IsMine)
         {
             if (Input.GetButtonDown("Cancel")) { Application.Quit(); }
             Movement();
         }
-
         else 
-        {
-            
-            cam.GetComponentInChildren<Camera>().targetDisplay= 2;
-
-        }
+        {cam.GetComponentInChildren<Camera>().targetDisplay= 2;}
 
     }
 
@@ -107,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
             MyInput();
             Look();
             if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
-            else if(!rb.useGravity) { rb.useGravity = true; isWalled = false; }
+            else if(!rb.useGravity) { rb.useGravity = true; rb.useGravity = true; isWalled = false; }
 
             checkIsGrounded();
         }
@@ -119,55 +116,42 @@ public class PlayerMovement : MonoBehaviour {
     /// Find user input. Should put this in its own class but im lazy
     /// </summary>
     private void MyInput() {
-       // if (isWalled) { return; }
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        // if (Gamepad.current != null) //stops the gamepad null reference
-        //  { jumping = Keyboard.current.spaceKey.isPressed || Gamepad.current.aButton.isPressed; }
-        //  else { jumping = Keyboard.current.spaceKey.isPressed; }
         jumping = Keyboard.current.spaceKey.isPressed;
-        crouching = Input.GetKey(KeyCode.LeftControl);
 
         //Crouching
-        if (crouching)
-            StartCrouch();
-        else
-            StopCrouch();
+        crouching = false;
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        { collider.height /= 3; moveSpeed *= .5f; crouching = true; }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        { collider.height *= 3; moveSpeed *= 2f; crouching = false; }
     }
 
-    private void StartCrouch() {
-        
-        // transform.localScale = crouchScale;
-         collider.height /= 3; 
-        //transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-       // transform.position = Vector3.MoveTowards(transform.position, transform.position - new Vector3(0, -.5f), 20 * Time.deltaTime);
-        //if (rb.velocity.magnitude > 0.5f) {
-        //    if (grounded) {
-        //        rb.AddForce(orientation.transform.forward * slideForce);
-        //    }
-        //}
-    }
-
-    private void StopCrouch() {
-        collider.height *= 3;
-        //transform.localScale = playerScale;
-        //transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-    }
 
     private void Movement() {
         if (!isAbleToMove) { return; }
-        if (isWalled) {
-            if (Input.GetButton("Jump"))
-            {
-                //jump forward
-                rb.velocity = GameObject.Find("camera").transform.forward * jumpForce;
+        if (isWalled) 
+        {
+            if (Input.GetButton("Jump")) 
+            { rb.velocity = cam.transform.forward * jumpForce; 
+                isWalled = false; 
+                rb.useGravity = true;
+                wallTimer = 0;}
+            return;
+        }
 
-                //i wish to calculate exactly where this jump is going to land
+        if (crouching && grounded) { rb.drag = 0; }
+        else { rb.drag = 1; }
 
-                //wall timer at zero means no sticking to wall
-                wallTimer = 0;
-            }return;} 
+        rb.velocity += x * orientation.right * moveSpeed * Time.deltaTime;
+        rb.velocity += y * orientation.forward * moveSpeed * Time.deltaTime;
+
+
+        if (!grounded) { return; }
+        if (Keyboard.current.spaceKey.isPressed)
+        { rb.velocity += Vector3.up * jumpForce; }
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -179,14 +163,12 @@ public class PlayerMovement : MonoBehaviour {
         ////Counteract sliding and sloppy movement
         CounterMovement(x, y, mag);
 
-        //If holding jump && ready to jump, then jump
-        if (readyToJump && jumping) Jump();
-
         //Set max speed
         float maxSpeed = this.maxSpeed;
-        
+
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded && readyToJump) {
+        if (crouching && grounded)
+        {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
             return;
         }
@@ -197,21 +179,6 @@ public class PlayerMovement : MonoBehaviour {
         if (y > 0 && yMag > maxSpeed) y = 0;
         if (y < 0 && yMag < -maxSpeed) y = 0;
 
-        //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
-        
-        // Movement in air
-        if (!grounded) {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
-        }
-
-        // Movement while sliding
-        if (grounded && crouching) { multiplierV = .5f; }
-
-        //Apply forces to move player
-        rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
     }
 
     private void Jump() {
