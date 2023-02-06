@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using TMPro;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
 
-    public TMPro.TMP_InputField createInput;
-    public TMPro.TMP_InputField joinInput;
+    public TextMeshProUGUI createInput;
+    public TextMeshProUGUI joinInput;
 
-
-    public void CreateRoom() 
-    { PhotonNetwork.CreateRoom(createInput.text); }
+    private void Awake()
+    {
+        
+    }
+    public void CreateRoom()
+    { PhotonNetwork.CreateRoom(createInput.text); joinInput.GetParsedText(); }
     public void JoinRoom()
-    { PhotonNetwork.JoinRoom(joinInput.text); }
+    {print(joinInput.GetParsedText()); PhotonNetwork.JoinRoom(joinInput.GetParsedText());  }
 
     public override void OnJoinedRoom()
     {

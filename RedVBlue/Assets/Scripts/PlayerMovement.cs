@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         gg.GetComponent<firing>().player = transform;
 
         view = GetComponent<PhotonView>();
-        characterAttributes = getComponenent<CharaterAtrributes>();
+        characterAttributes = GetComponent<CharacterAttributes>();
     }
 
     void Start()

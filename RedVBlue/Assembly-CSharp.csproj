@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\CreateAndJoinRooms.cs" />
     <Compile Include="Assets\SpawnPlayers.cs" />
+    <Compile Include="Assets\lobby.cs" />
     <Compile Include="Assets\Scripts\RotateGun.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
-    <Compile Include="Assets\lobby.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ZShader.shader" />

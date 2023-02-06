@@ -299,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0742641257aeeb4282d747fdd0d1fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappling: {fileID: 0}
   rotationSpeed: 5
 --- !u!1 &6467799708758683088
 GameObject:
