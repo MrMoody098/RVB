@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 using Photon.Pun;
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     //Assingables
@@ -75,8 +75,10 @@ public class PlayerMovement : MonoBehaviour
         cam.transform.parent = null;
         gg = cam.transform.GetComponentInChildren<GrapplingGun>();
         gg.GetComponent<firing>().player = transform;
-
+       
+        
         view = GetComponent<PhotonView>();
+
         characterAttributes = GetComponent<CharacterAttributes>();
     }
 
@@ -94,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (view.IsMine)
         {
-            if (Input.GetButtonDown("Cancel")) { Application.Quit(); }
+            if (Input.GetButtonDown("Cancel")) { Cursor.visible = true; }// PhotonNetwork.Destroy(gameObject); Application.Quit(); }
             Movement();
         }
         else
@@ -289,4 +291,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(desiredX); }
+        if (stream.IsReading) 
+        { xRotation = (float) stream.ReceiveNext(); desiredX = (float)stream.ReceiveNext();
+            playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
+            orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+        }
+    }
 }

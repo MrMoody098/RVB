@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Photon.Pun;
 public class firing : MonoBehaviour
 {
     private Vector3 currentGrapplePosition;
@@ -10,23 +10,22 @@ public class firing : MonoBehaviour
     public float Gundamage;
     public int ammo;
 
+    [HideInInspector]
+    public PhotonView view;
     private void Awake()
     {
+        view = GetComponentInParent<PhotonView>(); 
         camera = GetComponentInParent<Camera>().transform.parent;
-       // player = GetComponentInParent<PlayerMovement>().transform;
     }
 
     void Update()
     {
+        if (!view.IsMine) { return; }
         if (Input.GetMouseButtonDown(0))
-        { Shoot(); }
+        { view.RPC("Shoot",RpcTarget.All); }
     }
-
-
-    /// <summary>
-    /// Call whenever we want to start a grapple
-    /// </summary>
-    void Shoot()
+    [PunRPC]
+    public void Shoot()
     {
         RaycastHit hit;
         if (Physics.Raycast(camera.position, camera.forward, out hit))
@@ -37,7 +36,7 @@ public class firing : MonoBehaviour
             {
                 //change its attributes
                CharacterAttributes enemy = hit.collider.GetComponent<CharacterAttributes>();
-
+  
                 enemy.DownHealth(1);
                 print(enemy.health);
 
@@ -47,12 +46,6 @@ public class firing : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// Call whenever we want to stop a grapple
-    /// </summary>
-    void StopShoot(){ print("done"); }
-    void addDamage(){print("damage");} 
 
 
 
