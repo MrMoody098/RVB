@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class RotateGun : MonoBehaviour {
 
-    public GrapplingGun grappling;
+    private GrapplingGun grappling;
 
     private Quaternion desiredRotation;
     [Range(0f, 20f)]
     public float rotationSpeed = 5f;
 
-    void Update() {
+    private void Awake()
+    {
+        grappling = gameObject.GetComponentInChildren<GrapplingGun>();
+    }
+    void Update() 
+    {
         if (!grappling.IsGrappling()) {
             desiredRotation = transform.parent.rotation;
         }
