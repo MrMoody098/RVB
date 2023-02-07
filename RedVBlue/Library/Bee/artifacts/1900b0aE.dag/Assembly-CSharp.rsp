@@ -370,10 +370,6 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/ConnectToServer.cs"
-"Assets/CreateAndJoinRooms.cs"
-"Assets/lobby.cs"
-"Assets/newLineDrawerTest.cs"
 "Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs"
 "Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs"
 "Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs"
@@ -390,11 +386,15 @@
 "Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CharacterAttributes.cs"
+"Assets/Scripts/ConnectToServer.cs"
+"Assets/Scripts/CreateAndJoinRooms.cs"
 "Assets/Scripts/firing.cs"
 "Assets/Scripts/GrapplingGun.cs"
+"Assets/Scripts/LobbyUI.cs"
+"Assets/Scripts/newLineDrawerTest.cs"
 "Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/RotateGun.cs"
-"Assets/SpawnPlayers.cs"
+"Assets/Scripts/SpawnPlayers.cs"
 -langversion:9.0
 
 /deterministic

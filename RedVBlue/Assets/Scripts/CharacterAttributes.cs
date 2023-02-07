@@ -33,11 +33,19 @@ public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
+        try
         {
-            stream.SendNext(health);
+            if (stream.IsWriting)
+            {
+                stream.SendNext(health);
+            }
+            if (stream.IsReading)
+            {
+                health = (int)stream.ReceiveNext();
+                print("recieved health");
+            }
         }
-        if(stream.IsReading) { health = (int) stream.ReceiveNext(); 
-            print("recieved health"); }
+        catch { Debug.LogError("(; trying to read network transmitted data but theres nothing being transmitted, good thing you used protection );",this); }
+
     }
 }
