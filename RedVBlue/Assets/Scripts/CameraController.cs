@@ -3,31 +3,32 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     
     public Camera camera;
+
     public bool isChangeFOV = true;
-    public PlayerMovement pm;
     public float baseFov = 80;
     [Range(.2f,1f)]
     public float fovChangeIntencity = .4f;
     float camVel = 0;
+
+    private Rigidbody rb;
+    
     private void Awake()
     {
         camera = GetComponentInChildren<Camera>();
+        rb = GetComponentInParent<Rigidbody>();
     }
     void LateUpdate() //late update will remove jitter
     {
-        transform.position = pm.transform.position;
-
-        if (isChangeFOV)
-        {fovChange();}
+        //UI will enable and disable this
+        if (isChangeFOV){fovChange();}
         
     }
 
     public void fovChange()
     {
-       if (pm.rb.velocity.magnitude < .5f && camVel > 0.1f)
-       { camVel *= .75f; }
-       else { camVel = pm.rb.velocity.magnitude; }
+       if (rb.velocity.magnitude < .5f && camVel > 0.1f)
+       { camVel *= .75f; }else{ camVel =rb.velocity.magnitude;}
         
-       camera.fieldOfView = baseFov + camVel*fovChangeIntencity;
+       camera.fieldOfView = baseFov+camVel*fovChangeIntencity;
     }
 }

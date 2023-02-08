@@ -9,29 +9,35 @@ using System;
 public class LobbyUI : MonoBehaviour
 {
     public GameObject openScreen, hostPanel, joinPanel, back;
-    public List<Button> buttons = new List<Button>(); int index = -1; float floatingIndex = 0;
-    private void Awake()
-    { goBack();}
+    public List<Button> buttons = new List<Button>(); 
+    int index = 1; float floatingIndex = 1;
+    private void Start() 
+    { goBack(); EventSystem.current.SetSelectedGameObject(null); }
 
     private void Update()
     { TraverseActivePanelElements(); }
 
-    //<summary>Allows the user to go through all the buttons/inputs using controller or keyboard</summary>
     public void TraverseActivePanelElements()
     {
-        floatingIndex -=
-            Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) ?
-            (Input.GetAxis("Vertical") * Time.deltaTime * 5) : (Input.GetAxis("Mouse ScrollWheel") * 1000 * Time.deltaTime);
-        floatingIndex += Convert.ToInt32(Gamepad.current.dpad.down.isPressed)*Time.deltaTime*10;
-        floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.up.isPressed)*Time.deltaTime*10;
+        //all inputs are zero by default until pressed
+        floatingIndex -= Input.GetAxis("Vertical") * Time.deltaTime * 20;
+        floatingIndex -= Input.GetAxis("Mouse ScrollWheel") * 1500 * Time.deltaTime;
+        floatingIndex += Convert.ToInt32(Gamepad.current.dpad.down.isPressed) * Time.deltaTime * 10; 
+        floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.up.isPressed) * Time.deltaTime * 10;
+        floatingIndex += Convert.ToInt32(Gamepad.current.dpad.right.isPressed) * Time.deltaTime * 10;
+        floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.left.isPressed) * Time.deltaTime * 10;
+        floatingIndex = Input.GetAxis("Horizontal") > 0 ? 0 : floatingIndex;
 
-
+        //stay in bounds -- when converting to int it will round down always
         floatingIndex = Mathf.Clamp(floatingIndex, 0, (buttons.Count - 1) + .4f);
-        print(floatingIndex);
-        if ((int)floatingIndex != index) //on floating index change
-        { index = (int)floatingIndex; buttons[index].Select(); }
+        
+        //on floating index change
+        if ((int)floatingIndex != index) 
+        {index = (int)floatingIndex; 
+            buttons[index].Select();}
 
         if (Input.GetButtonDown("Cancel")) { goBack(); }
+        
     }
     public void exit(){Application.Quit();}
 

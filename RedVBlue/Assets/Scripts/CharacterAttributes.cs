@@ -25,27 +25,13 @@ public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
         if (health < 1) { alive = false; Dead(); }
         else { health -= amount; }
     }
-    public void Dead()
-    {
-
-        print(gameObject.name + "is dead");
-    }
+    public void Dead() {print(gameObject.name + "is dead");}
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        try
-        {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(health);
-            }
-            if (stream.IsReading)
-            {
-                health = (int)stream.ReceiveNext();
-                print("recieved health");
-            }
-        }
-        catch { Debug.LogError("(; trying to read network transmitted data but theres nothing being transmitted, good thing you used protection );",this); }
-
+        if (stream.IsWriting)
+        {stream.SendNext(health);}
+        if (stream.IsReading)
+        {health = (int)stream.ReceiveNext(); }
     }
 }

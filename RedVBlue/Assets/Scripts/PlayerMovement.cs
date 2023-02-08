@@ -11,133 +11,102 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     //Assingables
-    public Transform playerCam;
-    public Transform orientation;
+    private Transform body;
     private CharacterAttributes characterAttributes;
-    Transform cam;
-    GrapplingGun gg;
-    //Other
+    private Camera camera;
+    private GrapplingGun grapplingGun;
     [HideInInspector]
     public Rigidbody rb;
 
-    //Rotation and look
-    private float xRotation;
+    private float xRotation, yRotation;
     [Range(0f, 200f)]
-    public float sensitivity = 50f;
-    private float sensMultiplier = 1f;
+    public float sensitivity = 50f; 
 
-    //Movement
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
-    public bool grounded;
-    public LayerMask whatIsGround;
 
     public float counterMovement = 0.175f;
     private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
-
-    //Crouch & Slide
-    private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
-    private Vector3 playerScale;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
 
-    //Jumping
-    private bool readyToJump = true;
-    private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
 
-    //Input
-    float x, y;
-    bool jumping, sprinting, crouching;
+    //Inputs
+    float vertical, horizontal;
 
-    //Sliding
-    private Vector3 normalVector = Vector3.up;
-    private Vector3 wallNormalVector;
     //dashing
     [Range(0, 50)]
     public float wallDashForce = 15;
     [Range(0, 10)]
-    public float wallTimerTime = 2;
+    public float wallTimerTime = 2;  
     private float wallTimer = 0;
+
     private bool isWalled = false;
     private bool isAbleToMove = true;
-    CapsuleCollider collider;
+    bool isJumping, isCrouching;
+    public bool grounded;
+   
+    private CapsuleCollider collider;
+    
     PhotonView view;
 
     void Awake()
     {
+        body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-        cam = transform.Find("camera").transform;
-        cam.GetComponent<CameraController>().pm = this;
-
-        cam.transform.parent = null;
-        gg = cam.transform.GetComponentInChildren<GrapplingGun>();
-        gg.GetComponent<firing>().player = transform;
-       
+        camera = GetComponentInChildren<Camera>();
+        grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
+        grapplingGun.GetComponent<firing>().player = transform;
         
         view = GetComponent<PhotonView>();
 
         characterAttributes = GetComponent<CharacterAttributes>();
     }
-
-    void Start()
-    {
-        playerScale = transform.localScale;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-
-    }
-
-
     private void FixedUpdate()
     {
         if (view.IsMine)
         {
-            if (Input.GetButtonDown("Cancel")) { Cursor.visible = true; }// PhotonNetwork.Destroy(gameObject); Application.Quit(); }
+            if (Input.GetButtonDown("Cancel")) 
+            { Cursor.visible = true; }
             Movement();
         }
-        else
-        { cam.GetComponentInChildren<Camera>().targetDisplay = 2; }
-
+        else { camera.GetComponent<Camera>().targetDisplay = 2; }
     }
-
     private void Update()
     {
         if (view.IsMine)
         {
             MyInput();
             Look();
-            if (wallTimer > 0) { wallTimer -= Time.deltaTime; rb.useGravity = false; isWalled = true; }
-            else if (!rb.useGravity) { rb.useGravity = true; rb.useGravity = true; isWalled = false; }
+            if (wallTimer > 0) 
+            { wallTimer -= Time.deltaTime; 
+                rb.useGravity = false; 
+                isWalled = true; }
+            else if (!rb.useGravity) 
+            { rb.useGravity = true; 
+                rb.useGravity = true; 
+                isWalled = false; }
 
             checkIsGrounded();
         }
-
-        ///print(rb.velocity); //disiplays movement vector
     }
-
-    /// <summary>
-    /// Find user input. Should put this in its own class but im lazy
-    /// </summary>
     private void MyInput()
     {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
+        vertical = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Vertical");
 
-        jumping = Keyboard.current.spaceKey.isPressed;
+        isJumping = Keyboard.current.spaceKey.isPressed;
 
         //Crouching
-        crouching = false;
+        isCrouching = false;
         if (Input.GetKeyDown(KeyCode.LeftControl))
-        { collider.height /= 3; moveSpeed *= .5f; crouching = true; }
+        { collider.height /= 3; moveSpeed *= .5f; isCrouching = true; }
         if (Input.GetKeyUp(KeyCode.LeftControl))
-        { collider.height *= 3; moveSpeed *= 2f; crouching = false; }
+        { collider.height *= 3; moveSpeed *= 2f; isCrouching = false; }
     }
-
-
     private void Movement()
     {
         if (!isAbleToMove) { return; }
@@ -145,7 +114,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (Input.GetButton("Jump"))
             {
-                rb.velocity = cam.transform.forward * jumpForce;
+                rb.velocity = camera.transform.parent.forward * jumpForce;
                 isWalled = false;
                 rb.useGravity = true;
                 wallTimer = 0;
@@ -153,12 +122,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        if (crouching && grounded) { rb.drag = 0; }
+        if (isCrouching && grounded) { rb.drag = 0; }
         else { rb.drag = 1; }
 
-        rb.velocity += x * orientation.right * moveSpeed * Time.deltaTime;
-        rb.velocity += y * orientation.forward * moveSpeed * Time.deltaTime;
-
+        rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
+        rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
 
         if (!grounded) { return; }
         if (Keyboard.current.spaceKey.isPressed)
@@ -172,66 +140,53 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         float xMag = mag.x, yMag = mag.y;
 
         ////Counteract sliding and sloppy movement
-        CounterMovement(x, y, mag);
+        CounterMovement(vertical, horizontal, mag);
 
         //Set max speed
         float maxSpeed = this.maxSpeed;
 
         //If sliding down a ramp, add force down so player stays grounded and also builds speed
-        if (crouching && grounded)
-        {
-            rb.AddForce(Vector3.down * Time.deltaTime * 3000);
-            return;
-        }
+        if (isCrouching && grounded)
+        {rb.AddForce(Vector3.down * Time.deltaTime * 3000);
+            return;}
 
         ////If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-        if (x > 0 && xMag > maxSpeed) x = 0;
-        if (x < 0 && xMag < -maxSpeed) x = 0;
-        if (y > 0 && yMag > maxSpeed) y = 0;
-        if (y < 0 && yMag < -maxSpeed) y = 0;
+        if (vertical > 0 && xMag > maxSpeed) vertical = 0;
+        if (vertical < 0 && xMag < -maxSpeed) vertical = 0;
+        if (horizontal > 0 && yMag > maxSpeed) horizontal = 0;
+        if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
 
     }
-
-    private void Jump()
-    {
-
-        if (grounded)
-        { rb.velocity = Vector3.up * jumpForce; }
-    }
-
-    private float desiredX;
     private void Look()
     {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
 
         //Find current look rotation
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        desiredX = rot.y + mouseX;
+        Vector3 rot = camera.transform.localRotation.eulerAngles;
+        yRotation = rot.y + mouseX;
 
         //Rotate, and also make sure we dont over- or under-rotate.
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         //Perform the rotations
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+        camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+        body.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
 
     }
-
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded || jumping) return;
-
+        if (!grounded || isJumping) return;
 
         //Counter movement
         if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+            rb.AddForce(moveSpeed * body.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
         if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
         {
-            rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+            rb.AddForce(moveSpeed * body.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
 
         //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
@@ -242,10 +197,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             rb.velocity = new Vector3(n.x, fallspeed, n.z);
         }
     }
-
     public Vector2 FindVelRelativeToLook()
     {
-        float lookAngle = orientation.transform.eulerAngles.y;
+        float lookAngle = body.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
 
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
@@ -257,47 +211,31 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
         return new Vector2(xMag, yMag);
     }
-
-
     public void checkIsGrounded()
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, -transform.up);
         if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
-        { grounded = true; }
-        else { grounded = false; } //checks what is under our feet
+        { grounded = true; } else { grounded = false; }
     }
-
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
-        if (!grounded && !gg.IsGrappling() && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
+        if (!grounded && !grapplingGun.IsGrappling() 
+            && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
         { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
 
         //falling off map ressets position
         if (collision.gameObject.name == "fallOffPoint")
-        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
+        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; 
+            characterAttributes.DownHealth(1); }
     }
-
-    private void setLookRotation(Transform self, Transform other, float speed)
-    {
-        Vector3 direction = other.transform.position - self.transform.position;
-
-        float dot = Vector3.Dot(direction, direction.normalized);
-        if (dot < .95f)
-        {
-            self.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(self.forward, direction, speed * Time.deltaTime, 0));
-        }
-        else { self.transform.LookAt(other); }
-
-    }
-
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(desiredX); }
+        if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(yRotation); }
         if (stream.IsReading) 
-        { xRotation = (float) stream.ReceiveNext(); desiredX = (float)stream.ReceiveNext();
-            playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
-            orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+        { xRotation = (float) stream.ReceiveNext(); yRotation = (float)stream.ReceiveNext();
+            camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+            body.localRotation = Quaternion.Euler(0, yRotation, 0);
         }
     }
 }
