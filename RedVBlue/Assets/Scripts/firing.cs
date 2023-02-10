@@ -31,7 +31,7 @@ public class firing : MonoBehaviour
         if (Physics.Raycast(camera.position, camera.forward, out hit))
         {
             hitPoint = hit.point;
-            //if the ovject has an attributes script
+            //if the object has an attributes script
             if (hit.collider.GetComponent<CharacterAttributes>() != null)  
             {
                 //change its attributes

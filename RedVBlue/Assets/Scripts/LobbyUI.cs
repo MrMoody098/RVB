@@ -5,27 +5,56 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System;
+using Photon.Pun;
+using TMPro;
 
-public class LobbyUI : MonoBehaviour
+public class LobbyUI : MonoBehaviourPunCallbacks
 {
     public GameObject openScreen, hostPanel, joinPanel, back;
     public List<Button> buttons = new List<Button>(); 
     int index = 1; float floatingIndex = 1;
+    
+    public GameObject currentSelection;
+    
+    public TextMeshProUGUI createInput;
+    public TextMeshProUGUI joinInput;
+
+    public Button joinBtn;
+
+    public string map = null;
+
+    public LobbyRoom selectedRoom;
+
     private void Start() 
-    { goBack(); EventSystem.current.SetSelectedGameObject(null); }
+    { 
+        goBack(); 
+        EventSystem.current.SetSelectedGameObject(null);
+    }
 
-    private void Update()
-    { TraverseActivePanelElements(); }
+    public void CreateRoom()
+    { PhotonNetwork.CreateRoom(createInput.GetParsedText()); }
+    public void JoinRoom()
+    { selectedRoom.Join(); }
 
+    //runs after create room or join room is called
+    public override void OnJoinedRoom()
+    { PhotonNetwork.LoadLevel("Map1"); }
+
+    private void LateUpdate()
+    { TraverseActivePanelElements(); 
+        currentSelection = EventSystem.current.currentSelectedGameObject; }
     public void TraverseActivePanelElements()
     {
         //all inputs are zero by default until pressed
         floatingIndex -= Input.GetAxis("Vertical") * Time.deltaTime * 20;
         floatingIndex -= Input.GetAxis("Mouse ScrollWheel") * 1500 * Time.deltaTime;
-        floatingIndex += Convert.ToInt32(Gamepad.current.dpad.down.isPressed) * Time.deltaTime * 10; 
-        floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.up.isPressed) * Time.deltaTime * 10;
-        floatingIndex += Convert.ToInt32(Gamepad.current.dpad.right.isPressed) * Time.deltaTime * 10;
-        floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.left.isPressed) * Time.deltaTime * 10;
+        try
+        {floatingIndex += Convert.ToInt32(Gamepad.current.dpad.down.isPressed) * Time.deltaTime * 10;
+            floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.up.isPressed) * Time.deltaTime * 10;
+            floatingIndex += Convert.ToInt32(Gamepad.current.dpad.right.isPressed) * Time.deltaTime * 10;
+                floatingIndex -= Convert.ToInt32(Gamepad.current.dpad.left.isPressed) * Time.deltaTime * 10;}
+        catch { }//no gamepadConnected
+
         floatingIndex = Input.GetAxis("Horizontal") > 0 ? 0 : floatingIndex;
 
         //stay in bounds -- when converting to int it will round down always
@@ -37,10 +66,9 @@ public class LobbyUI : MonoBehaviour
             buttons[index].Select();}
 
         if (Input.GetButtonDown("Cancel")) { goBack(); }
-        
+ 
     }
     public void exit(){Application.Quit();}
-
     public void host()
     {
         openScreen.SetActive(false);
@@ -54,6 +82,8 @@ public class LobbyUI : MonoBehaviour
     }
     public void join()
     {
+        if (!PhotonNetwork.InLobby)
+        { PhotonNetwork.JoinLobby(); }
         openScreen.SetActive(false);
         back.SetActive(true);
         joinPanel.SetActive(true);
@@ -61,11 +91,24 @@ public class LobbyUI : MonoBehaviour
         buttons.Clear();
         buttons.Add(back.GetComponent<Button>());
         foreach (Button b in joinPanel.GetComponentsInChildren<Button>())
-        { buttons.Add(b); print(b.name); }
-    }
+        { buttons.Add(b);}
 
+        if (!PhotonNetwork.InLobby)
+        {
+            //don't worry about the error. the client is connected to the lobby type default
+            PhotonNetwork.JoinLobby();
+        }
+    }
     public void goBack()
     {
+        //removes duplicates
+        if (joinPanel.activeSelf)
+        {  FindObjectOfType<loadRoomList>().Clear(); }
+      
+
+        if (PhotonNetwork.InLobby)
+        {PhotonNetwork.LeaveLobby();}
+
         back.SetActive(false);
         openScreen.SetActive(true);
         hostPanel.SetActive(false);

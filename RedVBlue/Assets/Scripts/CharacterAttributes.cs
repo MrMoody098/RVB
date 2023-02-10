@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public float health;
+    public float health = 3;
     public float maxHealth = 3;
     [HideInInspector]
     public bool alive = true;
@@ -27,11 +27,11 @@ public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void Dead() {print(gameObject.name + "is dead");}
 
-    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other
     {
         if (stream.IsWriting)
         {stream.SendNext(health);}
         if (stream.IsReading)
-        {health = (int)stream.ReceiveNext(); }
+        {health = (float)stream.ReceiveNext(); }
     }
 }
