@@ -10,7 +10,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI createInput;
     public TextMeshProUGUI joinInput;
-
+    
     private void Awake()
     {
         
@@ -22,6 +22,6 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Map1");
+        PhotonNetwork.LoadLevel("Lava Tower");
     }
 }

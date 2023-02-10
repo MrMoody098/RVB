@@ -149,7 +149,7 @@ ScriptsOnlyBuild:
     methodName: goBack
   - assembly: Assembly-CSharp
     fullTypeName: CreateAndJoinRooms
-    methodName: CreateRoom
+    methodName: JoinRoom
   - assembly: Assembly-CSharp
     fullTypeName: lobby
     methodName: host
@@ -203,19 +203,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4506}
     - Class: 114
-      Script: {instanceID: 4900}
+      Script: {instanceID: 4882}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 4902}
     - Class: 114
-      Script: {instanceID: 6134}
+      Script: {instanceID: 5882}
     - Class: 114
-      Script: {instanceID: 6850}
+      Script: {instanceID: 6136}
     - Class: 114
-      Script: {instanceID: 7028}
+      Script: {instanceID: 6852}
     - Class: 114
-      Script: {instanceID: 7420}
+      Script: {instanceID: 7030}
     - Class: 114
-      Script: {instanceID: 54384}
+      Script: {instanceID: 7422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -292,27 +292,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4748}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 5326}
     - Class: 114
-      Script: {instanceID: 5562}
+      Script: {instanceID: 5564}
     - Class: 114
-      Script: {instanceID: 5734}
+      Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 6232}
+      Script: {instanceID: 6234}
     - Class: 114
-      Script: {instanceID: 6850}
+      Script: {instanceID: 6852}
     - Class: 114
-      Script: {instanceID: 7202}
+      Script: {instanceID: 7204}
     - Class: 114
-      Script: {instanceID: 7420}
+      Script: {instanceID: 7422}
     - Class: 114
-      Script: {instanceID: 7882}
+      Script: {instanceID: 7884}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 8742}
     - Class: 114
-      Script: {instanceID: 8748}
+      Script: {instanceID: 8750}
     - Class: 114
-      Script: {instanceID: 9582}
+      Script: {instanceID: 9584}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -413,49 +413,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4750}
     - Class: 114
-      Script: {instanceID: 4916}
+      Script: {instanceID: 4918}
     - Class: 114
-      Script: {instanceID: 5232}
+      Script: {instanceID: 5234}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 5326}
     - Class: 114
-      Script: {instanceID: 5562}
+      Script: {instanceID: 5564}
     - Class: 114
-      Script: {instanceID: 5734}
+      Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 6034}
+      Script: {instanceID: 6036}
     - Class: 114
-      Script: {instanceID: 6060}
+      Script: {instanceID: 6062}
     - Class: 114
-      Script: {instanceID: 6134}
+      Script: {instanceID: 6136}
     - Class: 114
-      Script: {instanceID: 6232}
+      Script: {instanceID: 6234}
     - Class: 114
-      Script: {instanceID: 6562}
+      Script: {instanceID: 6564}
     - Class: 114
-      Script: {instanceID: 6616}
+      Script: {instanceID: 6618}
     - Class: 114
-      Script: {instanceID: 6850}
+      Script: {instanceID: 6852}
     - Class: 114
-      Script: {instanceID: 7202}
+      Script: {instanceID: 7204}
     - Class: 114
-      Script: {instanceID: 7420}
+      Script: {instanceID: 7422}
     - Class: 114
-      Script: {instanceID: 7436}
+      Script: {instanceID: 7438}
     - Class: 114
-      Script: {instanceID: 8148}
+      Script: {instanceID: 8150}
     - Class: 114
-      Script: {instanceID: 8370}
+      Script: {instanceID: 8372}
     - Class: 114
-      Script: {instanceID: 8740}
+      Script: {instanceID: 8742}
     - Class: 114
-      Script: {instanceID: 8774}
+      Script: {instanceID: 8776}
     - Class: 114
-      Script: {instanceID: 9210}
+      Script: {instanceID: 9212}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9362}
     - Class: 114
-      Script: {instanceID: 9730}
+      Script: {instanceID: 9732}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1169,7 +1169,7 @@ ScriptsOnlyBuild:
     className: GraphicToggleIsOnTransition
   - hash:
       serializedVersion: 2
-      Hash: c99704450a895a8a05692951c34712da
+      Hash: 1383ea935f5e2fe3724db7753d8a1a95
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CreateAndJoinRooms
@@ -1325,6 +1325,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: bf1f2403030be3ccbf1c272d1a64d3a2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: lobby
+  - hash:
+      serializedVersion: 2
       Hash: ef5c43f921427d03730f6ea4c848f07d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1403,7 +1409,7 @@ ScriptsOnlyBuild:
     className: ToggleExpand
   - hash:
       serializedVersion: 2
-      Hash: 464a9fedb8597dc17ff9207140c25157
+      Hash: 3f7d3eac3468685ef18425a40cd5b891
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RotateGun
@@ -2481,15 +2487,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: bf1f2403030be3ccbf1c272d1a64d3a2
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: lobby
   platform: 19
   scenePathNames:
   - Assets/Scenes/loading.unity
   - Assets/Scenes/Lobby.unity
   - Assets/Scenes/Map1.unity
-  playerPath: C:/Users/lorcan/Documents/GitHub/RVB/PlayerFiles/RVBNewUI/RedVBlue.exe
+  playerPath: C:/Users/ticta/OneDrive/Desktop/rvb/RedVBlue.exe

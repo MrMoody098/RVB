@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
 
-        jumping = Keyboard.current.spaceKey.isPressed;
+        jumping = Input.GetButtonDown("Jump");
 
         //Crouching
         crouching = false;
@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         if (!grounded) { return; }
-        if (Keyboard.current.spaceKey.isPressed)
+        if (Input.GetButton("Jump"))
         { rb.velocity += Vector3.up * jumpForce; }
 
         //Extra gravity
@@ -189,13 +189,13 @@ public class PlayerMovement : MonoBehaviour
         if (y < 0 && yMag < -maxSpeed) y = 0;
 
     }
+    //old jumping code
+    //private void Jump()
+    //{
 
-    private void Jump()
-    {
-
-        if (grounded)
-        { rb.velocity = Vector3.up * jumpForce; }
-    }
+    //    if (grounded)
+    //    { rb.velocity = Vector3.up * jumpForce; }
+    //}
 
     private float desiredX;
     private void Look()
@@ -261,9 +261,9 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, -transform.up);
-        if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
-        { grounded = true; }
-        else { grounded = false; } //checks what is under our feet
+        if (Physics.Raycast(ray, out hit, 1.4f, ~LayerMask.NameToLayer("ground")))
+        { grounded = true;print("grounded"); }
+        else { grounded = false;print("not"); } //checks what is under our feet
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -272,8 +272,8 @@ public class PlayerMovement : MonoBehaviour
         { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
 
         //falling off map ressets position
-        if (collision.gameObject.name == "fallOffPoint")
-        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
+        //if (collision.gameObject.name == "fallOffPoint")
+        //{ gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
     }
 
     private void setLookRotation(Transform self, Transform other, float speed)
