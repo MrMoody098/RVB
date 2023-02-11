@@ -15,7 +15,7 @@ public class firing : MonoBehaviour
     private void Awake()
     {
         view = GetComponentInParent<PhotonView>(); 
-        camera = GetComponentInParent<Camera>().transform.parent;
+        camera = GetComponentInParent<Camera>().transform;
     }
 
     void Update()
