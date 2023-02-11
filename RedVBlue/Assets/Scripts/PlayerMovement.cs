@@ -81,8 +81,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         }
         else { camera.GetComponent<Camera>().targetDisplay = 2; }
     }
+
     private void Update()
     {
+        if (Input.GetKeyDown("r")) { back = -transform.forward; rotating = true; }
+        if(rotating){  rotateMe(back);  }
+            
         if (view.IsMine)
         {
             MyInput();
@@ -207,17 +211,18 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     public Vector2 FindVelRelativeToLook()
     {
-        float lookAngle = body.transform.eulerAngles.y;
-        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+        float lookAngle = body.transform.eulerAngles.y; //left and right
+        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg; //current angle between
 
-        float u = Mathf.DeltaAngle(lookAngle, moveAngle);
-        float v = 90 - u;
+        float u = Mathf.DeltaAngle(lookAngle, moveAngle); //how far from look your looking
+        float v = 90 - u; //pivots X rotation so they rotate at the same speed
+        //ie Y (left and right) and X rotate at the same speed and finish look ah the same time
+       
+        float magnitue = rb.velocity.magnitude; //total over all speed
+        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad); //total required resistance to fight against
+        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad); //X and Y
 
-        float magnitue = rb.velocity.magnitude;
-        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
-        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
-
-        return new Vector2(xMag, yMag);
+        return new Vector2(xMag, yMag); 
     }
     public void checkIsGrounded()
     {
@@ -226,6 +231,20 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
         { grounded = true; } else { grounded = false; }
 
+    }
+    bool rotating = false;
+    Vector3 back;
+    public void rotateMe(Vector3 to)
+    {
+        
+        Vector3 direction = to - transform.forward;
+        float d = Vector3.Dot(to, direction.normalized);
+        print(d);
+        if (d > 0.05)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, 10 * Time.deltaTime, 0));
+        }
+        else { rotating = false; }
     }
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
