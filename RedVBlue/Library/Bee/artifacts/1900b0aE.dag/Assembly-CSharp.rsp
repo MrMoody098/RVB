@@ -370,9 +370,12 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+<<<<<<< HEAD
 "Assets/loadRoomList.cs"
 "Assets/LobbyRoom.cs"
 "Assets/LobbyUIElment.cs"
+=======
+>>>>>>> 6Feb(-project-split-daniels)
 "Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs"
 "Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs"
 "Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs"
@@ -387,17 +390,21 @@
 "Assets/Photon/PhotonLibs/WebSocket/SocketWebTcp.cs"
 "Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs"
 "Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs"
-"Assets/powerup.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CharacterAttributes.cs"
 "Assets/Scripts/ConnectToServer.cs"
 "Assets/Scripts/CreateAndJoinRooms.cs"
 "Assets/Scripts/firing.cs"
 "Assets/Scripts/GrapplingGun.cs"
-"Assets/Scripts/levelGenerator.cs"
+<<<<<<< HEAD
 "Assets/Scripts/LobbyUI.cs"
 "Assets/Scripts/newLineDrawerTest.cs"
+=======
+"Assets/Scripts/levelGenerator.cs"
+"Assets/Scripts/lobby.cs"
+"Assets/Scripts/newLineDrawerTest.cs"
 "Assets/Scripts/Obsticle.cs"
+>>>>>>> 6Feb(-project-split-daniels)
 "Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/rising.cs"
 "Assets/Scripts/RotateGun.cs"

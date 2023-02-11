@@ -1,3 +1,5 @@
+// Some stupid rigidbody based movement by Dani
+
 using System;
 
 using UnityEngine;
@@ -5,8 +7,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 using Photon.Pun;
-using System.Collections;
-
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
@@ -33,17 +33,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     public float jumpForce = 550f;
 
-<<<<<<< Updated upstream
-=======
-    //Inputs
-    float vertical, horizontal;
-    //quick rotate
-    [Range(0,2)]
-    public float rotateDuration = 0.05f; // The duration of the rotation in seconds
-
-    private bool isRotating = false; // Whether the player is currently rotating
-    private Quaternion targetRotation; // The target rotation for the player
->>>>>>> Stashed changes
     //dashing
     [Range(0, 50)]
     public float wallDashForce = 15;
@@ -53,7 +42,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     private bool isWalled = false;
     private bool isAbleToMove = true;
-    bool isJumping, isCrouching,quickTurn;
+    bool isJumping, isCrouching;
     public bool grounded;
    
     private CapsuleCollider collider;
@@ -108,27 +97,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 isWalled = false; }
 
             checkIsGrounded();
-
-            if (!isRotating && Input.GetKeyDown(KeyCode.Q))
-            {
-                // Set the target rotation to a 180 degree rotation around the y-axis
-                targetRotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
-
-                // Start a coroutine to gradually rotate the player to the target rotation
-                StartCoroutine(RotatePlayer());
-            }
         }
     }
     private void MyInput()
     {
-<<<<<<< Updated upstream
-=======
-        vertical = Input.GetAxisRaw("Horizontal");
-        horizontal = Input.GetAxisRaw("Vertical");
-        // isJumping = Input.GetButtonDown("Jump");
-        quickTurn = Input.GetKey(KeyCode.Tab);
-        //Crouching
->>>>>>> Stashed changes
         isCrouching = false;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         { collider.height /= 3; moveSpeed *= .5f; isCrouching = true; }
@@ -161,21 +133,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
 
-<<<<<<< Updated upstream
         if (!grounded) { return; }
         if (Input.GetButton("Jump"))
         { rb.velocity += Vector3.up * jumpForce/2; }
-=======
-        if (Input.GetButton("Jump")&& grounded)
-        { rb.velocity += Vector3.up * jumpForce; }
-        
-        //quick turn
-        if (quickTurn) 
-        {
-            FindVelRelativeToLook();
-            print("q");
-        }
->>>>>>> Stashed changes
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -200,7 +160,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (vertical < 0 && xMag < -maxSpeed) vertical = 0;
         if (horizontal > 0 && yMag > maxSpeed) horizontal = 0;
         if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
-        
+
     }
 
 
@@ -258,16 +218,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad); //total required resistance to fight against
         float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad); //X and Y
 
-<<<<<<< Updated upstream
         return new Vector2(xMag, yMag); 
-=======
-        float magnitue = rb.velocity.magnitude;
-        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
-        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
-
-        
-        return new Vector2(xMag, yMag);
->>>>>>> Stashed changes
     }
     public void checkIsGrounded()
     {
@@ -298,27 +249,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         //falling off map ressets position
 
         if (collision.gameObject.name == "fallOffPoint")
-        { gameObject.transform.position = GameObject.Find("spawnPoint").transform.position; 
+        { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; 
             characterAttributes.DownHealth(1); }
 
-    }
-    IEnumerator RotatePlayer()
-    {
-        isRotating = true;
-
-        float elapsedTime = 0f;
-        Quaternion startingRotation = transform.rotation;
-
-        while (elapsedTime < rotateDuration)
-        {
-            float t = elapsedTime / rotateDuration;
-            transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, t);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.rotation = targetRotation;
-        isRotating = false;
     }
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

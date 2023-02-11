@@ -6,7 +6,7 @@ using UnityEngine;
 public class rising : MonoBehaviour
 {
     public float risingSpeed;
-    private Transform spawnPoint;
+    public Transform spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
