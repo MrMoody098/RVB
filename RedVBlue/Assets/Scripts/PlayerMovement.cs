@@ -100,8 +100,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         horizontal = Input.GetAxisRaw("Vertical");
        // isJumping = Input.GetButtonDown("Jump");
         //quickTurn = Input.GetKeyDown("q");
-
-
         //Crouching
         isCrouching = false;
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -160,15 +158,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
-    //old jumping code
-    //private void Jump()
-    //{
 
-    //    if (grounded)
-    //    { rb.velocity = Vector3.up * jumpForce; }
-    //}
 
-    private float desiredX;
     private void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
@@ -229,6 +220,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         Ray ray = new Ray(transform.position, -transform.up);
         if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
         { grounded = true; } else { grounded = false; }
+
     }
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
@@ -241,9 +233,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (collision.gameObject.name == "fallOffPoint")
         { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; 
             characterAttributes.DownHealth(1); }
-
-        //if (collision.gameObject.name == "fallOffPoint")
-        //{ gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
 
     }
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
