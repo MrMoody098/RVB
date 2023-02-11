@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 85e5b674ec86e98489b2af4181a093ef
   - enabled: 1
+    path: Assets/Scenes/Lava Tower.unity
+    guid: 8c27e88e55047e44e9105894399bf72d
+  - enabled: 1
     path: Assets/Scenes/Map1.unity
     guid: 1fd47e65b4f67cd46a95ab1716872089
   m_configObjects:

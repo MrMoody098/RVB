@@ -98,7 +98,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         vertical = Input.GetAxisRaw("Horizontal");
         horizontal = Input.GetAxisRaw("Vertical");
 
+<<<<<<< HEAD
         isJumping = Keyboard.current.spaceKey.isPressed;
+=======
+        jumping = Input.GetButtonDown("Jump");
+>>>>>>> 6Feb(-project-split-daniels)
 
         //Crouching
         isCrouching = false;
@@ -129,7 +133,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
 
         if (!grounded) { return; }
-        if (Keyboard.current.spaceKey.isPressed)
+        if (Input.GetButton("Jump"))
         { rb.velocity += Vector3.up * jumpForce; }
 
         //Extra gravity
@@ -157,6 +161,18 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
 
     }
+<<<<<<< HEAD
+=======
+    //old jumping code
+    //private void Jump()
+    //{
+
+    //    if (grounded)
+    //    { rb.velocity = Vector3.up * jumpForce; }
+    //}
+
+    private float desiredX;
+>>>>>>> 6Feb(-project-split-daniels)
     private void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
@@ -215,8 +231,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, -transform.up);
+<<<<<<< HEAD
         if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
         { grounded = true; } else { grounded = false; }
+=======
+        if (Physics.Raycast(ray, out hit, 1.4f, ~LayerMask.NameToLayer("ground")))
+        { grounded = true;print("grounded"); }
+        else { grounded = false;print("not"); } //checks what is under our feet
+>>>>>>> 6Feb(-project-split-daniels)
     }
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
@@ -225,9 +247,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
 
         //falling off map ressets position
+<<<<<<< HEAD
         if (collision.gameObject.name == "fallOffPoint")
         { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; 
             characterAttributes.DownHealth(1); }
+=======
+        //if (collision.gameObject.name == "fallOffPoint")
+        //{ gameObject.transform.position = GameObject.Find("spawn(1)").transform.position; characterAttributes.DownHealth(1); }
+>>>>>>> 6Feb(-project-split-daniels)
     }
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

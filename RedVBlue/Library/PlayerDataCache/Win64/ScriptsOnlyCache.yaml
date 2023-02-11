@@ -171,7 +171,11 @@ ScriptsOnlyBuild:
     fullTypeName: LobbyUI
     methodName: goBack
   - assembly: Assembly-CSharp
+<<<<<<< HEAD
     fullTypeName: LobbyUI
+=======
+    fullTypeName: CreateAndJoinRooms
+>>>>>>> 6Feb(-project-split-daniels)
     methodName: JoinRoom
   - assembly: Assembly-CSharp
     fullTypeName: LobbyUI
@@ -222,6 +226,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2954}
     - Class: 114
+<<<<<<< HEAD
       Script: {instanceID: 3202}
     - Class: 114
       Script: {instanceID: 3570}
@@ -263,6 +268,21 @@ ScriptsOnlyBuild:
       Script: {instanceID: 8732}
     - Class: 114
       Script: {instanceID: 9604}
+=======
+      Script: {instanceID: 4882}
+    - Class: 114
+      Script: {instanceID: 4902}
+    - Class: 114
+      Script: {instanceID: 5882}
+    - Class: 114
+      Script: {instanceID: 6136}
+    - Class: 114
+      Script: {instanceID: 6852}
+    - Class: 114
+      Script: {instanceID: 7030}
+    - Class: 114
+      Script: {instanceID: 7422}
+>>>>>>> 6Feb(-project-split-daniels)
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -339,6 +359,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4700}
     - Class: 114
+<<<<<<< HEAD
       Script: {instanceID: 5278}
     - Class: 114
       Script: {instanceID: 5516}
@@ -362,6 +383,29 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9164}
     - Class: 114
       Script: {instanceID: 9536}
+=======
+      Script: {instanceID: 5326}
+    - Class: 114
+      Script: {instanceID: 5564}
+    - Class: 114
+      Script: {instanceID: 5736}
+    - Class: 114
+      Script: {instanceID: 6234}
+    - Class: 114
+      Script: {instanceID: 6852}
+    - Class: 114
+      Script: {instanceID: 7204}
+    - Class: 114
+      Script: {instanceID: 7422}
+    - Class: 114
+      Script: {instanceID: 7884}
+    - Class: 114
+      Script: {instanceID: 8742}
+    - Class: 114
+      Script: {instanceID: 8750}
+    - Class: 114
+      Script: {instanceID: 9584}
+>>>>>>> 6Feb(-project-split-daniels)
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -460,6 +504,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4480}
     - Class: 114
+<<<<<<< HEAD
       Script: {instanceID: 4702}
     - Class: 114
       Script: {instanceID: 4870}
@@ -505,6 +550,51 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9314}
     - Class: 114
       Script: {instanceID: 9684}
+=======
+      Script: {instanceID: 4918}
+    - Class: 114
+      Script: {instanceID: 5234}
+    - Class: 114
+      Script: {instanceID: 5326}
+    - Class: 114
+      Script: {instanceID: 5564}
+    - Class: 114
+      Script: {instanceID: 5736}
+    - Class: 114
+      Script: {instanceID: 6036}
+    - Class: 114
+      Script: {instanceID: 6062}
+    - Class: 114
+      Script: {instanceID: 6136}
+    - Class: 114
+      Script: {instanceID: 6234}
+    - Class: 114
+      Script: {instanceID: 6564}
+    - Class: 114
+      Script: {instanceID: 6618}
+    - Class: 114
+      Script: {instanceID: 6852}
+    - Class: 114
+      Script: {instanceID: 7204}
+    - Class: 114
+      Script: {instanceID: 7422}
+    - Class: 114
+      Script: {instanceID: 7438}
+    - Class: 114
+      Script: {instanceID: 8150}
+    - Class: 114
+      Script: {instanceID: 8372}
+    - Class: 114
+      Script: {instanceID: 8742}
+    - Class: 114
+      Script: {instanceID: 8776}
+    - Class: 114
+      Script: {instanceID: 9212}
+    - Class: 114
+      Script: {instanceID: 9362}
+    - Class: 114
+      Script: {instanceID: 9732}
+>>>>>>> 6Feb(-project-split-daniels)
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1224,7 +1314,11 @@ ScriptsOnlyBuild:
     className: GraphicToggleIsOnTransition
   - hash:
       serializedVersion: 2
+<<<<<<< HEAD
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+=======
+      Hash: 1383ea935f5e2fe3724db7753d8a1a95
+>>>>>>> 6Feb(-project-split-daniels)
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CreateAndJoinRooms
@@ -1386,10 +1480,17 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+<<<<<<< HEAD
       Hash: 9252c1394de1c44e39aa8128a95dae85
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyUI
+=======
+      Hash: bf1f2403030be3ccbf1c272d1a64d3a2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: lobby
+>>>>>>> 6Feb(-project-split-daniels)
   - hash:
       serializedVersion: 2
       Hash: ef5c43f921427d03730f6ea4c848f07d
@@ -2553,4 +2654,8 @@ ScriptsOnlyBuild:
   - Assets/Scenes/loading.unity
   - Assets/Scenes/Lobby.unity
   - Assets/Scenes/Map1.unity
+<<<<<<< HEAD
   playerPath: C:/Users/lorcan/Desktop/builds/lobbyUpdate/RedVBlue.exe
+=======
+  playerPath: C:/Users/ticta/OneDrive/Desktop/rvb/RedVBlue.exe
+>>>>>>> 6Feb(-project-split-daniels)

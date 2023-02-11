@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/loading.unity
+=======
+- path: Assets/Scenes/Lava Tower.unity
+>>>>>>> 6Feb(-project-split-daniels)
   isLoaded: 1
   isActive: 1
   isSubScene: 0
