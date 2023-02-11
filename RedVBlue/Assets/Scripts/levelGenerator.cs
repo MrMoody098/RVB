@@ -38,31 +38,31 @@ public class levelGenerator : MonoBehaviour
             Vector3 position = lastPrefab.transform.position + Vector3.up * spawnY;
             int prefabIndex = Random.Range(0, prefabs.Count);
             lastPrefab = Instantiate(prefabs[prefabIndex], position, Quaternion.identity);
-            StartCoroutine(DestroyPrefabWhenReachedByLava(lastPrefab));
+           // StartCoroutine(DestroyPrefabWhenReachedByLava(lastPrefab));
             yield return new WaitForSeconds(spawnInterval);
         }
     }
 
-    IEnumerator DestroyPrefabWhenReachedByLava(GameObject prefab)
-    {
-        GameObject previousPrefab = lastPrefab;
-        if (!lava)
-        {
-            Vector3 lavaPosition = prefab.transform.position - Vector3.up * spawnY;
-            lava = Instantiate(lavaPrefab, lavaPosition, Quaternion.identity);
-        }
+    //IEnumerator DestroyPrefabWhenReachedByLava(GameObject prefab)
+    //{
+    //    GameObject previousPrefab = lastPrefab;
+    //    if (!lava)
+    //    {
+    //        Vector3 lavaPosition = prefab.transform.position - Vector3.up * spawnY;
+    //        lava = Instantiate(lavaPrefab, lavaPosition, Quaternion.identity);
+    //    }
 
-        while (lava.transform.position.y < prefab.transform.position.y)
-        {
-            yield return null;
-        }
+    //    while (lava.transform.position.y < prefab.transform.position.y)
+    //    {
+    //        yield return null;
+    //    }
 
-        if (lava.transform.position.y >= prefab.transform.position.y)
-        {
-            Destroy(previousPrefab);
-        }
+    //    if (lava.transform.position.y >= prefab.transform.position.y)
+    //    {
+    //        Destroy(previousPrefab);
+    //    }
 
-        lastPrefab = prefab;
-    }
+    //    lastPrefab = prefab;
+    //}
 
 }
