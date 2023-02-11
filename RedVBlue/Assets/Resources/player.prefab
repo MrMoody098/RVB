@@ -507,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6467799709214206939}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.03, y: 0.50399995, z: 0.351}
+  m_LocalPosition: {x: -0.03, y: 0.50399995, z: 0.422}
   m_LocalScale: {x: 0.3, y: 0.12, z: 0.56}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -573,7 +573,7 @@ BoxCollider:
   m_GameObject: {fileID: 6467799709214206939}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -757,33 +757,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
---- !u!1 &6469103793054092104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7587621154167852752, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-  m_PrefabInstance: {fileID: 3497742875879605656}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4696084973685718935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6469103793054092104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!4 &6470646544967167222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7585785956168722798, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}

@@ -33,9 +33,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     public float jumpForce = 550f;
 
-    //Inputs
-    float vertical, horizontal;
-
     //dashing
     [Range(0, 50)]
     public float wallDashForce = 15;
@@ -73,23 +70,22 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (view.IsMine)
         {
             if (Input.GetButtonDown("Cancel")) 
-            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; isAbleToMove = false; }
             if (Input.GetButton("Fire1")) 
-            {Cursor.visible = false;
+            {Cursor.visible = false; isAbleToMove = true;
                 Cursor.lockState = CursorLockMode.Locked; }
-            Movement();
+            
         }
         else { camera.GetComponent<Camera>().targetDisplay = 2; }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("r")) { back = -transform.forward; rotating = true; }
-        if(rotating){  rotateMe(back);  }
-            
         if (view.IsMine)
         {
+            if (!isAbleToMove) { return; }
             MyInput();
+            Movement();
             Look();
             if (wallTimer > 0) 
             { wallTimer -= Time.deltaTime; 
@@ -105,20 +101,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void MyInput()
     {
-        vertical = Input.GetAxisRaw("Horizontal");
-        horizontal = Input.GetAxisRaw("Vertical");
-       // isJumping = Input.GetButtonDown("Jump");
-        //quickTurn = Input.GetKeyDown("q");
-        //Crouching
         isCrouching = false;
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         { collider.height /= 3; moveSpeed *= .5f; isCrouching = true; }
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         { collider.height *= 3; moveSpeed *= 2f; isCrouching = false; }
     }
     private void Movement()
     {
-        if (!isAbleToMove) { return; }
+       
+        if (Input.GetKeyDown("r")) 
+        { back = -transform.forward; rotating = true; }
+        if (rotating) { rotateMe(back); }
+
         if (isWalled)
         {
             if (Input.GetButton("Jump"))
@@ -133,13 +128,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
         if (isCrouching && grounded) { rb.drag = 0; }
         else { rb.drag = 1; }
-
+        float vertical = Input.GetAxisRaw("Horizontal");
+        float horizontal = Input.GetAxisRaw("Vertical");
         rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
 
         if (!grounded) { return; }
         if (Input.GetButton("Jump"))
-        { rb.velocity += Vector3.up * jumpForce; }
+        { rb.velocity += Vector3.up * jumpForce/2; }
 
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -228,7 +224,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, -transform.up);
-        if (Physics.Raycast(ray, out hit, 1.3f, ~LayerMask.NameToLayer("ground")))
+        if (Physics.Raycast(ray, out hit, 1f, ~LayerMask.NameToLayer("ground")))
         { grounded = true; } else { grounded = false; }
 
     }
@@ -236,10 +232,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 back;
     public void rotateMe(Vector3 to)
     {
-        
         Vector3 direction = to - transform.forward;
         float d = Vector3.Dot(to, direction.normalized);
-        print(d);
         if (d > 0.05)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, 10 * Time.deltaTime, 0));

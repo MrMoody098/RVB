@@ -33,5 +33,6 @@ public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
         {stream.SendNext(health);}
         if (stream.IsReading)
         {health = (float)stream.ReceiveNext(); }
+        print(health);
     }
 }

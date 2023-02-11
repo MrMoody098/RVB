@@ -38,7 +38,7 @@ public class LobbyUI : MonoBehaviourPunCallbacks
 
     //runs after create room or join room is called
     public override void OnJoinedRoom()
-    { PhotonNetwork.LoadLevel("Lava Tower"); }
+    { PhotonNetwork.LoadLevel("Map1"); }
 
     private void LateUpdate()
     { TraverseActivePanelElements(); 
