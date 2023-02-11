@@ -10,7 +10,7 @@ public class rising : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoint = GameObject.Find("spawnPoint").transform;
+        spawnPoint = transform.Find("spawnPoint");
     }
 
     // Update is called once per frame
