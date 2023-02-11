@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     void Awake()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -71,7 +73,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (view.IsMine)
         {
             if (Input.GetButtonDown("Cancel")) 
-            { Cursor.visible = true; }
+            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; }
+            if (Input.GetButton("Fire1")) 
+            {Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked; }
             Movement();
         }
         else { camera.GetComponent<Camera>().targetDisplay = 2; }
