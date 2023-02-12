@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     private float wallTimer = 0;
 
     private bool isWalled = false;
-    private bool isAbleToMove = true;
+    [HideInInspector]
+    public bool isAbleToMove = true;
     bool isJumping, isCrouching;
     public bool grounded;
    
@@ -51,9 +52,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -62,21 +60,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         grapplingGun.GetComponent<firing>().player = transform;
         
         view = GetComponent<PhotonView>();
-
+        RoomUI.player = view;
         characterAttributes = GetComponent<CharacterAttributes>();
     }
     private void FixedUpdate()
     {
-        if (view.IsMine)
-        {
-            if (Input.GetButtonDown("Cancel")) 
-            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; isAbleToMove = false; }
-            if (Input.GetButton("Fire1")) 
-            {Cursor.visible = false; isAbleToMove = true;
-                Cursor.lockState = CursorLockMode.Locked; }
-            
-        }
-        else { camera.GetComponent<Camera>().targetDisplay = 2; }
+        if (!view.IsMine) 
+        { camera.GetComponent<Camera>().targetDisplay = 2; }
+
     }
 
     private void Update()

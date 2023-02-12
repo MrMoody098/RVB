@@ -145,6 +145,7 @@ MonoBehaviour:
   jumpForce: 20
   wallDashForce: 15
   wallTimerTime: 2
+  isAbleToMove: 1
   grounded: 1
 --- !u!114 &1160854307763539614
 MonoBehaviour:
