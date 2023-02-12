@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     private float wallTimer = 0;
 
     private bool isWalled = false;
-    private bool isAbleToMove = true;
+    [HideInInspector]
+    public bool isAbleToMove = true;
     bool isJumping, isCrouching;
     public bool grounded;
    
@@ -51,9 +52,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -62,21 +60,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         grapplingGun.GetComponent<firing>().player = transform;
         
         view = GetComponent<PhotonView>();
-
+        RoomUI.player = view;
         characterAttributes = GetComponent<CharacterAttributes>();
     }
     private void FixedUpdate()
     {
-        if (view.IsMine)
-        {
-            if (Input.GetButtonDown("Cancel")) 
-            { Cursor.visible = true; Cursor.lockState = CursorLockMode.None; isAbleToMove = false; }
-            if (Input.GetButton("Fire1")) 
-            {Cursor.visible = false; isAbleToMove = true;
-                Cursor.lockState = CursorLockMode.Locked; }
-            
-        }
-        else { camera.GetComponent<Camera>().targetDisplay = 2; }
+        if (!view.IsMine) 
+        { camera.GetComponent<Camera>().targetDisplay = 2; }
+
     }
 
     private void Update()
@@ -109,13 +100,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void Movement()
     {
-       
-        if (Input.GetKeyDown("r")) 
-        { back = -transform.forward; rotating = true; }
-        if (rotating) { rotateMe(back); }
-
         if (isWalled)
         {
+            if(rotating)
+                rotateMe(back);
             if (Input.GetButton("Jump"))
             {
                 rb.velocity = camera.transform.forward * jumpForce;
@@ -207,10 +195,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     public Vector2 FindVelRelativeToLook()
     {
-        float lookAngle = body.transform.eulerAngles.y; //left and right
-        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg; //current angle between
+        float lookAngle = body.transform.eulerAngles.y;
 
-        float u = Mathf.DeltaAngle(lookAngle, moveAngle); //how far from look your looking
+        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg; 
+
+        float u = Mathf.DeltaAngle(lookAngle, moveAngle); //magnitude of l+m angles
         float v = 90 - u; //pivots X rotation so they rotate at the same speed
         //ie Y (left and right) and X rotate at the same speed and finish look ah the same time
        
@@ -230,21 +219,21 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     bool rotating = false;
     Vector3 back;
-    public void rotateMe(Vector3 to)
+    public void rotateMe(Vector3 to) //converts vector directions to quaternions
     {
         Vector3 direction = to - transform.forward;
         float d = Vector3.Dot(to, direction.normalized);
         if (d > 0.05)
-        {
+        {   
             transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, 10 * Time.deltaTime, 0));
         }
-        else { rotating = false; }
+        else { rotating = false; back = Vector3.zero; }
     }
     private void OnCollisionEnter(Collision collision)
     {   //stick to wall if we are not on the ground and not grappling and hit into a wall
         if (!grounded && !grapplingGun.IsGrappling() 
             && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }
+        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
 
         //falling off map ressets position
 
