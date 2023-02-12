@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde6b15caa133504eae09ba943e76036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  risingSpeed: 0
+  risingSpeed: 2
   spawnPoint: {fileID: 0}
 --- !u!64 &850945292
 MeshCollider:
@@ -476,7 +476,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850945290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
@@ -706,14 +706,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 1408633864}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
-  - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
   - {fileID: 4809897806314084295, guid: f480d81e9fd03a7448c85c01038ee050, type: 3}
   lavaPrefab: {fileID: 850945290}
   spawnY: 50

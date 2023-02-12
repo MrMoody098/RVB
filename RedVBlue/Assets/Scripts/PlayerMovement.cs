@@ -102,8 +102,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (isWalled)
         {
-            if(rotating)
-                rotateMe(back);
+           // if(rotating)
+            //    rotateMe(back);
             if (Input.GetButton("Jump"))
             {
                 rb.velocity = camera.transform.forward * jumpForce;

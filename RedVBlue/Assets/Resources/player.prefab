@@ -143,7 +143,7 @@ MonoBehaviour:
   maxSlopeAngle: 35
   slideForce: 400
   slideCounterMovement: 0.2
-  jumpForce: 5
+  jumpForce: 20
   wallDashForce: 15
   wallTimerTime: 2
   isAbleToMove: 1
