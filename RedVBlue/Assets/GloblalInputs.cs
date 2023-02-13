@@ -23,12 +23,9 @@ public class GloblalInputs : MonoBehaviour
     {
         RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove 
             = !RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove;
-
         Cursor.visible = !RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove;
-
         RoomUI.menu.SetActive(Cursor.visible);
         RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove = !Cursor.visible;
-        print("setting menu to " + Cursor.visible);
         if (Cursor.visible) { Cursor.lockState = CursorLockMode.None; }
         else { Cursor.lockState = CursorLockMode.Locked; }
     }

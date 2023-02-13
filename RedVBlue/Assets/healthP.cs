@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class healthP : MonoBehaviour
 {
-    CharacterAttributes playerAtr;
-
-
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided with powerup");

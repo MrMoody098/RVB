@@ -45,11 +45,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public bool isAbleToMove = true;
     bool isJumping, isCrouching;
     public bool grounded;
-   
+    
     private CapsuleCollider collider;
     
     PhotonView view;
-
+    RoomUI ui;
     void Awake()
     {
         body = transform.Find("body");
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         
         view = GetComponent<PhotonView>();
         RoomUI.player = view;
+        ui = FindObjectOfType<RoomUI>();
         characterAttributes = GetComponent<CharacterAttributes>();
     }
     private void FixedUpdate()
@@ -102,8 +103,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (isWalled)
         {
-           // if(rotating)
-            //    rotateMe(back);
+            if(ui.controls.quickRotate && rotating)
+                rotateMe(back);
             if (Input.GetButton("Jump"))
             {
                 rb.velocity = camera.transform.forward * jumpForce;
