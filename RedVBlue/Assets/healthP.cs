@@ -16,7 +16,10 @@ public class healthP : MonoBehaviour
         if (player != null)
         {
             player.UpHealth(1);
-            Destroy(gameObject);
+            GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject,2);
+            //this makes the noise
+            GetComponent<AudioSource>().Play();
         }
     }
 }

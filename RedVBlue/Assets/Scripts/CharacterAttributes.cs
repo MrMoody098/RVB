@@ -10,18 +10,13 @@ public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
     public bool alive = true;
     [HideInInspector]
     public PhotonView view;
-    public AudioSource AudioSource;
-    public AudioClip clip;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         view = GetComponent<PhotonView>();
-        AudioSource.clip = clip;
-        
     }
     public void UpHealth(float amount) {
-        AudioSource.Play();
         health += amount;
         print(health);
     }
