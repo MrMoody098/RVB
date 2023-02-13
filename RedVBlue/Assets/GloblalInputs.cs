@@ -8,6 +8,7 @@ public class GloblalInputs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (RoomUI.player == null) { return; }
        if(RoomUI.player.IsMine) 
        {
             if(Input.GetButtonDown("Cancel"))
