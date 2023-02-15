@@ -57,20 +57,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\healthP.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Scripts\CharacterAttributes.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\loadRoomList.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\firing.cs" />
+    <Compile Include="Assets\RoomUI.cs" />
     <Compile Include="Assets\Scripts\newLineDrawerTest.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\levelGenerator.cs" />
+    <Compile Include="Assets\GloblalInputs.cs" />
     <Compile Include="Assets\Scripts\CreateAndJoinRooms.cs" />
     <Compile Include="Assets\LobbyUIElment.cs" />
     <Compile Include="Assets\Scripts\SpawnPlayers.cs" />
+    <Compile Include="Assets\SoundManager.cs" />
     <Compile Include="Assets\Scripts\LobbyUI.cs" />
     <Compile Include="Assets\Scripts\RotateGun.cs" />
     <Compile Include="Assets\Scripts\rising.cs" />
@@ -79,12 +84,17 @@
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\GlobalTime.cs" />
+    <Compile Include="Assets\Dash.cs" />
+    <Compile Include="Assets\RoomPlayer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\Obsticle.cs" />
     <Compile Include="Assets\Scripts\ConnectToServer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+    <Compile Include="Assets\DoubleJumpP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
+    <Compile Include="Assets\TeleportP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\LobbyRoom.cs" />
   </ItemGroup>

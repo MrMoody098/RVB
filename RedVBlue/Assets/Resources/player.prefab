@@ -224,8 +224,6 @@ MonoBehaviour:
   maxHealth: 3
   alive: 1
   view: {fileID: 0}
-  AudioSource: {fileID: -8372540786544412193}
-  clip: {fileID: 8300000, guid: f51d307c0c1db584fa4f1d7499824c2f, type: 3}
 --- !u!114 &5516965115950897460
 MonoBehaviour:
   m_ObjectHideFlags: 0
