@@ -10,7 +10,7 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
-    //Assingables
+    //Assignables
     private Transform body;
     private CharacterAttributes characterAttributes;
     private Camera camera;
@@ -131,16 +131,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         //if double jump power enabled and not grounded can jump once in the air
 
         //can jump when on the ground
-        if (grounded)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                rb.velocity += Vector3.up * jumpForce / 2;
-
-            }
-        }
-        //double jump
-        if (!grounded && canDoubleJump)
+        if (grounded || canDoubleJump)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -182,8 +173,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 rb.velocity = camera.transform.forward * jumpForce;
                 dashCounter -= 1;
             }
-                }
         }
+    }
 
 
         public void dash() 
