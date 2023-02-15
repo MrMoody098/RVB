@@ -186,11 +186,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         }
 
 
-    public void dash() 
+        public void dash() 
     
-    {
-        dashCounter  = 5;
-    }
+        {
+            dashCounter  = 5;
+        }
         public void doubleJump()
         {
 
@@ -252,14 +252,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
             return new Vector2(xMag, yMag);
         }
+        public GameObject standingSurface;
         public void checkIsGrounded()
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, -transform.up);
-            if (Physics.Raycast(ray, out hit, distGround, ~LayerMask.NameToLayer("grapplable")))
-            { grounded = true; } else { grounded = false; }
-
+            Debug.DrawLine(ray.origin, ray.direction * distGround,Color.yellow);
+            if (Physics.Raycast(ray, out hit, distGround))
+            { grounded = true; standingSurface = hit.collider.gameObject; }
+            else { standingSurface = null; grounded = false; }
         }
+    
         bool rotating = false;
         Vector3 back;
         public void rotateMe(Vector3 to) //converts vector directions to quaternions

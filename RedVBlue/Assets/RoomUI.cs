@@ -9,7 +9,10 @@ public class Lobby
     public List<RoomPlayer> players = new List<RoomPlayer>();
 }
 [System.Serializable]
-public class Controls { public GloblalInputs inputs; public bool quickRotate = true; }
+public class Controls 
+{ public GloblalInputs inputs; 
+    public bool quickRotate = false; }
+
 [System.Serializable]
 public class Video { public int fontSize; }
 [System.Serializable]

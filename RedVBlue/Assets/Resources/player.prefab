@@ -143,11 +143,15 @@ MonoBehaviour:
   maxSlopeAngle: 35
   slideForce: 400
   slideCounterMovement: 0.2
-  jumpForce: 20
+  jumpForce: 51.27
   wallDashForce: 15
   wallTimerTime: 2
   isAbleToMove: 1
   grounded: 1
+  canDoubleJump: 0
+  dashCounter: 0
+  distGround: 1.1
+  standingSurface: {fileID: 0}
 --- !u!114 &1160854307763539614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +254,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3c495d12f61b35d498d2beb5f78dc470, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -754,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  isChangeFOV: 1
+  isChangeFOV: 0
   baseFov: 50
   fovChangeIntencity: 0.4
 --- !u!114 &4425920382619099736
@@ -797,6 +801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6467799708665165372}
     m_Modifications:
+    - target: {fileID: 4696084973685718935, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
+      propertyPath: sceneViewId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7585785956168722798, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: m_RootOrder
       value: 0
