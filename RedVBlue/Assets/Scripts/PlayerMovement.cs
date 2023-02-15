@@ -5,21 +5,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using System.Collections;
+
 using Photon.Pun;
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
-    //roatate
-    //Inputs
-    float vertical, horizontal;
-    //quick rotate
-    [Range(0, 2)]
-    public float rotateDuration = 0.05f; // The duration of the rotation in seconds
 
-    private bool isRotating = false; // Whether the player is currently rotating
-    public bool  quickTurn;
-    private Quaternion targetRotation; // The target rotation for the player
-    //Assingables
+    //Assignables
     private Transform body;
     private CharacterAttributes characterAttributes;
     private Camera camera;
@@ -44,16 +35,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     //dashing
     [Range(0, 50)]
-    public float wallDashForce = 15f;
+    public float wallDashForce = 15;
     [Range(0, 10)]
     public float wallTimerTime = 2;
     private float wallTimer = 0;
-    //dashing powerup
-    public int dashCounter = 0;
-
-    public float tapS = 0.5f; //tap speed in seconds for double tap mesurment 
-
-    private float timeOfLastTap = 0;
 
     private bool isWalled = false;
     [HideInInspector]
@@ -61,17 +46,15 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     bool isJumping, isCrouching;
     public bool grounded;
     public bool canDoubleJump = true;
-  
+    public int dashCounter = 0;
     [Range(0,2)]
-    public float distGround = 1.1f;
+    public float distGround = 0f;
     private CapsuleCollider collider;
-
 
     PhotonView view;
     RoomUI ui;
     void Awake()
     {
-        timeOfLastTap = 0;
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -89,50 +72,13 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (!view.IsMine)
         { camera.GetComponent<Camera>().targetDisplay = 2; }
 
-
     }
-
-
 
     private void Update()
     {
-        //dash forward if double tapping W
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-
-            if ((Time.time - timeOfLastTap) < tapS)
-            {
-                rb.velocity += camera.transform.forward * jumpForce * Time.deltaTime * wallDashForce * 10;
-                Debug.Log("Double tap");
-
-            }
-        }
-        //dash left
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-
-            if ((Time.time - timeOfLastTap) < tapS)
-            {
-                rb.velocity -= body.right * jumpForce * Time.deltaTime * wallDashForce * 10;
-                Debug.Log("Double tap");
-
-            }
-
-            
-        }
-
-        timeOfLastTap = Time.time;
-
-
-
-
-
-
-    //photon stuff
         if (view.IsMine)
         {
             if (!isAbleToMove) { return; }
-
             MyInput();
             Movement();
             Look();
@@ -146,9 +92,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 isWalled = false; }
 
             checkIsGrounded();
-
         }
-
     }
     private void MyInput()
     {
@@ -160,30 +104,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void Movement()
     {
-        if (!isRotating && Input.GetKeyDown(KeyCode.R))
-        {
-            // Set the target rotation to a 180 degree rotation around the y-axis
-            targetRotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
-
-            // Start a coroutine to gradually rotate the player to the target rotation
-            StartCoroutine(RotatePlayer());
-        }
-        if (!isWalled) { isRotating = true; }
         if (isWalled)
         {
-            
-            if (ui.controls.quickRotate && isRotating)
-            {
-                //lorcans rotation method
-                //   rotateMe(back);
-
-                // Set the target rotation to a 180 degree rotation around the y-axis
-                targetRotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
-
-                // Start a coroutine to gradually rotate the player to the target rotation
-                StartCoroutine(RotatePlayer());
-                isRotating= false;
-            }
+            if (ui.controls.quickRotate && rotating)
+                rotateMe(back);
             if (Input.GetButton("Jump"))
             {
                 rb.velocity = camera.transform.forward * jumpForce;
@@ -198,25 +122,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         else { rb.drag = 1; }
         float vertical = Input.GetAxisRaw("Horizontal");
         float horizontal = Input.GetAxisRaw("Vertical");
-        float vS = vertical * vertical;
-        float vSS = vS/ vertical;
-        float hS = horizontal * horizontal;
-        float hSS = hS / horizontal;
-        ///DASHING POWERUP
-        if (dashCounter > 0)
-        {
-            if (Input.GetKeyDown(KeyCode.F) && Input.GetKeyDown(KeyCode.A))
-            {
-                GetComponent<AudioSource>().Play();
-                rb.velocity += vSS * body.right * moveSpeed * Time.deltaTime*wallDashForce; dashCounter -= 1;
-            }
-            else if (Input.GetKeyDown(KeyCode.F) && Input.GetKeyDown(KeyCode.W))
-            {
-                GetComponent<AudioSource>().Play();
-                rb.velocity +=  hS* body.right * moveSpeed * Time.deltaTime * wallDashForce; dashCounter -= 1;
-            }
-        }
-
         rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
 
@@ -226,16 +131,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         //if double jump power enabled and not grounded can jump once in the air
 
         //can jump when on the ground
-        if (grounded)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                rb.velocity += Vector3.up * jumpForce / 2;
-
-            }
-        }
-        //double jump
-        if (!grounded && canDoubleJump)
+        if (grounded || canDoubleJump)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -268,15 +164,24 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (horizontal > 0 && yMag > maxSpeed) horizontal = 0;
             if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
 
-    
+        ///DASHING POWERUP
+        if( dashCounter > 0) 
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                GetComponent<AudioSource>().Play();
+                rb.velocity = camera.transform.forward * jumpForce;
+                dashCounter -= 1;
+            }
+        }
     }
 
 
-    public void dash() 
+        public void dash() 
     
-    {
-        dashCounter  = 5;
-    }
+        {
+            dashCounter  = 5;
+        }
         public void doubleJump()
         {
 
@@ -338,21 +243,34 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
             return new Vector2(xMag, yMag);
         }
+        public GameObject standingSurface;
         public void checkIsGrounded()
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, -transform.up);
-            if (Physics.Raycast(ray, out hit, distGround, ~LayerMask.NameToLayer("grapplable")))
-            { grounded = true; } else { grounded = false; }
-
+            Debug.DrawLine(ray.origin, ray.direction * distGround,Color.yellow);
+            if (Physics.Raycast(ray, out hit, distGround))
+            { grounded = true; standingSurface = hit.collider.gameObject; }
+            else { standingSurface = null; grounded = false; }
         }
-
-      
+    
+        bool rotating = false;
+        Vector3 back;
+        public void rotateMe(Vector3 to) //converts vector directions to quaternions
+        {
+            Vector3 direction = to - transform.forward;
+            float d = Vector3.Dot(to, direction.normalized);
+            if (d > 0.05)
+            {
+                transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, 10 * Time.deltaTime, 0));
+            }
+            else { rotating = false; back = Vector3.zero; }
+        }
         private void OnCollisionEnter(Collision collision)
         {   //stick to wall if we are not on the ground and not grappling and hit into a wall
-        if (!grounded && !grapplingGun.IsGrappling()
-            && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; }// rotating = true; back = -transform.forward; }
+            if (!grounded && !grapplingGun.IsGrappling()
+                && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
+            { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
 
             //falling off map ressets position
 
@@ -361,54 +279,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 characterAttributes.DownHealth(1); }
 
         }
-
-
-    IEnumerator RotatePlayer()
-    {
-        isRotating = true;
-
-        float elapsedTime = 0f;
-        Quaternion startingRotation = transform.rotation;
-
-        while (elapsedTime < rotateDuration)
-        {
-            float t = elapsedTime / rotateDuration;
-            transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, t);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.rotation = targetRotation;
-        isRotating = false;
-    }
-
-
-
-    //lorcans rotation
-
-  //bool rotating = false;
-        //Vector3 back;
-        //public void rotateMe(Vector3 to) //converts vector directions to quaternions
-        //{
-        //    Vector3 direction = to - transform.forward;
-        //    float d = Vector3.Dot(to, direction.normalized);
-        //    if (d > 0.05)
-        //    {
-        //        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, direction, 10 * Time.deltaTime, 0));
-        //    }
-        //    else { rotating = false; back = Vector3.zero; }
-        //}
-
-
-
-
-
-
-
-
-
-
-    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
             if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(yRotation); }
             if (stream.IsReading)
