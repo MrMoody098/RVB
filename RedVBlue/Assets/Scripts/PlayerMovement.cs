@@ -47,7 +47,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public bool grounded;
     public bool canDoubleJump = true;
     public int dashCounter = 0;
-
+    [Range(0,2)]
+    public float distGround = 0f;
     private CapsuleCollider collider;
 
     PhotonView view;
@@ -176,7 +177,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if( dashCounter > 0) 
         {
             if (Input.GetKeyDown(KeyCode.F))
-            { rb.velocity = camera.transform.forward * jumpForce;
+            {
+                GetComponent<AudioSource>().Play();
+                rb.velocity = camera.transform.forward * jumpForce;
                 dashCounter -= 1;
             }
                 }
@@ -253,7 +256,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, -transform.up);
-            if (Physics.Raycast(ray, out hit, 1f, ~LayerMask.NameToLayer("ground")))
+            if (Physics.Raycast(ray, out hit, distGround, ~LayerMask.NameToLayer("grapplable")))
             { grounded = true; } else { grounded = false; }
 
         }
