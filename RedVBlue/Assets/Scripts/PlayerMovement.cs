@@ -30,9 +30,14 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public float maxSlopeAngle = 35f;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
-
+    
     public float jumpForce = 550f;
+    //superjump
+    public bool canSuperJump = false;
+    public float superJumpCounter = 0f;
+    //superSpeed
 
+    public float superSpeedCounter = 0f;
     //dashing
     [Range(0, 50)]
     public float wallDashForce = 15;
@@ -76,6 +81,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
+        if (superJumpCounter >0)
+        { superJumpCounter -= Time.deltaTime; } 
+        else if(superJumpCounter <= 0) {canSuperJump= false;}
+        if (superSpeedCounter > 0)
+        { superSpeedCounter -= Time.deltaTime; }
+        else if (superSpeedCounter <= 0) {  moveSpeed = 40; }
         if (view.IsMine)
         {
             if (!isAbleToMove) { return; }
@@ -124,21 +135,19 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         float horizontal = Input.GetAxisRaw("Vertical");
         rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
-
-
-        //if not grounded dont jump
-
-        //if double jump power enabled and not grounded can jump once in the air
+       
 
         //can jump when on the ground
         if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                rb.velocity += Vector3.up * jumpForce / 2;
+                if (canSuperJump == true) { rb.velocity += Vector3.up * jumpForce; }
+                else { rb.velocity += Vector3.up * jumpForce / 2; }
               
             }
         }
+        //if double jump power enabled and not grounded can jump once in the air
         if (!grounded && canDoubleJump)
         { 
 
@@ -182,11 +191,39 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 rb.velocity = camera.transform.forward * jumpForce;
                 dashCounter -= 1;
             }
+            if (Input.GetKeyDown(KeyCode.F)&& Input.GetKey(KeyCode.D))
+            {
+                GetComponent<AudioSource>().Play();
+                rb.velocity = camera.transform.right * jumpForce;
+                dashCounter -= 1;
+            }
+            if (Input.GetKeyDown(KeyCode.F) && Input.GetKey(KeyCode.A))
+            {
+                GetComponent<AudioSource>().Play();
+                rb.velocity = -camera.transform.right * jumpForce;
+                dashCounter -= 1;
+            }
+            if (Input.GetKeyDown(KeyCode.F) && Input.GetKey(KeyCode.S))
+            {
+                GetComponent<AudioSource>().Play();
+                rb.velocity = -camera.transform.forward * jumpForce;
+                dashCounter -= 1;
+            }
         }
     }
+    public void superSpeed() 
+    {
 
+        superSpeedCounter = 10;
+        moveSpeed = 90;
+    }
+    public void superJump()
+    {
+        canSuperJump = true;
+        superJumpCounter= 10;
 
-        public void dash() 
+    }
+    public void dash() 
     
         {
             dashCounter  += 5;
