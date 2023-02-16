@@ -131,14 +131,23 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         //if double jump power enabled and not grounded can jump once in the air
 
         //can jump when on the ground
-        if (grounded || canDoubleJump)
+        if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
                 rb.velocity += Vector3.up * jumpForce / 2;
-                canDoubleJump = false;
+              
             }
         }
+        if (!grounded && canDoubleJump)
+        { 
+
+            if (Input.GetButtonDown("Jump"))
+            { 
+                rb.velocity += Vector3.up * jumpForce / 2; canDoubleJump = false;
+            }
+        }
+
         
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
@@ -180,7 +189,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         public void dash() 
     
         {
-            dashCounter  = 5;
+            dashCounter  += 5;
         }
         public void doubleJump()
         {
