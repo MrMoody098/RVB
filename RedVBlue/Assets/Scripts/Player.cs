@@ -28,7 +28,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (health < 1) { alive = false; Dead(); }
         else { health -= amount; }
     }
-    public void Dead() {print(gameObject.name + "is dead");}
+    public void Dead() {print(gameObject.name + "is dead");
+        if (!view) { points += 1; }
+            }
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other
     {
