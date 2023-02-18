@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
     //Assignables
     private Transform body;
-    private CharacterAttributes characterAttributes;
+    private Player player;
     private Camera camera;
     private GrapplingGun grapplingGun;
     [HideInInspector]
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         view = GetComponent<PhotonView>();
         RoomUI.player = view;
         ui = FindObjectOfType<RoomUI>();
-        characterAttributes = GetComponent<CharacterAttributes>();
+        player = GetComponent<Player>();
     }
     private void FixedUpdate()
     {
@@ -322,7 +322,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (collision.gameObject.name == "fallOffPoint")
             { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position;
-                characterAttributes.DownHealth(1); }
+                player.DownHealth(1); }
 
         }
         void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

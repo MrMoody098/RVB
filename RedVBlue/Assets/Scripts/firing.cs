@@ -41,10 +41,10 @@ public class firing : MonoBehaviour
         {
 
             //if the object has an attributes script
-            if (hit.collider.GetComponent<CharacterAttributes>() != null)  
+            if (hit.collider.GetComponent<Player>() != null)  
             {
                 //change its attributes
-               CharacterAttributes enemy = hit.collider.GetComponent<CharacterAttributes>();
+               Player enemy = hit.collider.GetComponent<Player>();
   
                 enemy.DownHealth(1);
                 enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal*200*-1, hit.point);

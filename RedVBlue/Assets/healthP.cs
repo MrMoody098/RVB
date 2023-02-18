@@ -9,7 +9,7 @@ public class healthP : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided with powerup");
-        CharacterAttributes player = collision.gameObject.GetComponent<CharacterAttributes>();
+        Player player = collision.gameObject.GetComponent<Player>();
         if (player != null)
         {
             player.UpHealth(1);

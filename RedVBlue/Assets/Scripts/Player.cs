@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class CharacterAttributes : MonoBehaviourPunCallbacks, IPunObservable
+public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public int points = 0;
     public float health = 3;
     public float maxHealth = 3;
+
     [HideInInspector]
     public bool alive = true;
+
     [HideInInspector]
     public PhotonView view;
     // Start is called before the first frame update

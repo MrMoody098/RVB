@@ -59,7 +59,7 @@
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\healthP.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
-    <Compile Include="Assets\Scripts\CharacterAttributes.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\Bullet.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
+    <Compile Include="Assets\superSpeed.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\GlobalTime.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\RoomPlayer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\Obsticle.cs" />
+    <Compile Include="Assets\superJump.cs" />
     <Compile Include="Assets\Scripts\ConnectToServer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
@@ -97,6 +99,8 @@
     <Compile Include="Assets\TeleportP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\LobbyRoom.cs" />
+    <Compile Include="Assets\powerups.cs" />
+    <Compile Include="Assets\wallrunning.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Shaders\ZShader.shader" />

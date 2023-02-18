@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6467799708538487062}
   - component: {fileID: 1160854307763539614}
   - component: {fileID: 7813846452873395112}
-  - component: {fileID: 6952514328881366151}
   - component: {fileID: 5516965115950897460}
   - component: {fileID: -8372540786544412193}
   m_Layer: 11
@@ -144,6 +143,9 @@ MonoBehaviour:
   slideForce: 400
   slideCounterMovement: 0.2
   jumpForce: 51.27
+  canSuperJump: 0
+  superJumpCounter: 0
+  superSpeedCounter: 0
   wallDashForce: 15
   wallTimerTime: 2
   isAbleToMove: 1
@@ -173,7 +175,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 6467799708538487062}
   - {fileID: 7813846452873395112}
-  - {fileID: 6952514328881366151}
+  - {fileID: 0}
   - {fileID: 5516965115950897460}
   - {fileID: 4425920382619099736}
   sceneViewId: 0
@@ -212,22 +214,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &6952514328881366151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6467799708538487056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307323153ce477a4b87c6bce7037fbe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 3
-  alive: 1
-  view: {fileID: 0}
 --- !u!114 &5516965115950897460
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class rising : MonoBehaviour
         if (collision.gameObject.name== "player")
         {
             collision.gameObject.transform.position = spawnPoint.position;
-            collision.gameObject.GetComponent<CharacterAttributes>().DownHealth(1);
+            collision.gameObject.GetComponent<Player>().DownHealth(1);
         }
     }
 }
