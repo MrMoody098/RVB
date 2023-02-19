@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Dash : MonoBehaviour
+{
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Dash initialized");
+        PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+        if (player != null)
+        {
+            player.dash();
+            GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject, 2);
+            //this makes the noise
+            GetComponent<AudioSource>().Play();
+        }
+    }
+}

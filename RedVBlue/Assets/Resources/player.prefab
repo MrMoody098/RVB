@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5516965115950897460}
   - component: {fileID: -8372540786544412193}
   - component: {fileID: 660041059790848623}
+  - component: {fileID: 855532400}
   m_Layer: 11
   m_Name: player
   m_TagString: Untagged
@@ -152,8 +153,9 @@ MonoBehaviour:
   isAbleToMove: 1
   grounded: 1
   canDoubleJump: 0
-  dashCounter: 0
+  dashCounter: 428
   distGround: 1.1
+  ui: {fileID: 0}
   standingSurface: {fileID: 0}
 --- !u!114 &1160854307763539614
 MonoBehaviour:
@@ -198,10 +200,10 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 1
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -242,7 +244,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c495d12f61b35d498d2beb5f78dc470, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -339,11 +341,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307323153ce477a4b87c6bce7037fbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 4724719010912399748, guid: b120965941193a341a8c0e2a5029b1ff, type: 3}
+  ui: {fileID: 0}
   points: 0
   health: 3
   maxHealth: 3
   alive: 1
   view: {fileID: 0}
+--- !u!114 &855532400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467799708538487056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8050a88fabd4e73469be924c300b2335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6467799708621132209
 GameObject:
   m_ObjectHideFlags: 0

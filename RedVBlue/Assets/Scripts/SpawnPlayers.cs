@@ -12,7 +12,6 @@ public class SpawnPlayers : MonoBehaviour
     public float maxY;
     public float minZ;
     public float maxZ;
-
     private void Start()
     {
         try
@@ -22,9 +21,5 @@ public class SpawnPlayers : MonoBehaviour
             player.name = "player " + player.GetComponent<PhotonView>().InstantiationId;
         }
         catch { print("GOING OFFLINE"); }
-
-
-
-        
     }
 }

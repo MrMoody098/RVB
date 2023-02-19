@@ -56,8 +56,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public float distGround = 0f;
     private CapsuleCollider collider;
 
-    PhotonView view;
-    RoomUI ui;
+    [HideInInspector]
+    public RoomUI ui;
     void Awake()
     {
         body = transform.Find("body");
@@ -65,16 +65,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         rb = GetComponent<Rigidbody>();
         camera = GetComponentInChildren<Camera>();
         grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
-        grapplingGun.GetComponent<firing>().player = transform;
-
-        view = GetComponent<PhotonView>();
-        RoomUI.player = view;
-        ui = FindObjectOfType<RoomUI>();
-        player = GetComponent<Player>();
+        grapplingGun.GetComponent<firing>().player = GetComponent<Player>();
+        player = this.GetComponent<Player>();
     }
     private void FixedUpdate()
     {
-        if (!view.IsMine)
+        if (!player.view.IsMine)
         { camera.GetComponent<Camera>().targetDisplay = 2; }
 
     }
@@ -87,7 +83,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (superSpeedCounter > 0)
         { superSpeedCounter -= Time.deltaTime; }
         else if (superSpeedCounter <= 0) {  moveSpeed = 40; }
-        if (view.IsMine)
+        if (player.view.IsMine)
         {
             if (!isAbleToMove) { return; }
             MyInput();
@@ -117,7 +113,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (isWalled)
         {
-            if (ui.controls.quickRotate && rotating)
+            if (player.ui.controls.quickRotate && rotating)
                 rotateMe(back);
             if (Input.GetButton("Jump"))
             {
@@ -321,12 +317,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             //falling off map ressets position
 
             if (collision.gameObject.name == "fallOffPoint")
-            { gameObject.transform.position = GameObject.Find("spawn(1)").transform.position;
-                player.DownHealth(1); }
+            { player.Dead(); }
 
         }
         void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
+        {
             if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(yRotation); }
             if (stream.IsReading)
             { xRotation = (float)stream.ReceiveNext(); yRotation = (float)stream.ReceiveNext();
