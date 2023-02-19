@@ -131,22 +131,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fee1cdbee6955e4bbbd7d0bee8b8176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 2570140211963992722}
-  orientation: {fileID: 2570140210912693029}
+  rb: {fileID: 0}
   sensitivity: 120
   moveSpeed: 4500
   maxSpeed: 20
-  grounded: 1
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
   counterMovement: 0.175
   maxSlopeAngle: 35
   slideForce: 400
   slideCounterMovement: 0.2
   jumpForce: 20
+  canSuperJump: 0
+  superJumpCounter: 0
+  superSpeedCounter: 0
   wallDashForce: 15
   wallTimerTime: 2
+  isAbleToMove: 1
+  grounded: 1
+  canDoubleJump: 1
+  dashCounter: 0
+  distGround: 0
+  ui: {fileID: 0}
+  standingSurface: {fileID: 0}
 --- !u!114 &2570140210823502732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,8 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307323153ce477a4b87c6bce7037fbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  uiPrefab: {fileID: 4724719010912399748, guid: b120965941193a341a8c0e2a5029b1ff, type: 3}
+  ui: {fileID: 0}
+  points: 0
+  health: 3
   maxHealth: 3
+  alive: 1
+  view: {fileID: 0}
 --- !u!1 &2570140210696711336
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0742641257aeeb4282d747fdd0d1fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappling: {fileID: 2570140211484831424}
   rotationSpeed: 2.94
 --- !u!1 &2570140210775291717
 GameObject:
@@ -403,7 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a463888af114264eafa0614eefdb8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2570140212034157880}
+  camera: {fileID: 0}
+  isChangeFOV: 1
+  baseFov: 80
+  fovChangeIntencity: 0.4
 --- !u!1 &2570140212034157887
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,10 +655,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3021adba0bc55478b1ee273c65a9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitMarker: {fileID: 0}
   camera: {fileID: 2570140210775291712}
   player: {fileID: 699111433591173464}
   Gundamage: 10
   ammo: 1
+  bullet: {fileID: 0}
+  view: {fileID: 0}
 --- !u!1001 &2570140212068240096
 PrefabInstance:
   m_ObjectHideFlags: 0
