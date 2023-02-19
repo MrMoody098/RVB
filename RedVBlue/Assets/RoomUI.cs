@@ -6,7 +6,7 @@ using Photon.Pun;
 [System.Serializable]
 public class Lobby
 {
-    public List<RoomPlayer> players = new List<RoomPlayer>();
+   // public List<RoomPlayer> players = new List<RoomPlayer>();
 }
 [System.Serializable]
 public class Controls 
