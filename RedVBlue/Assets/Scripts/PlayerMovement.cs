@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     //Assignables
     private Transform body;
     private Player player;
-    private Camera camera;
-    private GrapplingGun grapplingGun;
+
+    
     [HideInInspector]
     public Rigidbody rb;
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     [Range(0,2)]
     public float distGround = 0f;
     private CapsuleCollider collider;
-
+    public GameObject standingSurface;
     [HideInInspector]
     public RoomUI ui;
     void Awake()
@@ -63,16 +63,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
-        camera = GetComponentInChildren<Camera>();
-        grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
-        grapplingGun.GetComponent<firing>().player = GetComponent<Player>();
         player = this.GetComponent<Player>();
-    }
-    private void FixedUpdate()
-    {
-        if (!player.view.IsMine)
-        { camera.GetComponent<Camera>().targetDisplay = 2; }
-
     }
 
     private void Update()
@@ -83,6 +74,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         if (superSpeedCounter > 0)
         { superSpeedCounter -= Time.deltaTime; }
         else if (superSpeedCounter <= 0) {  moveSpeed = 40; }
+
         if (player.view.IsMine)
         {
             if (!isAbleToMove) { return; }
@@ -117,7 +109,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 rotateMe(back);
             if (Input.GetButton("Jump"))
             {
-                rb.velocity = camera.transform.forward * jumpForce;
+                rb.velocity = player.camera.transform.forward * jumpForce;
                 isWalled = false;
                 rb.useGravity = true;
                 wallTimer = 0;
@@ -184,25 +176,25 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKeyDown(KeyCode.F))
             {
                 GetComponent<AudioSource>().Play();
-                rb.velocity = camera.transform.forward * jumpForce;
+                rb.velocity = player.camera.transform.forward * jumpForce;
                 dashCounter -= 1;
             }
             if (Input.GetKeyDown(KeyCode.F)&& Input.GetKey(KeyCode.D))
             {
                 GetComponent<AudioSource>().Play();
-                rb.velocity = camera.transform.right * jumpForce;
+                rb.velocity = player.camera.transform.right * jumpForce;
                 dashCounter -= 1;
             }
             if (Input.GetKeyDown(KeyCode.F) && Input.GetKey(KeyCode.A))
             {
                 GetComponent<AudioSource>().Play();
-                rb.velocity = -camera.transform.right * jumpForce;
+                rb.velocity = -player.camera.transform.right * jumpForce;
                 dashCounter -= 1;
             }
             if (Input.GetKeyDown(KeyCode.F) && Input.GetKey(KeyCode.S))
             {
                 GetComponent<AudioSource>().Play();
-                rb.velocity = -camera.transform.forward * jumpForce;
+                rb.velocity = -player.camera.transform.forward * jumpForce;
                 dashCounter -= 1;
             }
         }
@@ -214,78 +206,67 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         moveSpeed = 90;
     }
     public void superJump()
+    {canSuperJump = true;
+        superJumpCounter= 10;}
+    public void dash() {dashCounter += 5;}
+    public void doubleJump(){canDoubleJump = true;}
+    private void Look()
     {
-        canSuperJump = true;
-        superJumpCounter= 10;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
+
+        //Find current look rotation
+        Vector3 rot = player.camera.transform.localRotation.eulerAngles;
+        yRotation = rot.y + mouseX;
+
+        //Rotate, and also make sure we dont over- or under-rotate.
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+        //Perform the rotations
+        player.camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+        body.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
 
     }
-    public void dash() 
-    
+    private void CounterMovement(float x, float y, Vector2 mag)
+    {
+        if (!grounded || isJumping) return;
+
+        //Counter movement
+        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
         {
-            dashCounter  += 5;
+            rb.AddForce(moveSpeed * body.transform.right * Time.deltaTime * -mag.x * counterMovement);
         }
-        public void doubleJump()
+        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
         {
-
-            canDoubleJump = true;
+            rb.AddForce(moveSpeed * body.transform.forward * Time.deltaTime * -mag.y * counterMovement);
         }
-        private void Look()
+
+        //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
+        if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
         {
-            float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime;
-
-            //Find current look rotation
-            Vector3 rot = camera.transform.localRotation.eulerAngles;
-            yRotation = rot.y + mouseX;
-
-            //Rotate, and also make sure we dont over- or under-rotate.
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-            //Perform the rotations
-            camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
-            body.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
-
+            float fallspeed = rb.velocity.y;
+            Vector3 n = rb.velocity.normalized * maxSpeed;
+            rb.velocity = new Vector3(n.x, fallspeed, n.z);
         }
-        private void CounterMovement(float x, float y, Vector2 mag)
-        {
-            if (!grounded || isJumping) return;
+    }
+    public Vector2 FindVelRelativeToLook()
+    {
+        float lookAngle = body.transform.eulerAngles.y;
 
-            //Counter movement
-            if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0))
-            {
-                rb.AddForce(moveSpeed * body.transform.right * Time.deltaTime * -mag.x * counterMovement);
-            }
-            if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0))
-            {
-                rb.AddForce(moveSpeed * body.transform.forward * Time.deltaTime * -mag.y * counterMovement);
-            }
+        float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
 
-            //Limit diagonal running. This will also cause a full stop if sliding fast and un-crouching, so not optimal.
-            if (Mathf.Sqrt((Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.z, 2))) > maxSpeed)
-            {
-                float fallspeed = rb.velocity.y;
-                Vector3 n = rb.velocity.normalized * maxSpeed;
-                rb.velocity = new Vector3(n.x, fallspeed, n.z);
-            }
-        }
-        public Vector2 FindVelRelativeToLook()
-        {
-            float lookAngle = body.transform.eulerAngles.y;
+        float u = Mathf.DeltaAngle(lookAngle, moveAngle); //magnitude of l+m angles
+        float v = 90 - u; //pivots X rotation so they rotate at the same speed
+                            //ie Y (left and right) and X rotate at the same speed and finish look ah the same time
 
-            float moveAngle = Mathf.Atan2(rb.velocity.x, rb.velocity.z) * Mathf.Rad2Deg;
+        float magnitue = rb.velocity.magnitude; //total over all speed
+        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad); //total required resistance to fight against
+        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad); //X and Y
 
-            float u = Mathf.DeltaAngle(lookAngle, moveAngle); //magnitude of l+m angles
-            float v = 90 - u; //pivots X rotation so they rotate at the same speed
-                              //ie Y (left and right) and X rotate at the same speed and finish look ah the same time
-
-            float magnitue = rb.velocity.magnitude; //total over all speed
-            float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad); //total required resistance to fight against
-            float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad); //X and Y
-
-            return new Vector2(xMag, yMag);
-        }
-        public GameObject standingSurface;
+        return new Vector2(xMag, yMag);
+    }
+        
         public void checkIsGrounded()
         {
             RaycastHit hit;
@@ -308,13 +289,12 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             }
             else { rotating = false; back = Vector3.zero; }
         }
+
         private void OnCollisionEnter(Collision collision)
         {   //stick to wall if we are not on the ground and not grappling and hit into a wall
-            if (!grounded && !grapplingGun.IsGrappling()
+            if (!grounded && !player.grapplingGun.IsGrappling()
                 && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
             { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
-
-            //falling off map ressets position
 
             if (collision.gameObject.name == "fallOffPoint")
             { player.Dead(); }
@@ -325,7 +305,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(yRotation); }
             if (stream.IsReading)
             { xRotation = (float)stream.ReceiveNext(); yRotation = (float)stream.ReceiveNext();
-                camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+                player.camera.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
                 body.localRotation = Quaternion.Euler(0, yRotation, 0);
             }
         }

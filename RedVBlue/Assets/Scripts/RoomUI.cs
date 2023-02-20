@@ -36,6 +36,7 @@ public class RoomUI : MonoBehaviour
 
     public GameObject deathScreen;
     public Animation deathScreenAnimation;
+    public static PhotonView player;
     private void Awake()
     {
         menu = transform.Find("PauseMenu").gameObject;
@@ -47,7 +48,7 @@ public class RoomUI : MonoBehaviour
         //deathScreen = deathScreenAnimation.transform.parent.gameObject;
     }
     // Start is called before the first frame update
-    public static PhotonView player;
+
     public void leaveRoom()
     {
         if (!player.IsMine) { return; }

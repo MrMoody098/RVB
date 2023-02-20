@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public GameObject uiPrefab; //load from resources in future
+    public GameObject uiPrefab;
     
     [HideInInspector]
     public RoomUI ui;
@@ -18,58 +18,65 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     [HideInInspector]
     public PhotonView view;
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector]
+    public Camera camera;
+    [HideInInspector]
+    public GrapplingGun grapplingGun;
+
+    void Awake()
     {
-       
+        camera = GetComponentInChildren<Camera>();
+
         health = maxHealth;
-        view = GetComponent<PhotonView>(); 
-        if (view.IsMine) { RoomUI.player = view;  initPlayerUI(); }
-      
 
-        
+        view = GetComponent<PhotonView>();
+        if (view)
+        { 
+            if (view.IsMine) 
+            { RoomUI.player = view; InitializePlayerUI(); }
+            else { camera.targetDisplay = 2; }
+            grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
+            grapplingGun.GetComponent<firing>().player = this;
+        }
     }
-
-    public void UpHealth(float amount) {
-        health += amount;
-        print(health);
-    }
+    public void UpHealth(float amount) 
+    { health += amount;
+        print(health);}
     public void DownHealth(float amount, firing shooter)
     {
-        if (health < 1) { alive = false; Dead(); shooter.player.points++; }
+        if (health < 1) 
+        { alive = false; 
+          Dead(); shooter.player.points++; }
         else { health -= amount; }
     }
     public void DownHealth(float amount)
     {
-        if (health < 1) { alive = false; Dead();} 
-        else { health -= amount; }}
+        if (health < 1) 
+        { alive = false; Dead();} 
+        else { health -= amount; }
+    }
     public void Dead() 
     {
-
         print(gameObject.name + "is dead");
-       // if(!view.IsMine)
-        {
-            points--;
-            transform.position = GameObject.Find("Spawn").transform.position;
-            ui.deathScreen.SetActive(true);
-            ui.deathScreenAnimation.Play();
-            health = maxHealth;
-        }
+        points--;
+        transform.position = GameObject.Find("Spawn").transform.position;
+        ui.deathScreen.SetActive(true);
+        ui.deathScreenAnimation.Play();
+        health = maxHealth;
     }
 
-    void initPlayerUI()
+    void InitializePlayerUI()
     {
-
-        try
+       // try
         {
             ui = Instantiate(uiPrefab).GetComponentInChildren<RoomUI>();
+          //  ui.GetComponent<Canvas>().worldCamera = this.camera;
             firing f = GetComponentInChildren<firing>();
             f.player = this;
-            f.hitMarker = ui.display.hitmarker.gameObject;
-            f.hitMarker.gameObject.SetActive(false);
-            //ui.GetComponent<Canvas>().worldCamera = GetComponentInChildren<Camera>();
+            f.hitMarker = ui.display.hitmarker;
+            f.hitMarker.SetActive(false);
         }
-        catch { Debug.LogWarning("Non player characters dismissing UI initialization"); /*enemy doesnt need ui*/}
+       // catch { Debug.LogWarning("Non player characters dismissing UI initialization");}
     }
         
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other
