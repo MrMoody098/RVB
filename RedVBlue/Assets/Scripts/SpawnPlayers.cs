@@ -17,8 +17,7 @@ public class SpawnPlayers : MonoBehaviour
         try
         {
             Vector3 randomPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ));
-            GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
-            player.name = "player " + player.GetComponent<PhotonView>().InstantiationId;
+            Lobby.lastSpawnedPlayer = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
         }
         catch { print("GOING OFFLINE"); }
     }

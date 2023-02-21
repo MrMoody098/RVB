@@ -10,6 +10,7 @@ using TMPro;
 
 public class LobbyUI : MonoBehaviourPunCallbacks
 {
+    public string username = "player";
     public GameObject openScreen, hostPanel, joinPanel, back;
     public List<Button> buttons = new List<Button>(); 
     int index = 1; float floatingIndex = 1;
@@ -38,7 +39,7 @@ public class LobbyUI : MonoBehaviourPunCallbacks
 
     //runs after create room or join room is called
     public override void OnJoinedRoom()
-    { PhotonNetwork.LoadLevel("Map1"); }
+    { PhotonNetwork.LoadLevel(map); }
 
     private void LateUpdate()
     { TraverseActivePanelElements(); 

@@ -246,7 +246,7 @@ MonoBehaviour:
   createInput: {fileID: 178902775}
   joinInput: {fileID: 260471567}
   joinBtn: {fileID: 620556501}
-  map: 
+  map: Map1
   selectedRoom: {fileID: 0}
 --- !u!1 &104315602
 GameObject:

@@ -6,7 +6,8 @@ using Photon.Pun;
 [System.Serializable]
 public class Lobby
 {
-   // public List<RoomPlayer> players = new List<RoomPlayer>();
+    public List<RoomPlayer> players = new List<RoomPlayer>();
+    public static GameObject lastSpawnedPlayer;
 }
 [System.Serializable]
 public class Controls 
@@ -23,7 +24,7 @@ public class Audio {
 public class RoomUI : MonoBehaviour
 {
     [Header ("Room Lobby")]
-    
+
     public Lobby lobby;
     [Header("Controls")]
     public Controls controls;
@@ -37,8 +38,11 @@ public class RoomUI : MonoBehaviour
     public GameObject deathScreen;
     public Animation deathScreenAnimation;
     public static PhotonView player;
+    public static string userName = "";
+    public string username = "player";
     private void Awake()
     {
+        userName = username;
         menu = transform.Find("PauseMenu").gameObject;
 
         Cursor.visible = false;

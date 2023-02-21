@@ -5,7 +5,6 @@ using Photon.Realtime;
 
 public class loadRoomList : MonoBehaviourPunCallbacks
 {
-
     [SerializeField] private GameObject roomPrefab;
     [SerializeField] private Transform roomsContainer;
     List<LobbyRoom> rooms = new List<LobbyRoom>();
