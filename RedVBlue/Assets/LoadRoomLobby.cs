@@ -5,8 +5,6 @@ using UnityEngine;
 public class LoadRoomLobby : MonoBehaviourPunCallbacks
 {
     Lobby lobby;
-    public List<RoomPlayer> players = new List<RoomPlayer>();
-
     public GameObject roomPlayerPrefab;
     public GameObject playerPrefab;
     GameObject spawnedPlayer;
@@ -45,9 +43,9 @@ public class LoadRoomLobby : MonoBehaviourPunCallbacks
     {
         int index = lobby.players.FindIndex(x => x.roomPlayer == otherPlayer);
         if (index != 0)
-        {
+        { 
             Destroy(lobby.players[index].gameObject);
-            players.RemoveAt(index);
+            lobby.players.RemoveAt(index);
         }
     }
 }

@@ -4,6 +4,7 @@ using Photon.Realtime;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public string username;
     public GameObject uiPrefab;
     
     [HideInInspector]
@@ -57,7 +58,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void Dead() 
     {
-        print(gameObject.name + "is dead");
+        print(gameObject.name + " is dead");
         points--;
         transform.position = GameObject.Find("Spawn").transform.position;
         ui.deathScreen.SetActive(true);
@@ -70,6 +71,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
        // try
         {
             ui = Instantiate(uiPrefab).GetComponentInChildren<RoomUI>();
+            RoomUI.userName = username;
           //  ui.GetComponent<Canvas>().worldCamera = this.camera;
             firing f = GetComponentInChildren<firing>();
             f.player = this;
