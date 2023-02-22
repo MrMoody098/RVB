@@ -52,7 +52,6 @@ public class firing : MonoBehaviour
                 
                 enemy.DownHealth(1,this);
                 enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal*200*-1, hit.point);
-
                 hitMarker.SetActive(true);
                 hitMarker.GetComponent<HitMarker>().Mark(camera, hit.point,1);
 

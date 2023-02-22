@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -23,7 +24,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Camera camera;
     [HideInInspector]
     public GrapplingGun grapplingGun;
-
+    [HideInInspector]
+    public RoomPlayer lobbyPlayer;
     void Awake()
     {
         camera = GetComponentInChildren<Camera>();
@@ -40,6 +42,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             grapplingGun.GetComponent<firing>().player = this;
         }
     }
+    public void AddPoints(int amount)
+    {
+        points += amount;
+        lobbyPlayer.score.SetText(points+"");
+        
+    }
     public void UpHealth(float amount) 
     { health += amount;
         print(health);}
@@ -47,7 +55,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (health < 1) 
         { alive = false; 
-          Dead(); shooter.player.points++; }
+          Dead(); shooter.player.AddPoints(1); }
         else { health -= amount; }
     }
     public void DownHealth(float amount)
@@ -60,10 +68,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         print(gameObject.name + " is dead");
         points--;
+        lobbyPlayer.score.SetText(points+"");
         transform.position = GameObject.Find("Spawn").transform.position;
         ui.deathScreen.SetActive(true);
         ui.deathScreenAnimation.Play();
         health = maxHealth;
+        
     }
 
     void InitializePlayerUI()

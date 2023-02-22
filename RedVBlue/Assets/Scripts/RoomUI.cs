@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using Photon.Pun;
-[System.Serializable]
-public class Lobby
-{
-    public List<RoomPlayer> players = new List<RoomPlayer>();
-    public static GameObject lastSpawnedPlayer;
-}
+
 [System.Serializable]
 public class Controls 
 { public GloblalInputs inputs; 
@@ -24,8 +19,7 @@ public class Audio {
 public class RoomUI : MonoBehaviour
 {
     [Header ("Room Lobby")]
-
-    public Lobby lobby;
+    public RoomLobby lobby;
     [Header("Controls")]
     public Controls controls;
     [Header("Display Settings")]
@@ -40,6 +34,7 @@ public class RoomUI : MonoBehaviour
     public static PhotonView player;
     public static string userName = "";
     public string username = "player";
+
     private void Awake()
     {
         userName = username;
