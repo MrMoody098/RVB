@@ -1,6 +1,7 @@
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
 { "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+<<<<<<< Updated upstream
 { "pid": 0, "tid": 1, "ts": 1675628605955676, "dur": 2684588, "ph": "X", "name": "Build Player", "args": {} },
 { "pid": 0, "tid": 1, "ts": 1675628605955688, "dur": 7891, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
 { "pid": 0, "tid": 1, "ts": 1675628605963584, "dur": 32152, "ph": "X", "name": "Run Backend", "args": {} },
@@ -1072,3 +1073,469 @@
 ,{ "pid":12345, "tid":0, "ts":1675628608620908, "dur":2314, "ph":"X", "name": "ProfilerWriteOutput" }
 ,{ "pid": 0, "tid": 1, "ts": 1675628608641402, "dur": 890, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
 { "pid": 0, "tid": 1, "ts": 1675628608641024, "dur": 1289, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+=======
+{ "pid": 0, "tid": 1, "ts": 1677350145118505, "dur": 722965, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1677350145118864, "dur": 12679, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1677350145131546, "dur": 705436, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1677350145836985, "dur": 4484, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1677350145842618, "dur": 10, "ph": "X", "name": "", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1677350145185966, "dur":2569, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145188551, "dur":501, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1677350145189112, "dur":31, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1677350145189143, "dur":274, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1677350145189465, "dur":1223, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145190688, "dur":2, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145802945, "dur":97, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803042, "dur":31, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803073, "dur":49, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803122, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803130, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803133, "dur":9, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803142, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803145, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803152, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803165, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145803239, "dur":3381, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1677350145190082, "dur":633, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145190717, "dur":9496, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200226, "dur":9, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200238, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200384, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200386, "dur":426, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200813, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":1, "ts":1677350145200985, "dur":384, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145201370, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1677350145201516, "dur":235, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145201752, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":1, "ts":1677350145201898, "dur":175, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145202074, "dur":157, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1677350145202231, "dur":558, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145202790, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":1, "ts":1677350145202936, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203044, "dur":142, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203186, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203318, "dur":143, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203461, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203549, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203666, "dur":112, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203779, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145203895, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204001, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204117, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204222, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204340, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204451, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204570, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204681, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204798, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145204918, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205038, "dur":118, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205157, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205283, "dur":218, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205502, "dur":159, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205661, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205769, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145205883, "dur":475, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145206359, "dur":132, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145206491, "dur":241, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145206733, "dur":143, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145206876, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145206984, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207101, "dur":246, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207348, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207465, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207575, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207691, "dur":128, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207820, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145207934, "dur":189, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208124, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208243, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208352, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208475, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208584, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208699, "dur":134, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208834, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145208956, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209064, "dur":135, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209200, "dur":142, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209343, "dur":133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209476, "dur":229, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209707, "dur":145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145209852, "dur":207, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210060, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210179, "dur":112, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210292, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210411, "dur":114, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210526, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210640, "dur":215, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210856, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145210974, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211081, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211198, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211306, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211422, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211509, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211605, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145211690, "dur":6776, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.State.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145218467, "dur":179, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145218649, "dur":76407, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145295057, "dur":157, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145295217, "dur":15240, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.TextMeshPro.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145310457, "dur":189, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145310649, "dur":181815, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145492465, "dur":180, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145492648, "dur":7627, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145500276, "dur":172, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145500450, "dur":134349, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145634800, "dur":184, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145634987, "dur":134, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Photon3Unity3D.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145635121, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145635229, "dur":109, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Photon3Unity3D.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145635338, "dur":270, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145635610, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Newtonsoft.Json.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145635736, "dur":347, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636085, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636212, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636321, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636443, "dur":91, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636535, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636604, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636690, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636828, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145636925, "dur":5982, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Assembly-CSharp.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145642924, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145644199, "dur":3650, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Assembly-CSharp.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1677350145647928, "dur":370, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":1, "ts":1677350145648298, "dur":147, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145648446, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1677350145648526, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145648643, "dur":3053, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":1, "ts":1677350145651771, "dur":197, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.resource" }}
+,{ "pid":12345, "tid":1, "ts":1677350145651975, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145652008, "dur":5087, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.resource" }}
+,{ "pid":12345, "tid":1, "ts":1677350145657172, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145657251, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145657258, "dur":1427, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145658787, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1677350145658867, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145658874, "dur":1381, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets2.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1677350145660325, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145660397, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145660402, "dur":1216, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145661685, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145661756, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145661761, "dur":5828, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":1, "ts":1677350145667660, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1677350145667762, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1677350145667770, "dur":43427, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":1, "ts":1677350145711283, "dur":91649, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145190106, "dur":631, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145190738, "dur":9685, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145200423, "dur":185, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1677350145200608, "dur":792, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145201401, "dur":175, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":2, "ts":1677350145201577, "dur":477, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202055, "dur":166, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202221, "dur":210, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202432, "dur":217, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202649, "dur":157, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202807, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":2, "ts":1677350145202958, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203066, "dur":145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203211, "dur":113, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203325, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue.exe" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203407, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203474, "dur":141, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203616, "dur":123, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203740, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203860, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145203969, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204085, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204191, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204312, "dur":90, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204403, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204518, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204628, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204743, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204848, "dur":112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145204960, "dur":205, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145205166, "dur":8444, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UI.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145213610, "dur":223, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145213837, "dur":9193, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.Flow.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145223031, "dur":187, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145223221, "dur":10980, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.Core.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145234202, "dur":182, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145234387, "dur":76069, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145310457, "dur":336, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145310794, "dur":9357, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Threading.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145320161, "dur":512, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145320677, "dur":1149, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145321827, "dur":142, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145321971, "dur":9401, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Telemetry.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145331373, "dur":190, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145331566, "dur":25221, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145356788, "dur":191, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145356982, "dur":6988, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145363971, "dur":181, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145364155, "dur":7186, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Networking.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145371342, "dur":150, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145371494, "dur":6380, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Internal.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145377875, "dur":182, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145378060, "dur":7379, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Environments.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145385440, "dur":278, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145385720, "dur":1063, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145386784, "dur":144, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145386930, "dur":877, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145387808, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145387945, "dur":22793, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145410738, "dur":280, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145411021, "dur":8151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Analytics.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145419172, "dur":129, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145419302, "dur":169922, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Postprocessing.Runtime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145589225, "dur":223, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145589451, "dur":8938, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonChat.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1677350145598389, "dur":303, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145598725, "dur":56625, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonChat.dll" }}
+,{ "pid":12345, "tid":2, "ts":1677350145655351, "dur":186, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145655541, "dur":79, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145655632, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145655642, "dur":4540, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets3.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145660261, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145660340, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145660348, "dur":1234, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets2.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145661652, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145661725, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145661731, "dur":2605, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145664431, "dur":254, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":2, "ts":1677350145664685, "dur":140, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145664826, "dur":1183, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1677350145666010, "dur":140, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145666152, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.resource" }}
+,{ "pid":12345, "tid":2, "ts":1677350145666235, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145666243, "dur":1351, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.resource" }}
+,{ "pid":12345, "tid":2, "ts":1677350145667664, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145667765, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145667771, "dur":8465, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/resources.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145676313, "dur":75, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level3.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145676394, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145676402, "dur":1522, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level3.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145677998, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level3" }}
+,{ "pid":12345, "tid":2, "ts":1677350145678074, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145678082, "dur":1302, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level3" }}
+,{ "pid":12345, "tid":2, "ts":1677350145679459, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level2.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145679536, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145679545, "dur":2093, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level2.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145681718, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level2" }}
+,{ "pid":12345, "tid":2, "ts":1677350145681796, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145681805, "dur":1353, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level2" }}
+,{ "pid":12345, "tid":2, "ts":1677350145683236, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level1.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145683313, "dur":9, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145683365, "dur":1933, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level1.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145685375, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level1" }}
+,{ "pid":12345, "tid":2, "ts":1677350145685456, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145685467, "dur":1404, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level1" }}
+,{ "pid":12345, "tid":2, "ts":1677350145686949, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level0.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145687028, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145687036, "dur":1438, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level0.resS" }}
+,{ "pid":12345, "tid":2, "ts":1677350145688546, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level0" }}
+,{ "pid":12345, "tid":2, "ts":1677350145688622, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145688629, "dur":1156, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/level0" }}
+,{ "pid":12345, "tid":2, "ts":1677350145689856, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145689933, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145689940, "dur":4643, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":2, "ts":1677350145694659, "dur":183, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":2, "ts":1677350145694849, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145694857, "dur":1877, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":2, "ts":1677350145696810, "dur":212, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1677350145697154, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1677350145697164, "dur":1500, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1677350145698743, "dur":104200, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145190131, "dur":629, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145190760, "dur":9487, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145200248, "dur":278, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1677350145200526, "dur":937, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145201464, "dur":189, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1677350145201653, "dur":705, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145202359, "dur":146, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":3, "ts":1677350145202505, "dur":2277, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145204783, "dur":129, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145204912, "dur":118, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205031, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205152, "dur":113, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205266, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205381, "dur":239, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205621, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205742, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205848, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145205971, "dur":375, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206347, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206473, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206584, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206699, "dur":110, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206810, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145206926, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207038, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207153, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207261, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207377, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207486, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207625, "dur":123, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207749, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145207863, "dur":177, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208041, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208157, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208265, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208387, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208491, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208613, "dur":305, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145208919, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209039, "dur":202, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209242, "dur":344, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209586, "dur":115, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209702, "dur":150, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209852, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145209959, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210076, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210187, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210307, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210413, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210486, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210590, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210704, "dur":171, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210876, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145210996, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211102, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211224, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211332, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211451, "dur":238, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211690, "dur":154, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145211844, "dur":322, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145212167, "dur":38739, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145250907, "dur":150, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145251060, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145251198, "dur":371, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145251570, "dur":6882, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Timeline.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1677350145258453, "dur":160, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145258616, "dur":66111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145324728, "dur":288, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145325019, "dur":45021, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145370041, "dur":336, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145370380, "dur":1003, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145371384, "dur":121, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145371507, "dur":45699, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145417207, "dur":160, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145417369, "dur":1182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145418551, "dur":283, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145418836, "dur":5999, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Postprocessing.Runtime.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1677350145424836, "dur":198, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145425037, "dur":10977, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.InputSystem.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1677350145436015, "dur":183, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145436201, "dur":87250, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.InputSystem.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145523451, "dur":179, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145523633, "dur":10000, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.Demos.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1677350145533634, "dur":305, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145533942, "dur":110392, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.Demos.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145644335, "dur":125, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145644463, "dur":156914, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145801386, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1677350145801396, "dur":1457, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":3, "ts":1677350145802923, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":3, "ts":1677350145802924, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145190158, "dur":624, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145190782, "dur":9459, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145200242, "dur":215, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":4, "ts":1677350145200457, "dur":666, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145201124, "dur":166, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1677350145201291, "dur":362, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145201654, "dur":142, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1677350145201796, "dur":288, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145202085, "dur":165, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":4, "ts":1677350145202250, "dur":568, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145202819, "dur":150, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":4, "ts":1677350145202970, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203078, "dur":140, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/WinPixEventRuntime.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203218, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203323, "dur":150, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203473, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203543, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/websocket-sharp.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203664, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203796, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145203914, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204024, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204141, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204246, "dur":120, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204366, "dur":92, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204459, "dur":117, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204576, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204686, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204810, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145204922, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145205041, "dur":197, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145205239, "dur":119868, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145325108, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145325229, "dur":11951, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Scheduler.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145337181, "dur":182, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145337366, "dur":11683, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Registration.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145349050, "dur":186, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145349239, "dur":34483, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145383723, "dur":331, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145384057, "dur":6676, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Environments.Internal.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145390734, "dur":178, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145390915, "dur":8037, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Device.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145398952, "dur":186, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145399141, "dur":3784, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145402926, "dur":192, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145403121, "dur":6391, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Configuration.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145409513, "dur":191, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145409707, "dur":27235, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145436943, "dur":134, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145437079, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145437199, "dur":4123, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441323, "dur":80, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441403, "dur":210, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441614, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441740, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441849, "dur":123, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145441972, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442084, "dur":199, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442283, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442387, "dur":112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442499, "dur":172, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442672, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442785, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442871, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145442981, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443086, "dur":112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443199, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443305, "dur":111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443416, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443521, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443631, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443733, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443847, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145443949, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444019, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444106, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444216, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444320, "dur":112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444433, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444540, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444647, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444733, "dur":108, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145444841, "dur":188, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145445030, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145445127, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145445233, "dur":8305, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.Utilities.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145453539, "dur":178, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145453720, "dur":108243, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonUnityNetworking.Utilities.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145561964, "dur":154, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145562120, "dur":6414, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonRealtime.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1677350145568535, "dur":184, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145568722, "dur":232499, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/lorcan/Desktop/accumulation/lobbyUpdate/RedVBlue_Data/Managed/PhotonRealtime.dll" }}
+,{ "pid":12345, "tid":4, "ts":1677350145801222, "dur":202, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1677350145801426, "dur":1505, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1677350145809472, "dur":2350, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1677350145845864, "dur": 1276, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1677350145842606, "dur": 4605, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+>>>>>>> Stashed changes
