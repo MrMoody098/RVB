@@ -33,7 +33,7 @@ public class LobbyRoom : MonoBehaviour, ISelectHandler
     }
     public void Join()
     {
-        print("jointing " + info.Name);
+        print("joining " + info.Name);
         PhotonNetwork.JoinRoom(info.Name);
     }
     public void OnSelect(BaseEventData eventData)

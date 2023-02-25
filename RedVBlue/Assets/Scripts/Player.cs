@@ -26,6 +26,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public GrapplingGun grapplingGun;
     [HideInInspector]
     public RoomPlayer lobbyPlayer;
+    public int ACNUM;
     void Awake()
     {
         camera = GetComponentInChildren<Camera>();
@@ -33,8 +34,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         health = maxHealth;
 
         view = GetComponent<PhotonView>();
-        if (view)
-        { 
+        //print("this is player" + view.Owner.ActorNumber);
+        if (view != null)
+        {
+            ACNUM = view.Owner.ActorNumber;
             if (view.IsMine) 
             { RoomUI.player = view; InitializePlayerUI(); }
             else { camera.targetDisplay = 2; }
@@ -65,30 +68,30 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         else { health -= amount; }
     }
     public void Dead() 
-    {
+    { 
         print(gameObject.name + " is dead");
         points--;
         lobbyPlayer.score.SetText(points+"");
         transform.position = GameObject.Find("Spawn").transform.position;
+        health = maxHealth;
+        if (!view.IsMine){return;}
         ui.deathScreen.SetActive(true);
         ui.deathScreenAnimation.Play();
-        health = maxHealth;
-        
     }
 
     void InitializePlayerUI()
     {
-       // try
+        try
         {
             ui = Instantiate(uiPrefab).GetComponentInChildren<RoomUI>();
             RoomUI.userName = username;
-          //  ui.GetComponent<Canvas>().worldCamera = this.camera;
+           
             firing f = GetComponentInChildren<firing>();
             f.player = this;
             f.hitMarker = ui.display.hitmarker;
             f.hitMarker.SetActive(false);
         }
-       // catch { Debug.LogWarning("Non player characters dismissing UI initialization");}
+        catch { Debug.LogWarning("Non player characters dismissing UI initialization");}
     }
         
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other

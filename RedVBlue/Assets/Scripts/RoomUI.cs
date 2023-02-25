@@ -18,8 +18,7 @@ public class Audio {
 }
 public class RoomUI : MonoBehaviour
 {
-    [Header ("Room Lobby")]
-    public RoomLobby lobby;
+    private RoomLobby lobby;
     [Header("Controls")]
     public Controls controls;
     [Header("Display Settings")]

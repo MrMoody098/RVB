@@ -304,6 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08edde9a4a635542b63883dff75d54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  name: {fileID: 3279973351108559316}
+  ping: {fileID: 8245376507949543385}
+  score: {fileID: 7022121382596635295}
 --- !u!1 &7467969401868285304
 GameObject:
   m_ObjectHideFlags: 0

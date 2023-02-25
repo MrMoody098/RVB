@@ -350,6 +350,8 @@ MonoBehaviour:
   view: {fileID: 0}
   camera: {fileID: 0}
   grapplingGun: {fileID: 0}
+  lobbyPlayer: {fileID: 0}
+  ACNUM: 0
 --- !u!1 &6467799708621132209
 GameObject:
   m_ObjectHideFlags: 0

@@ -832,7 +832,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1736227823812658202}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999956
+  m_Size: 0.963561
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1525,8 +1525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad99755502108f40b0e7bd82cdc37c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobby:
-    players: []
   controls:
     inputs: {fileID: 0}
     quickRotate: 0
@@ -2074,7 +2072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -392.70923, y: 0}
+  m_AnchoredPosition: {x: -392.73334, y: 0.028015137}
   m_SizeDelta: {x: -653.9791, y: -28.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6978427791824302248
@@ -2377,13 +2375,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736227824843877062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8846b9eb37d0ff74e8cc9c3f3225d273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   roomPlayerPrefab: {fileID: 4528784103325872664, guid: ef8c3554883f0f74597f7b4d422e7b2c, type: 3}
-  playerPrefab: {fileID: 0}
   contentArea: {fileID: 1736227824566547483}
   spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &3175208119074989409
@@ -2646,6 +2644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8252882194534211143}
+  - component: {fileID: 235461136608209161}
   m_Layer: 0
   m_Name: RoomUI
   m_TagString: Untagged
@@ -2669,6 +2668,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &235461136608209161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724719010912399748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8846b9eb37d0ff74e8cc9c3f3225d273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  roomPlayerPrefab: {fileID: 4528784103325872664, guid: ef8c3554883f0f74597f7b4d422e7b2c, type: 3}
+  contentArea: {fileID: 1736227824566547483}
+  spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &7170890568309725292
 GameObject:
   m_ObjectHideFlags: 0

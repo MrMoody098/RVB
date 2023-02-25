@@ -43,17 +43,17 @@ public class firing : MonoBehaviour
         Nb.GetComponent<Bullet>().direction = transform.Find("tip").forward * 400 * Time.deltaTime;
         if (Physics.Raycast(ray, out hit))
         {
-
             //if the object has an attributes script
             if (hit.collider.GetComponent<Player>() != null)  
             {
                 //change its attributes
                 Player enemy = hit.collider.GetComponent<Player>();
-                
                 enemy.DownHealth(1,this);
                 enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal*200*-1, hit.point);
-                hitMarker.SetActive(true);
-                hitMarker.GetComponent<HitMarker>().Mark(camera, hit.point,1);
+
+                if(player.view.IsMine)
+                {hitMarker.SetActive(true);
+                    hitMarker.GetComponent<HitMarker>().Mark(camera, hit.point, 1);}
 
                 Debug.DrawLine(camera.transform.position,hit.point, Color.red,1);
                 Debug.DrawLine(transform.Find("tip").position, hit.point, Color.green, 1);
