@@ -57,32 +57,53 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\healthP.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
-    <Compile Include="Assets\Scripts\CharacterAttributes.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Bullet.cs" />
+    <Compile Include="Assets\loadRoomList.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\firing.cs" />
-    <Compile Include="Assets\newLineDrawerTest.cs" />
+    <Compile Include="Assets\RoomUI.cs" />
+    <Compile Include="Assets\Scripts\newLineDrawerTest.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\CreateAndJoinRooms.cs" />
-    <Compile Include="Assets\SpawnPlayers.cs" />
+    <Compile Include="Assets\Scripts\levelGenerator.cs" />
+    <Compile Include="Assets\GloblalInputs.cs" />
+    <Compile Include="Assets\Scripts\CreateAndJoinRooms.cs" />
+    <Compile Include="Assets\LobbyUIElment.cs" />
+    <Compile Include="Assets\Scripts\SpawnPlayers.cs" />
+    <Compile Include="Assets\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\LobbyUI.cs" />
     <Compile Include="Assets\Scripts\RotateGun.cs" />
+    <Compile Include="Assets\Scripts\rising.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
+    <Compile Include="Assets\superSpeed.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\GlobalTime.cs" />
+    <Compile Include="Assets\Dash.cs" />
+    <Compile Include="Assets\RoomPlayer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
-    <Compile Include="Assets\ConnectToServer.cs" />
+    <Compile Include="Assets\Scripts\Obsticle.cs" />
+    <Compile Include="Assets\superJump.cs" />
+    <Compile Include="Assets\Scripts\ConnectToServer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+    <Compile Include="Assets\DoubleJumpP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
+    <Compile Include="Assets\TeleportP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
+    <Compile Include="Assets\LobbyRoom.cs" />
+    <Compile Include="Assets\powerups.cs" />
+    <Compile Include="Assets\wallrunning.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\ZShader.shader" />
+    <None Include="Assets\Scripts\Shaders\ZShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -110,6 +131,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Scripts\Shaders\DefaultHDR.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />

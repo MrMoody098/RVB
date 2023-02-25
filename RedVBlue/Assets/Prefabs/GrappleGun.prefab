@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 7585785956168722798}
   - component: {fileID: 7586391691039640843}
   - component: {fileID: 7586391691039640845}
+  - component: {fileID: 4696084973685718935}
   m_Layer: 0
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -452,8 +453,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3021adba0bc55478b1ee273c65a9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  player: {fileID: 0}
   Gundamage: 1
   ammo: 10
+  bullet: {fileID: 8366367124508319713, guid: 26b489231ec356447b52b825fbda2438, type: 3}
+  view: {fileID: 0}
+--- !u!114 &4696084973685718935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587621154167852752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7587757009031433160
 GameObject:
   m_ObjectHideFlags: 0
