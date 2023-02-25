@@ -325,12 +325,18 @@
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/Unity.VisualScripting.Flow.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aPDevDbg.dag/UnityEngine.UI.ref.dll"
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 "Assets/ConnectToServer.cs"
 "Assets/CreateAndJoinRooms.cs"
 "Assets/newLineDrawerTest.cs"
 =======
 >>>>>>> Stashed changes
+=======
+"Assets/loadRoomList.cs"
+"Assets/LobbyRoom.cs"
+"Assets/LobbyUIElment.cs"
+>>>>>>> main
 "Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs"
 "Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs"
 "Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs"
@@ -350,15 +356,21 @@
 "Assets/Scripts/CameraController.cs"
 <<<<<<< Updated upstream
 "Assets/Scripts/CharacterAttributes.cs"
+<<<<<<< HEAD
 =======
 "Assets/Scripts/ConnectToServer.cs"
 "Assets/Scripts/CreateAndJoinRooms.cs"
 "Assets/Scripts/Dash.cs"
 >>>>>>> Stashed changes
+=======
+"Assets/Scripts/ConnectToServer.cs"
+"Assets/Scripts/CreateAndJoinRooms.cs"
+>>>>>>> main
 "Assets/Scripts/firing.cs"
 "Assets/Scripts/GloblalInputs.cs"
 "Assets/Scripts/grabbable.cs"
 "Assets/Scripts/GrapplingGun.cs"
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 "Assets/Scripts/HitMarker.cs"
@@ -371,11 +383,16 @@
 "Assets/Scripts/Obsticle.cs"
 "Assets/Scripts/Player.cs"
 >>>>>>> Stashed changes
+=======
+"Assets/Scripts/LobbyUI.cs"
+"Assets/Scripts/newLineDrawerTest.cs"
+>>>>>>> main
 "Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/rising.cs"
 "Assets/Scripts/RoomPlayer.cs"
 "Assets/Scripts/RoomUI.cs"
 "Assets/Scripts/RotateGun.cs"
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 "Assets/SpawnPlayers.cs"
 =======
@@ -386,6 +403,9 @@
 "Assets/Scripts/TeleportP.cs"
 "Assets/Scripts/wallrunning.cs"
 >>>>>>> Stashed changes
+=======
+"Assets/Scripts/SpawnPlayers.cs"
+>>>>>>> main
 -langversion:9.0
 
 /deterministic

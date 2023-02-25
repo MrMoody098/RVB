@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":false,"pivot":{"x":0.35983312129974368,"y":3.914456844329834,"z":27.325153350830079},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":38.62525939941406,"orthographic":true}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"m_AlwaysRefresh":false,"showFog":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true,"showVisualEffectGraphs":true,"m_FxEnabled":true},"in2DMode":false,"pivot":{"x":3.4056882858276369,"y":-57.929508209228519,"z":-117.02362060546875},"rotation":{"x":0.005598240997642279,"y":-0.9254074692726135,"z":0.37941235303878786,"w":0.010939806699752808},"size":96.90069580078125,"orthographic":false}
+>>>>>>> 6Feb(-project-split-daniels)

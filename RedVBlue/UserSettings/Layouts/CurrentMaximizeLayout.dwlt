@@ -14,15 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   - {fileID: 11}
 =======
   - {fileID: 13}
 >>>>>>> Stashed changes
+=======
+  - {fileID: 12}
+>>>>>>> main
   m_Position:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     width: 1366
@@ -32,11 +37,14 @@ MonoBehaviour:
   vertical: 0
   controlID: 4839
 =======
+=======
+>>>>>>> main
     width: 1536
     height: 722.8
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 66
 >>>>>>> Stashed changes
 =======
@@ -47,6 +55,13 @@ MonoBehaviour:
   vertical: 0
   controlID: 60
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+  controlID: 868
+=======
+  controlID: 90
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -63,19 +78,25 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Game
-    m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     x: 258
-    y: 73
-    width: 783
-    height: 355
 =======
-    x: 341.6
+<<<<<<< HEAD
+    x: 1466
+>>>>>>> main
+    y: 73
+    width: 725
+    height: 417
+=======
+    x: 332.80002
     y: 73.6
+<<<<<<< HEAD
     width: 853.2001
     height: 479
 >>>>>>> Stashed changes
@@ -85,6 +106,11 @@ MonoBehaviour:
     width: 674
     height: 379
 >>>>>>> Stashed changes
+=======
+    width: 695.60004
+    height: 434.2
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -92,9 +118,10 @@ MonoBehaviour:
   m_SerializedViewNames: []
   m_SerializedViewValues: []
   m_PlayModeViewName: GameView
-  m_ShowGizmos: 1
+  m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_TargetSize: {x: 783, y: 334}
@@ -104,20 +131,24 @@ MonoBehaviour:
 =======
   m_TargetSize: {x: 674, y: 358}
 >>>>>>> Stashed changes
+=======
+  m_TargetSize: {x: 1920, y: 1080}
+>>>>>>> main
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 1
+  m_EnterPlayModeBehavior: 2
   m_UseMipMap: 0
   m_VSyncEnabled: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     m_HBaseRangeMin: -391.5
@@ -136,6 +167,19 @@ MonoBehaviour:
     m_VBaseRangeMin: -179
     m_VBaseRangeMax: 179
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    m_HBaseRangeMin: -960
+    m_HBaseRangeMax: 960
+    m_VBaseRangeMin: -540
+    m_VBaseRangeMax: 540
+=======
+    m_HBaseRangeMin: -768
+    m_HBaseRangeMax: 768
+    m_VBaseRangeMin: -432
+    m_VBaseRangeMax: 432
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -144,7 +188,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -153,6 +197,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
       width: 783
@@ -171,27 +216,49 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 337, y: 179}
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+      width: 725
+      height: 396
+    m_Scale: {x: 0.36666667, y: 0.36666667}
+    m_Translation: {x: 362.5, y: 198}
+=======
+      width: 695.60004
+      height: 413.2
+    m_Scale: {x: 0.4664505, y: 0.46645054}
+    m_Translation: {x: 347.45795, y: 206.6}
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
       x: -391.5
       y: -167
       width: 783
       height: 334
-    m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 783, y: 355}
 =======
-      x: -426.60004
-      y: -229
-      width: 853.2001
-      height: 458
+<<<<<<< HEAD
+      x: -988.63635
+      y: -540
+      width: 1977.2727
+      height: 1080
+>>>>>>> main
     m_MinimalGUI: 1
+  m_defaultScale: 0.36666667
+  m_LastWindowPixelSize: {x: 725, y: 417}
+=======
+      x: -744.89777
+      y: -442.91943
+      width: 1491.2622
+      height: 885.83887
+    m_MinimalGUI: 1
+<<<<<<< HEAD
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1066.5001, y: 598.75}
 >>>>>>> Stashed changes
@@ -204,6 +271,11 @@ MonoBehaviour:
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 674, y: 379}
 >>>>>>> Stashed changes
+=======
+  m_defaultScale: 0.45286462
+  m_LastWindowPixelSize: {x: 869.50006, y: 542.75}
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -223,34 +295,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 8}
+  - {fileID: 9}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     width: 1043
 =======
     width: 955
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    width: 827
+>>>>>>> main
     height: 635
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   controlID: 4840
 =======
-    width: 1196.8
+  controlID: 820
+>>>>>>> main
+=======
+    width: 1030.4
     height: 722.8
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 67
 >>>>>>> Stashed changes
 =======
   controlID: 61
 >>>>>>> Stashed changes
+=======
+  controlID: 91
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,20 +356,27 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     width: 1043
     height: 376
-  m_MinSize: {x: 200, y: 100}
-  m_MaxSize: {x: 16192, y: 8096}
-  vertical: 0
-  controlID: 4817
 =======
-    width: 1196.8
-    height: 500
+<<<<<<< HEAD
+    width: 827
+    height: 438
+>>>>>>> main
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+  controlID: 797
+=======
+    width: 1030.4
+    height: 455.2
+  m_MinSize: {x: 200, y: 100}
+  m_MaxSize: {x: 16192, y: 8096}
+  vertical: 0
+<<<<<<< HEAD
   controlID: 44
 >>>>>>> Stashed changes
 =======
@@ -294,6 +387,10 @@ MonoBehaviour:
   vertical: 0
   controlID: 40
 >>>>>>> Stashed changes
+=======
+  controlID: 92
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -311,22 +408,33 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     width: 258
     height: 376
 =======
-    width: 341.6
-    height: 500
->>>>>>> Stashed changes
+<<<<<<< HEAD
+    width: 100
+    height: 438
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> main
+=======
+    width: 332.8
+    height: 455.2
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+<<<<<<< HEAD
 =======
     width: 279
     height: 400
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
 >>>>>>> Stashed changes
+=======
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -348,18 +456,25 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Hierarchy
-    m_Image: {fileID: 7966133145522015247, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -3734745235275155857, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     x: 0
 <<<<<<< Updated upstream
-    y: 73
-    width: 257
-    height: 355
 =======
+<<<<<<< HEAD
+    x: 1366
+>>>>>>> main
+    y: 73
+    width: 99
+    height: 417
+=======
+    x: 0
     y: 73.6
+<<<<<<< HEAD
     width: 340.6
     height: 479
 >>>>>>> Stashed changes
@@ -369,6 +484,11 @@ MonoBehaviour:
     width: 278
     height: 379
 >>>>>>> Stashed changes
+=======
+    width: 331.8
+    height: 434.2
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -376,8 +496,10 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
       m_ExpandedIDs: 86d4ffffa6e6ffffa8e6ffff0afbffff545b0000865b0000925b0000e65b0000265f0000585f0000645f0000aa5f0000bc620000c0620000c4620000d06200001a630000
@@ -387,6 +509,14 @@ MonoBehaviour:
 =======
       m_ExpandedIDs: 00fbffff
 >>>>>>> Stashed changes
+=======
+      m_ExpandedIDs: f2e4ffff8cecffff90f4ffffd2f4ffff5ef7ffffbaf7ffffd4f7ffff00fbffffde6c00001a6d00004c6d0000f66d0000
+=======
+      m_SelectedIDs: f8e2ffff
+      m_LastClickedID: -7432
+      m_ExpandedIDs: 50ecffffbef2ffff88f4fffffefaffff
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -425,15 +555,21 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     x: 258
-    y: 0
-    width: 785
-    height: 376
 =======
-    x: 341.6
+<<<<<<< HEAD
+    x: 100
+>>>>>>> main
     y: 0
+    width: 727
+    height: 438
+=======
+    x: 332.8
+    y: 0
+<<<<<<< HEAD
     width: 855.2001
     height: 500
 >>>>>>> Stashed changes
@@ -443,19 +579,29 @@ MonoBehaviour:
     width: 676
     height: 400
 >>>>>>> Stashed changes
+=======
+    width: 697.60004
+    height: 455.2
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
 <<<<<<< Updated upstream
   - {fileID: 2}
+  - {fileID: 8}
   m_Selected: 0
+<<<<<<< HEAD
 =======
   - {fileID: 8}
   - {fileID: 2}
   m_Selected: 1
 >>>>>>> Stashed changes
   m_LastSelected: 0
+=======
+  m_LastSelected: 1
+>>>>>>> main
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -464,6 +610,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   m_EditorHideFlags: 1
@@ -482,6 +629,31 @@ MonoBehaviour:
     y: 73
     width: 674
     height: 379
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Scene
+    m_Image: {fileID: 8634526014445323508, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+<<<<<<< HEAD
+    x: 1591
+    y: 73
+    width: 600
+    height: 416
+=======
+    x: 332.80002
+    y: 73.6
+    width: 695.60004
+    height: 434.2
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -491,8 +663,13 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: -101, y: -26}
+=======
+      snapOffset: {x: -101, y: -26}
+      snapOffsetDelta: {x: 0, y: 0}
+>>>>>>> main
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -513,7 +690,11 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
       snapOffset: {x: 0, y: 25}
+=======
+      snapOffset: {x: 0, y: 24.8}
+>>>>>>> main
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -535,9 +716,19 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
       snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
+=======
+<<<<<<< HEAD
+      snapOffset: {x: 0, y: -174}
+=======
+      snapOffset: {x: 0, y: 24.8}
+>>>>>>> 6Feb(-project-split-daniels)
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 2
+>>>>>>> main
       id: unity-transform-toolbar
       index: 0
       layout: 2
@@ -557,9 +748,15 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
+<<<<<<< HEAD
       snapOffset: {x: 67.5, y: 86}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
+=======
+      snapOffset: {x: 67.5, y: -123}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 2
+>>>>>>> main
       id: Orientation
       index: 0
       layout: 4
@@ -579,7 +776,11 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
+<<<<<<< HEAD
       snapOffset: {x: 0, y: 0}
+=======
+      snapOffset: {x: 0, y: 25}
+>>>>>>> main
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
@@ -706,8 +907,17 @@ MonoBehaviour:
       id: Scene View/Tilemap Palette Helper
       index: 12
       layout: 4
+<<<<<<< HEAD
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
   m_Gizmos: 0
+=======
+  m_WindowGUID: 20a47955981a2c24d9f426ddc2dec5ad
+<<<<<<< HEAD
+  m_Gizmos: 1
+=======
+  m_Gizmos: 0
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -716,9 +926,21 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: -22.64946, y: 25.09122, z: 2.9270973}
     speed: 2
     m_Value: {x: -22.64946, y: 25.09122, z: 2.9270973}
+=======
+<<<<<<< HEAD
+    m_Target: {x: 949.98236, y: 573.2484, z: 0}
+    speed: 2
+    m_Value: {x: 949.98236, y: 573.2484, z: 0}
+=======
+    m_Target: {x: 24.810648, y: 57.910236, z: -5.251305}
+    speed: 2
+    m_Value: {x: 24.810648, y: 57.910236, z: -5.251305}
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -765,6 +987,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.060272813, y: -0.0027107885, z: 0.00016724164, w: -0.9981957}
     speed: 2
     m_Value: {x: -0.060271762, y: -0.0027107412, z: 0.00016723873, w: -0.99817836}
@@ -772,14 +995,44 @@ MonoBehaviour:
     m_Target: 16.480322
     speed: 2
     m_Value: 16.480322
+=======
+<<<<<<< HEAD
+    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    speed: 2
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
+  m_Size:
+    m_Target: 429.51166
+    speed: 2
+    m_Value: 429.51166
+=======
+    m_Target: {x: -0.19234373, y: -0.72744703, z: 0.22594063, w: -0.61895907}
+    speed: 2
+    m_Value: {x: -0.19231154, y: -0.7273253, z: 0.22590283, w: -0.6188555}
+  m_Size:
+    m_Target: 25.410551
+    speed: 2
+    m_Value: 25.410551
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
+<<<<<<< HEAD
     m_Speed: 2
     m_SpeedNormalized: 1
     m_SpeedMin: 0.001
+=======
+<<<<<<< HEAD
+    m_Speed: 2
+    m_SpeedNormalized: 1
+=======
+    m_Speed: 1.4627005
+    m_SpeedNormalized: 0.73000026
+>>>>>>> 6Feb(-project-split-daniels)
+    m_SpeedMin: 0.01
+>>>>>>> main
     m_SpeedMax: 2
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
@@ -789,7 +1042,11 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
+<<<<<<< HEAD
   m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
+=======
+  m_LastSceneViewRotation: {x: 0.11516989, y: 0.87255955, z: -0.24798298, w: 0.40517563}
+>>>>>>> main
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -804,7 +1061,10 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ProjectBrowser
@@ -813,6 +1073,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     y: 376
@@ -834,24 +1095,33 @@ MonoBehaviour:
   m_Selected: 1
   m_LastSelected: 0
 =======
-    y: 500
-    width: 1196.8
-    height: 222.79999
+<<<<<<< HEAD
+    y: 438
+    width: 827
+    height: 197
+>>>>>>> main
+=======
+    y: 455.2
+    width: 1030.4
+    height: 267.59998
+>>>>>>> 6Feb(-project-split-daniels)
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 9}
+  m_ActualView: {fileID: 10}
   m_Panes:
-  - {fileID: 9}
   - {fileID: 10}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   - {fileID: 11}
   - {fileID: 12}
 >>>>>>> Stashed changes
+=======
+  - {fileID: 11}
+>>>>>>> main
   m_Selected: 0
   m_LastSelected: 1
->>>>>>> Stashed changes
---- !u!114 &9
+--- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -867,10 +1137,11 @@ MonoBehaviour:
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
     m_Text: Project
-    m_Image: {fileID: -5467254957812901981, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -5179483145760003458, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     x: 0
 <<<<<<< Updated upstream
@@ -888,12 +1159,25 @@ MonoBehaviour:
     width: 954
     height: 214
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    x: 1366
+    y: 511
+    width: 826
+    height: 176
+=======
+    x: 0
+    y: 528.8
+    width: 1029.4
+    height: 246.59998
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: load
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -905,26 +1189,43 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     - Assets/Scripts
 =======
     - Assets/Prefabs
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    - Assets/Scripts
+=======
+    - Assets/Resources
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: load
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   - Assets/Scripts
 =======
   - Assets/Prefabs
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+  - Assets/Scripts
+=======
+  - Assets/Resources
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\lorcan\Documents\GitHub\RVB\RedVBlue
+  m_LastProjectPath: C:\Users\ticta\OneDrive\Documents\GitHub\RVB\RedVBlue
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     scrollPos: {x: 0, y: 0}
@@ -943,6 +1244,19 @@ MonoBehaviour:
     m_LastClickedID: 25240
     m_ExpandedIDs: 000000003c6200003e6200004062000042620000
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 58620000
+    m_LastClickedID: 25176
+    m_ExpandedIDs: 00000000f6610000f8610000fa610000fc610000fe61000000ca9a3b
+=======
+    scrollPos: {x: 0, y: 17.400024}
+    m_SelectedIDs: a2640000
+    m_LastClickedID: 25762
+    m_ExpandedIDs: 000000008a6400008c6400008e64000090640000926400009464000000ca9a3b
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -958,7 +1272,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 8}
+      m_ClientGUIView: {fileID: 9}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -970,6 +1284,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     m_ExpandedIDs: 00000000565d0000585d000000ca9a3bffffff7f
@@ -979,6 +1294,13 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000003c6200003e6200004062000042620000
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000f6610000f8610000fa610000fc610000fe61000000ca9a3b
+=======
+    m_ExpandedIDs: 000000008a6400008c6400008e640000906400009264000094640000
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1003,6 +1325,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     m_SelectedInstanceIDs: d6620000
@@ -1019,6 +1342,19 @@ MonoBehaviour:
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    m_SelectedInstanceIDs: 60620000
+    m_LastClickedInstanceID: 25184
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000000000001c620000b05e0000
+=======
+    m_SelectedInstanceIDs: f8e2ffff
+    m_LastClickedInstanceID: -7432
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c623000000000000
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1034,7 +1370,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 8}
+      m_ClientGUIView: {fileID: 9}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1046,15 +1382,15 @@ MonoBehaviour:
     m_GridSize: 64
 <<<<<<< Updated upstream
   m_SkipHiddenPackages: 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   m_SkipHiddenPackages: 1
 >>>>>>> Stashed changes
-  m_DirectoriesAreaWidth: 207
 =======
-  m_DirectoriesAreaWidth: 149
->>>>>>> Stashed changes
---- !u!114 &10
+>>>>>>> main
+  m_DirectoriesAreaWidth: 207
+--- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1070,10 +1406,11 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Console
-    m_Image: {fileID: -4327648978806127646, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -4950941429401207979, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     x: 0
@@ -1092,11 +1429,24 @@ MonoBehaviour:
     width: 954
     height: 214
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    x: 1366
+    y: 511
+    width: 826
+    height: 176
+=======
+    x: 0
+    y: 528.8
+    width: 1029.4
+    height: 246.59998
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &11
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1142,25 +1492,33 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     x: 1043
-    y: 0
-    width: 323
-    height: 635
 =======
-    x: 1196.8
+<<<<<<< HEAD
+    x: 827
+>>>>>>> main
     y: 0
-    width: 339.19995
+    width: 539
+    height: 635
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+=======
+    x: 1030.4
+    y: 0
+    width: 505.59998
     height: 722.8
->>>>>>> Stashed changes
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+>>>>>>> 6Feb(-project-split-daniels)
+  m_ActualView: {fileID: 13}
   m_Panes:
-  - {fileID: 12}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
+<<<<<<< HEAD
 --- !u!114 &12
 =======
     x: 955
@@ -1176,6 +1534,9 @@ MonoBehaviour:
   m_LastSelected: 0
 --- !u!114 &14
 >>>>>>> Stashed changes
+=======
+--- !u!114 &13
+>>>>>>> main
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1191,21 +1552,27 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Inspector
-    m_Image: {fileID: -2667387946076563598, guid: 0000000000000000d000000000000000, type: 0}
+    m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     x: 1043
+=======
+<<<<<<< HEAD
+    x: 2193
+>>>>>>> main
     y: 73
-    width: 322
+    width: 538
     height: 614
 =======
-    x: 1196.8
+    x: 1030.4
     y: 73.6
-    width: 338.19995
+    width: 504.59998
     height: 701.8
+<<<<<<< HEAD
 >>>>>>> Stashed changes
 =======
     x: 2321
@@ -1213,6 +1580,9 @@ MonoBehaviour:
     width: 410
     height: 614
 >>>>>>> Stashed changes
+=======
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1220,14 +1590,22 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   m_LastInspectedObjectInstanceID: 25302
 =======
   m_LastInspectedObjectInstanceID: -1
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+  m_LastInspectedObjectInstanceID: 25184
+=======
+  m_LastInspectedObjectInstanceID: -1
+>>>>>>> 6Feb(-project-split-daniels)
+>>>>>>> main
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
