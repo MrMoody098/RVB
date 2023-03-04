@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class GloblalInputs : MonoBehaviour
 {
-    RoomUI ui;
-    private void Awake() {ui = GetComponent<RoomUI>(); }
+    Settings ui;
+    private void Awake() {ui = GetComponent<Settings>(); }
     // Update is called once per frame
     void Update()
     {
-        if (RoomUI.player == null) { return; }
-       if(RoomUI.player.IsMine) 
+        if (Settings.ClientView == null) { return; }
+       if(Settings.ClientView.IsMine) 
        {
             if(Input.GetButtonDown("Cancel"))
             {
@@ -23,11 +23,11 @@ public class GloblalInputs : MonoBehaviour
 
     public static void TogglePauseMenuVisible() 
     {
-        RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove 
-            = !RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove;
-        Cursor.visible = !RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove;
-        RoomUI.menu.SetActive(Cursor.visible);
-        RoomUI.player.GetComponent<PlayerMovement>().isAbleToMove = !Cursor.visible;
+       Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove 
+            = !Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove;
+        Cursor.visible = !Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove;
+        Settings.menu.SetActive(Cursor.visible);
+        Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove = !Cursor.visible;
         if (Cursor.visible) { Cursor.lockState = CursorLockMode.None; }
         else { Cursor.lockState = CursorLockMode.Locked; }
     }

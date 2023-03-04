@@ -16,7 +16,7 @@ public class Audio {
     [Range(0, 100)]
     public int volume = 50;
 }
-public class RoomUI : MonoBehaviour
+public class Settings : MonoBehaviour
 {
     private RoomLobby lobby;
     [Header("Controls")]
@@ -25,18 +25,14 @@ public class RoomUI : MonoBehaviour
     public Video display;
     [Header("Audio settings")]
     public Audio audio;
-
     public static GameObject menu;
-
     public GameObject deathScreen;
     public Animation deathScreenAnimation;
-    public static PhotonView player;
-    public static string userName = "";
-    public string username = "player";
+    public static PhotonView ClientView;
+
 
     private void Awake()
     {
-        userName = username;
         menu = transform.Find("PauseMenu").gameObject;
 
         Cursor.visible = false;
@@ -49,7 +45,7 @@ public class RoomUI : MonoBehaviour
 
     public void leaveRoom()
     {
-        if (!player.IsMine) { return; }
+        if (!ClientView.IsMine) { return; }
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("loading");
     }

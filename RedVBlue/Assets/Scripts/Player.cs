@@ -9,7 +9,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject uiPrefab;
     
     [HideInInspector]
-    public RoomUI ui;
+    public Settings ui;
 
     public int points = 0;
     public float health = 3;
@@ -27,30 +27,39 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector]
     public RoomPlayer lobbyPlayer;
     public int ACNUM;
-    void Awake()
+    [HideInInspector]
+    public PlayerMovement movement;
+    void Awake() //runs after lobby player is created
     {
         camera = GetComponentInChildren<Camera>();
-
         health = maxHealth;
-
+        movement = GetComponent<PlayerMovement>();
         view = GetComponent<PhotonView>();
-        //print("this is player" + view.Owner.ActorNumber);
+       
         if (view != null)
         {
-            ACNUM = view.Owner.ActorNumber;
             if (view.IsMine) 
-            { RoomUI.player = view; InitializePlayerUI(); }
+            {  
+                ACNUM = view.Owner.ActorNumber;
+                Settings.ClientView = view;
+                InitializePlayerUI();
+            }
             else { camera.targetDisplay = 2; }
             grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
             grapplingGun.GetComponent<firing>().player = this;
         }
     }
-    public void AddPoints(int amount)
+    public void TransmitAndDisplayUserName()
     {
-        points += amount;
-        lobbyPlayer.score.SetText(points+"");
-        
+        view.RPC("SetNickname", RpcTarget.All, FindObjectOfType<userData>().Username);
+        lobbyPlayer.name.SetText(lobbyPlayer.info.NickName);
+        view.Owner.NickName = lobbyPlayer.name.text;
+        gameObject.name = lobbyPlayer.name.text; ;
     }
+    [PunRPC] 
+    void SetNickname(string name) { lobbyPlayer.info.NickName = name; }
+    public void AddPoints(int amount)
+    { points += amount; }
     public void UpHealth(float amount) 
     { health += amount;
         print(health);}
@@ -70,7 +79,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public void Dead() 
     { 
         print(gameObject.name + " is dead");
-        points--;
+        //points--;
         lobbyPlayer.score.SetText(points+"");
         transform.position = GameObject.Find("Spawn").transform.position;
         health = maxHealth;
@@ -83,9 +92,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         try
         {
-            ui = Instantiate(uiPrefab).GetComponentInChildren<RoomUI>();
-            RoomUI.userName = username;
-           
+            ui = Instantiate(uiPrefab).GetComponentInChildren<Settings>();
+          
             firing f = GetComponentInChildren<firing>();
             f.player = this;
             f.hitMarker = ui.display.hitmarker;
@@ -97,9 +105,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other
     {
         if (stream.IsWriting)
-        {stream.SendNext(health);}
+        {stream.SendNext(health); stream.SendNext(points); }
         if (stream.IsReading)
-        {health = (float)stream.ReceiveNext(); }
-        print(health);
+        {health = (float)stream.ReceiveNext(); points = (int)stream.ReceiveNext(); }
+        print("player" + ACNUM + "{ health: " + health + ", points: " + points);
+        lobbyPlayer.score.SetText(health + "");
     }
 }

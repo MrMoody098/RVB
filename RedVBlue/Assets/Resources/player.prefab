@@ -155,7 +155,6 @@ MonoBehaviour:
   dashCounter: 428
   distGround: 1.1
   standingSurface: {fileID: 0}
-  ui: {fileID: 0}
 --- !u!114 &1160854307763539614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +351,7 @@ MonoBehaviour:
   grapplingGun: {fileID: 0}
   lobbyPlayer: {fileID: 0}
   ACNUM: 0
+  movement: {fileID: 0}
 --- !u!1 &6467799708621132209
 GameObject:
   m_ObjectHideFlags: 0

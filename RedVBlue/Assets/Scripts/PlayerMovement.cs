@@ -56,10 +56,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public float distGround = 0f;
     private CapsuleCollider collider;
     public GameObject standingSurface;
-    [HideInInspector]
-    public RoomUI ui;
     void Awake()
     {
+        
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
