@@ -28,11 +28,12 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         RoomPlayer roomPlayer = Instantiate(roomPlayerPrefab, contentArea).GetComponent<RoomPlayer>();
         roomPlayer.SetPlayerInfo(player);
         players.Add(roomPlayer);
+        print(player.ActorNumber);
         foreach (Player p in FindObjectsOfType<Player>())
         {
             print("ACNUM"+p.ACNUM);
             if(p.ACNUM > 0 && player.ActorNumber == p.ACNUM)
-            {roomPlayer.LinkPlayerInformation(p);}
+            {roomPlayer.LinkPlayerInformation(p);  }
         }
     }
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)

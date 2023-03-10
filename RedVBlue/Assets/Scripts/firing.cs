@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class firing : MonoBehaviour
 {
     public GameObject hitMarker;
-
+    public bool canShoot = true;
     private LineRenderer lr;
 
     public Camera camera;
@@ -25,12 +25,14 @@ public class firing : MonoBehaviour
         view = GetComponentInParent<PhotonView>(); 
         camera = GetComponentInParent<Camera>();
         player = GetComponentInParent<Player>();
+
+        
     }
 
     void Update()
     {
         if (!view.IsMine) { return; }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& canShoot)
         { view.RPC("Shoot",RpcTarget.All);}
     }
     [PunRPC]

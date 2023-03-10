@@ -451,7 +451,7 @@ namespace Photon.Pun
         }
 
         public double SentServerTime
-        { 
+        {
             get
             {
                 uint u = (uint)this.timeInt;

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using System;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LobbyUI : MonoBehaviourPunCallbacks
 {
@@ -27,7 +28,8 @@ public class LobbyUI : MonoBehaviourPunCallbacks
     public LobbyRoom selectedRoom;
 
     private void Start() 
-    { 
+    {
+        if (!PhotonNetwork.IsConnected) { SceneManager.LoadScene("loading"); }
         goBack(); 
         EventSystem.current.SetSelectedGameObject(null);
     }

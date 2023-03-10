@@ -7,6 +7,8 @@ public class userData : MonoBehaviour
 {
     public String Username = "guest77777";
     private void Awake()
-    { DontDestroyOnLoad(this);}
-
+    { 
+        if (GameObject.Find("UserData") != gameObject) { Destroy(this); }
+        else { DontDestroyOnLoad(this); }
+    }
 }

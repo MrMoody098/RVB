@@ -64,7 +64,6 @@ namespace Photon.Pun.Demo.Asteroids
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
-            print("roomListUpdated");
             ClearRoomListView();
 
             UpdateCachedRoomList(roomList);
@@ -364,7 +363,7 @@ namespace Photon.Pun.Demo.Asteroids
                 GameObject entry = Instantiate(RoomListEntryPrefab);
                 entry.transform.SetParent(RoomListContent.transform);
                 entry.transform.localScale = Vector3.one;
-               // entry.GetComponent<LobbyRoom>().set(info);
+                entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte)info.PlayerCount, info.MaxPlayers);
 
                 roomListEntries.Add(info.Name, entry);
             }

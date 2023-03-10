@@ -20,8 +20,7 @@ public class RoomPlayer : MonoBehaviourPunCallbacks
     {
         print("linking lobby player" + player.ACNUM + " with world player" + info.ActorNumber);
         this.player = player;
-        this.player.lobbyPlayer = GetComponent<RoomPlayer>(); //// not setting lobby player for network instantiated object? Execution order different for local?
-        print(player.lobbyPlayer);
+        this.player.lobbyPlayer = GetComponent<RoomPlayer>(); 
         this.player.TransmitAndDisplayUserName();
     }
     public void UpdatePlayerUIPoints(int points)

@@ -11,13 +11,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector]
     public Settings ui;
 
-    public int points = 0;
+    public float points = 0;
     public float health = 3;
     public float maxHealth = 3;
 
     [HideInInspector]
     public bool alive = true;
-
     [HideInInspector]
     public PhotonView view;
     [HideInInspector]
@@ -37,10 +36,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         view = GetComponent<PhotonView>();
        
         if (view != null)
-        {
+        {   
+            ACNUM = view.OwnerActorNr;
+            print("player view actor number set to " + ACNUM);
             if (view.IsMine) 
-            {  
-                ACNUM = view.Owner.ActorNumber;
+            {
+                
                 Settings.ClientView = view;
                 InitializePlayerUI();
             }
@@ -51,7 +52,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void TransmitAndDisplayUserName()
     {
-        view.RPC("SetNickname", RpcTarget.All, FindObjectOfType<userData>().Username);
+        if (view.IsMine) //set my view data on eveyone elses version of me
+        { view.RPC("SetNickname", RpcTarget.All, FindObjectOfType<userData>().Username); }
+        
+        //set text of this object in the list entery
         lobbyPlayer.name.SetText(lobbyPlayer.info.NickName);
         view.Owner.NickName = lobbyPlayer.name.text;
         gameObject.name = lobbyPlayer.name.text; ;
@@ -105,10 +109,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //other
     {
         if (stream.IsWriting)
-        {stream.SendNext(health); stream.SendNext(points); }
+        {stream.SendNext(health);}
         if (stream.IsReading)
-        {health = (float)stream.ReceiveNext(); points = (int)stream.ReceiveNext(); }
-        print("player" + ACNUM + "{ health: " + health + ", points: " + points);
-        lobbyPlayer.score.SetText(health + "");
+        {health = (float)stream.ReceiveNext(); }
+
+        try{ print("player" + ACNUM + "{ health: " + health + ", points: " + points);
+                lobbyPlayer.score.SetText(health + ""); }
+        catch{ Debug.LogWarning("waiting for player data to link before pulling stats"); }
+
     }
 }

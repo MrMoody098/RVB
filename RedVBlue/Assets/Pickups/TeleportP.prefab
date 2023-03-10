@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3079000532835755897}
   - component: {fileID: 3079000532835755896}
   - component: {fileID: 2699054268685359875}
-  - component: {fileID: 8517809258603832661}
   m_Layer: 0
   m_Name: TeleportP
   m_TagString: Untagged
@@ -161,15 +160,3 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &8517809258603832661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3079000532835755898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7b8feaeb3869fa41a0646379ed7bc48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
