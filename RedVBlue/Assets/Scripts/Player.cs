@@ -115,7 +115,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsReading)
         {health = (float)stream.ReceiveNext(); }
 
-        try{ print("player" + ACNUM + "{ health: " + health + ", points: " + points);
+        try{ //print("player" + ACNUM + "{ health: " + health + ", points: " + points);
                 lobbyPlayer.score.SetText(health + ""); }
         catch{ Debug.LogWarning("waiting for player data to link before pulling stats"); }
 

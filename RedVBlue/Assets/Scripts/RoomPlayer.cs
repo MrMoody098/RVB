@@ -10,7 +10,7 @@ public class RoomPlayer : MonoBehaviourPunCallbacks
     [HideInInspector]
     public Player player;
     public Photon.Realtime.Player info;
-
+    public int index;
     public TextMeshProUGUI name, ping, score;
 
     public void SetPlayerInfo(Photon.Realtime.Player player)

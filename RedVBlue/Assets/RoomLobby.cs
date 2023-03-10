@@ -14,7 +14,8 @@ public class RoomLobby : MonoBehaviourPunCallbacks
    
     public Transform contentArea;
     public Vector3 spawnPoint;
-    public static int shooterIndex;
+   // public static int randomIndex;
+    public static int currentPlayerActorNumber;
     private void Start()
     { 
         foreach (KeyValuePair<int, Photon.Realtime.Player> p in PhotonNetwork.CurrentRoom.Players )
@@ -32,6 +33,7 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         RoomPlayer roomPlayer = Instantiate(roomPlayerPrefab, contentArea).GetComponent<RoomPlayer>();
         roomPlayer.SetPlayerInfo(player);
         players.Add(roomPlayer);
+        roomPlayer.index = players.Count - 1;
         foreach (Player p in FindObjectsOfType<Player>())
         {
             if(p.ACNUM > 0 && player.ActorNumber == p.ACNUM)
@@ -39,26 +41,27 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         }
 
         if (PhotonNetwork.IsMasterClient)//if im the host
-        { CalibrateTwoPlayerShooting(); }
-        
-
+        { SetActiveShooter(new System.Random().Next(2)); }
     }
-    private void CalibrateTwoPlayerShooting() 
+
+    public void DisablePlayerShooting()
+    {
+        print("removing players ability to shoot");
+        players.ForEach(e =>
+        { e.player.grapplingGun.GetComponent<firing>().ableToShoot = false; });
+    }
+    public void SetActiveShooter(int index) 
     {
         //can change this whatever way but im just making it work for two player atm
-        if (players.Count != 2)
-        {
-            print("removing players ability to shoot");
-            players.ForEach(e =>
-                { e.player.grapplingGun.GetComponent<firing>().ableToShoot = false; });
-        }
+        if (players.Count != 2) { DisablePlayerShooting(); }
         else 
         {
-            shooterIndex = new System.Random().Next(2);
-            players[shooterIndex].player.grapplingGun.GetComponent<firing>().ableToShoot = true; 
-            print("making player able to shoot"); 
+            DisablePlayerShooting();
+            players[index].player.grapplingGun.GetComponent<firing>().ableToShoot = true; 
+            print("making" + players[index].info.NickName + " able to shoot"); 
         }
     }
+
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         int index = players.FindIndex(i => i.info == otherPlayer);
@@ -67,7 +70,7 @@ public class RoomLobby : MonoBehaviourPunCallbacks
             Destroy(players[index].gameObject);
             players.RemoveAt(index);
         }
-        CalibrateTwoPlayerShooting();
+        SetActiveShooter(0);
 
     }
 }

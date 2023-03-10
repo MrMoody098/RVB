@@ -28,6 +28,7 @@ public class GloblalInputs : MonoBehaviour
         Cursor.visible = !Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove;
         Settings.menu.SetActive(Cursor.visible);
         Settings.ClientView.GetComponent<PlayerMovement>().isAbleToMove = !Cursor.visible;
+        Settings.ClientView.GetComponentInChildren<firing>().enabled = !Cursor.visible;
         if (Cursor.visible) { Cursor.lockState = CursorLockMode.None; }
         else { Cursor.lockState = CursorLockMode.Locked; }
     }

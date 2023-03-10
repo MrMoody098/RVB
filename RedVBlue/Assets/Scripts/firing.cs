@@ -95,14 +95,11 @@ public class firing : MonoBehaviour
 
                 Debug.DrawLine(camera.transform.position,hit.point, Color.red,1);
                 Debug.DrawLine(transform.Find("tip").position, hit.point, Color.green, 1);
-
-                //if (RoomLobby.shooterIndex == 0) { RoomLobby.shooterIndex = 1; }
-                //else { RoomLobby.shooterIndex = 0; }
-                //ableToShoot = false;
-                ////when writing lines of code like this a method needs to be created in the lobby singleton. but i didnt sleep lastnight cuz im unstable a
-                //FindObjectOfType<RoomLobby>().players[RoomLobby.shooterIndex].player.grapplingGun.GetComponent<firing>().ableToShoot = true;
             }
         }
+        if (player.lobbyPlayer.index == 1)
+        { FindObjectOfType<RoomLobby>().SetActiveShooter(0); }
+        else { FindObjectOfType<RoomLobby>().SetActiveShooter(1); }
     }
 
 
