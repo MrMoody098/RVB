@@ -45,7 +45,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 Settings.ClientView = view;
                 InitializePlayerUI();
             }
-            else { camera.targetDisplay = 2; }
+            else { camera.targetDisplay = 2; Destroy(camera.GetComponent<AudioListener>()); }
             grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
             grapplingGun.GetComponent<firing>().player = this;
         }
@@ -58,7 +58,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         //set text of this object in the list entery
         lobbyPlayer.name.SetText(lobbyPlayer.info.NickName);
         view.Owner.NickName = lobbyPlayer.name.text;
-        gameObject.name = lobbyPlayer.name.text; ;
+        gameObject.name = lobbyPlayer.name.text;
+
+
     }
     [PunRPC] 
     void SetNickname(string name) { lobbyPlayer.info.NickName = name; }

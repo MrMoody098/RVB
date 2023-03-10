@@ -42,6 +42,8 @@ MonoBehaviour:
   - sendShootDataAcrossNetwork
   - Shoot
   - SetNickname
+  - SetShooter
+  - TransmitNetworkShooter
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
