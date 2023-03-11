@@ -40,7 +40,7 @@ public class firing : MonoBehaviour
         get { return _ableToShoot; }
         set
         {
-            if (_ableToShoot != value)
+            if (_ableToShoot != value)//if something different
             {
                 _ableToShoot = value;
 
@@ -52,8 +52,7 @@ public class firing : MonoBehaviour
         }
     }
     void UpdateNetworkShooter(bool boolean) 
-    {
-        if (!ableToShoot) { return; }
+    { if (!ableToShoot) { return; }
         view.RPC("TransmitNetworkShooter", RpcTarget.All); }
 
     [PunRPC]
@@ -73,9 +72,9 @@ public class firing : MonoBehaviour
     }
 
     [PunRPC]
-    public void Shoot() //to whom ever improves this, put in coroutine and have it calculate bullet dip and
-             //yeird return new wait for seconds (calculated time)  enjoy
+    public void Shoot()
     {
+
         RaycastHit hit;
         Ray ray = new Ray(camera.transform.position, camera.transform.forward);
         GameObject Nb = Instantiate(bullet.gameObject, transform.Find("tip").position, Quaternion.identity);
@@ -100,6 +99,7 @@ public class firing : MonoBehaviour
         if (player.lobbyPlayer.index == 1)
         { FindObjectOfType<RoomLobby>().SetActiveShooter(0); }
         else { FindObjectOfType<RoomLobby>().SetActiveShooter(1); }
+        _ableToShoot = false;
     }
 
 
