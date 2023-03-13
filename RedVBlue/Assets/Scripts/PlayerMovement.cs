@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     //Assignables
     private Transform body;
     private Player player;
-
     
     [HideInInspector]
     public Rigidbody rb;
@@ -131,43 +130,39 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (canSuperJump == true) { rb.velocity += Vector3.up * jumpForce; }
                 else { rb.velocity += Vector3.up * jumpForce / 2; }
-              
             }
         }
         //if double jump power enabled and not grounded can jump once in the air
         if (!grounded && canDoubleJump)
         { 
-
             if (Input.GetButtonDown("Jump"))
-            { 
-                rb.velocity += Vector3.up * jumpForce / 2; canDoubleJump = false;
-            }
+            {  rb.velocity += Vector3.up * jumpForce / 2; canDoubleJump = false;}
         }
 
         
         //Extra gravity
         rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
-            //Find actual velocity relative to where player is looking
-            Vector2 mag = FindVelRelativeToLook();
-            float xMag = mag.x, yMag = mag.y;
+        //Find actual velocity relative to where player is looking
+        Vector2 mag = FindVelRelativeToLook();
+        float xMag = mag.x, yMag = mag.y;
 
-            ////Counteract sliding and sloppy movement
-            CounterMovement(vertical, horizontal, mag);
+        ////Counteract sliding and sloppy movement
+        CounterMovement(vertical, horizontal, mag);
 
-            //Set max speed
-            float maxSpeed = this.maxSpeed;
+        //Set max speed
+        float maxSpeed = this.maxSpeed;
 
-            //If sliding down a ramp, add force down so player stays grounded and also builds speed
-            if (isCrouching && grounded)
-            { rb.AddForce(Vector3.down * Time.deltaTime * 3000);
-                return; }
+        //If sliding down a ramp, add force down so player stays grounded and also builds speed
+        if (isCrouching && grounded)
+        { rb.AddForce(Vector3.down * Time.deltaTime * 3000);
+            return; }
 
-            ////If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-            if (vertical > 0 && xMag > maxSpeed) vertical = 0;
-            if (vertical < 0 && xMag < -maxSpeed) vertical = 0;
-            if (horizontal > 0 && yMag > maxSpeed) horizontal = 0;
-            if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
+        ////If speed is larger than maxspeed, cancel out the input so you don't go over max speed
+        if (vertical > 0 && xMag > maxSpeed) vertical = 0;
+        if (vertical < 0 && xMag < -maxSpeed) vertical = 0;
+        if (horizontal > 0 && yMag > maxSpeed) horizontal = 0;
+        if (horizontal < 0 && yMag < -maxSpeed) horizontal = 0;
 
         ///DASHING POWERUP
         if( dashCounter > 0) 
@@ -200,7 +195,6 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void superSpeed() 
     {
-
         superSpeedCounter = 10;
         moveSpeed = 90;
     }
@@ -291,7 +285,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 
         private void OnCollisionEnter(Collision collision)
         {   //stick to wall if we are not on the ground and not grappling and hit into a wall
-            if (!grounded && !player.grapplingGun.IsGrappling()
+            if (!grounded && !player.gun.IsGrappling()
                 && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
             { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
 

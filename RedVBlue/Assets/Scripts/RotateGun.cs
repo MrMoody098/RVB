@@ -1,25 +1,22 @@
 using UnityEngine;
 
-public class RotateGun : MonoBehaviour {
+public class RotateGun : MonoBehaviour 
+{
 
-    private GrapplingGun grappling;
+    private Gun grabble;
 
     private Quaternion desiredRotation;
     [Range(0f, 20f)]
     public float rotationSpeed = 5f;
 
     private void Awake()
-    {
-        grappling = gameObject.GetComponentInChildren<GrapplingGun>();
-    }
+    {grabble = gameObject.GetComponentInChildren<Gun>();}
     void Update() 
     {
-        if (!grappling.IsGrappling()) {
-            desiredRotation = transform.parent.rotation;
-        }
-        else {
-            desiredRotation = Quaternion.LookRotation(grappling.GetGrapplePoint() - transform.position);
-        }
+        if (!grabble.IsGrappling()) 
+        { desiredRotation = transform.parent.rotation;}
+        else 
+        { desiredRotation = Quaternion.LookRotation(grabble.GetGrapplePoint() - transform.position); }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSpeed);
     }

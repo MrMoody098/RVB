@@ -85,7 +85,7 @@ public class firing : MonoBehaviour
             if (hit.collider.GetComponent<Player>() != null)  
             {
                 Player enemy = hit.collider.GetComponent<Player>();
-                enemy.DownHealth(1,this);
+               // enemy.DownHealth(1,this);
                 enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal*200*-1, hit.point);
 
                 if(player.view.IsMine)

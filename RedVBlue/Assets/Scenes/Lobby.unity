@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c6c4b319f000f4da5b23abcb520f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Username: bigboi123
+  Username: Lopyxel
 --- !u!4 &596304687
 Transform:
   m_ObjectHideFlags: 0
@@ -2487,7 +2487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000022888, y: -0.00079345703}
+  m_AnchoredPosition: {x: -0.000022888, y: 0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1373138774
@@ -4016,7 +4016,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1395242733}
   m_HandleRect: {fileID: 1395242732}
   m_Direction: 3
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

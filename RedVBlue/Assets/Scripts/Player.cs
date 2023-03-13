@@ -5,7 +5,6 @@ using System;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public string username;
     public GameObject uiPrefab;
     
     [HideInInspector]
@@ -22,7 +21,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     [HideInInspector]
     public Camera camera;
     [HideInInspector]
-    public GrapplingGun grapplingGun;
+    public Gun gun;
     [HideInInspector]
     public RoomPlayer lobbyPlayer;
     public int ACNUM;
@@ -41,13 +40,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             print("player view actor number set to " + ACNUM);
             if (view.IsMine) 
             {
-                
                 Settings.ClientView = view;
                 InitializePlayerUI();
             }
             else { camera.targetDisplay = 2; Destroy(camera.GetComponent<AudioListener>()); }
-            grapplingGun = camera.GetComponentInChildren<GrapplingGun>();
-            grapplingGun.GetComponent<firing>().player = this;
+            gun = camera.GetComponentInChildren<Gun>();
+            gun.GetComponent<Gun>().player = this;
         }
     }
     public void TransmitAndDisplayUserName()
@@ -59,17 +57,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         lobbyPlayer.name.SetText(lobbyPlayer.info.NickName);
         view.Owner.NickName = lobbyPlayer.name.text;
         gameObject.name = lobbyPlayer.name.text;
-
-
     }
     [PunRPC] 
     void SetNickname(string name) { lobbyPlayer.info.NickName = name; }
     public void AddPoints(int amount)
     { points += amount; }
     public void UpHealth(float amount) 
-    { health += amount;
-        print(health);}
-    public void DownHealth(float amount, firing shooter)
+    { health += amount;}
+    public void DownHealth(float amount, Gun shooter)
     {
         if (health < 1) 
         { alive = false; 
@@ -100,10 +95,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             ui = Instantiate(uiPrefab).GetComponentInChildren<Settings>();
           
-            firing f = GetComponentInChildren<firing>();
-            f.player = this;
-            f.hitMarker = ui.display.hitmarker;
-            f.hitMarker.SetActive(false);
+            Gun g = GetComponentInChildren<Gun>();
+            g.player = this;
+            g.hitMarker = ui.display.hitmarker;
+            g.hitMarker.SetActive(false);
         }
         catch { Debug.LogWarning("Non player characters dismissing UI initialization");}
     }

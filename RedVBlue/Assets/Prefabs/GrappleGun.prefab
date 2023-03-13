@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 7586391691039640843}
   - component: {fileID: 7586391691039640845}
   - component: {fileID: 4696084973685718935}
+  - component: {fileID: 4744737347744216936}
   m_Layer: 0
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3021adba0bc55478b1ee273c65a9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitMarker: {fileID: 0}
   camera: {fileID: 0}
   player: {fileID: 0}
   Gundamage: 1
@@ -481,6 +483,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &4744737347744216936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587621154167852752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b1e839bc93b1342819546e5d19ec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 512
+  gunTip: {fileID: 7586391690916655647}
+  camera: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &7587757009031433160
 GameObject:
   m_ObjectHideFlags: 0

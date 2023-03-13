@@ -48,7 +48,7 @@ public class RoomLobby : MonoBehaviourPunCallbacks
     {
         print("removing players ability to shoot");
         players.ForEach(e =>
-        { e.player.grapplingGun.GetComponent<firing>().ableToShoot = false; });
+        { e.player.gun.ableToShoot = false; });
     }
     public void SetActiveShooter(int index) 
     {
@@ -57,7 +57,7 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         else 
         {
             DisablePlayerShooting();
-            players[index].player.grapplingGun.GetComponent<firing>().ableToShoot = true; 
+            players[index].player.gun.ableToShoot = true; 
             print("making" + players[index].info.NickName + " able to shoot"); 
         }
     }
