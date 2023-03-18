@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-
+    
     private LineRenderer lineRenderer;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
         else if (Input.GetMouseButtonUp(1)) { StopGrapple(); }
 
         if (!view.IsMine) { return; }
-
+       
         if (Input.GetMouseButtonDown(0) && _ableToShoot)
         { view.RPC("Shoot", RpcTarget.All); }
     }
@@ -72,12 +72,16 @@ public class Gun : MonoBehaviour
     {
         if (!view.IsMine) { return; }
         ableToShoot = true;
+        //this makes the noise
+        GetComponent<AudioSource>().Play();
         print(player.lobbyPlayer.info.NickName + " is armed and dangerious!");
     }
 
     [PunRPC]
     public void Shoot()
     {
+        //this makes the noise
+        
         RaycastHit hit;
         Ray ray = new Ray(player.camera.transform.position, player.camera.transform.forward);
         GameObject Nb = Instantiate(bullet.gameObject, transform.Find("tip").position, Quaternion.identity);

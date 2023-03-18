@@ -5,6 +5,7 @@ using System;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public AudioSource playerHurt;
     public GameObject uiPrefab;
     
     [HideInInspector]
@@ -29,6 +30,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public PlayerMovement movement;
     void Awake() //runs after lobby player is created
     {
+      
         camera = GetComponentInChildren<Camera>();
         health = maxHealth;
         movement = GetComponent<PlayerMovement>();
@@ -73,7 +75,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     }
     public void DownHealth(float amount)
     {
-        if (health < 1) 
+        playerHurt.Play();
+        if (health < 1)
         { alive = false; Dead();} 
         else { health -= amount; }
     }

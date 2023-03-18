@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 
 using Photon.Pun;
+using Unity.VisualScripting;
+using static UnityEngine.UI.Image;
+
+
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
@@ -43,8 +47,9 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     [Range(0, 10)]
     public float wallTimerTime = 2;
     private float wallTimer = 0;
-
-    private bool isWalled = false;
+    public bool Wallrunning;
+    
+    public bool isWalled = false;
     [HideInInspector]
     public bool isAbleToMove = true;
     bool isJumping, isCrouching;
@@ -55,9 +60,10 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
     public float distGround = 0f;
     private CapsuleCollider collider;
     public GameObject standingSurface;
+    public Camera cam;
     void Awake()
     {
-        
+      
         body = transform.Find("body");
         collider = GetComponent<CapsuleCollider>();
         rb = GetComponent<Rigidbody>();
@@ -77,7 +83,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (!isAbleToMove) { return; }
             MyInput();
-            Movement();
+            if (!Wallrunning) { Movement(); }
             Look();
             if (wallTimer > 0)
             { wallTimer -= Time.deltaTime;
@@ -89,6 +95,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 isWalled = false; }
 
             checkIsGrounded();
+
         }
     }
     private void MyInput()
@@ -243,6 +250,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             rb.velocity = new Vector3(n.x, fallspeed, n.z);
         }
     }
+    
     public Vector2 FindVelRelativeToLook()
     {
         float lookAngle = body.transform.eulerAngles.y;
@@ -264,7 +272,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, -transform.up);
-            Debug.DrawLine(ray.origin, ray.direction * distGround,Color.yellow);
+            Debug.DrawLine(ray.origin,ray.origin+ ray.direction * distGround,Color.yellow);
             if (Physics.Raycast(ray, out hit, distGround))
             { grounded = true; standingSurface = hit.collider.gameObject; }
             else { standingSurface = null; grounded = false; }
@@ -282,17 +290,22 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             }
             else { rotating = false; back = Vector3.zero; }
         }
+    private void OnCollisionEnter(Collision collision) { 
+        //   //stick to wall if we are not on the ground and not grappling and hit into a wall
+        //    if (!grounded && !player.gun.IsGrappling()
+        //        && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
+        //    { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
+        if (!Wallrunning &!grounded && !player.gun.IsGrappling()
+           && collision.gameObject.layer == LayerMask.NameToLayer("WallRunAble"))
+        { wallTimer = wallTimerTime;   }
 
-        private void OnCollisionEnter(Collision collision)
-        {   //stick to wall if we are not on the ground and not grappling and hit into a wall
-            if (!grounded && !player.gun.IsGrappling()
-                && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-            { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
-
-            if (collision.gameObject.name == "fallOffPoint")
+        if (collision.gameObject.name == "fallOffPoint")
             { player.Dead(); }
 
-        }
+        if (collision.gameObject.tag == "obsticle")
+        { player.DownHealth(1); }
+
+    }
         void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting) { stream.SendNext(xRotation); stream.SendNext(yRotation); }
