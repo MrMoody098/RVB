@@ -1,9 +1,4 @@
-using Photon.Realtime;
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using TMPro;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class wallrunning : MonoBehaviour
@@ -24,8 +19,8 @@ public class wallrunning : MonoBehaviour
     public float JumpHeight;
     private RaycastHit wallLeftHit;
     private RaycastHit wallRightHit;
-    private bool LeftWall;
-    private bool RightWall;
+    public bool LeftWall;
+    public bool RightWall;
 
     //refs
     public Transform orientation;
@@ -59,8 +54,8 @@ public class wallrunning : MonoBehaviour
     {
         Ray rightRay= new Ray (transform.position, orientation.right);
         Ray leftRay = new Ray(transform.position, -orientation.right);
-        RightWall = Physics.Raycast(rightRay,out wallRightHit, wallCheckDistance,LayerMask.GetMask("grapplable"));
-        LeftWall = Physics.Raycast(leftRay,out wallLeftHit, wallCheckDistance,LayerMask.GetMask("grapplable"));
+        RightWall = Physics.Raycast(rightRay,out wallRightHit, wallCheckDistance,LayerMask.GetMask("wallRunAble"));
+        LeftWall = Physics.Raycast(leftRay,out wallLeftHit, wallCheckDistance,LayerMask.GetMask("wallRunAble"));
         Debug.DrawLine(transform.position, rightRay.origin+rightRay.direction*wallCheckDistance, Color.red);
         Debug.DrawLine(transform.position, leftRay.origin + leftRay.direction * wallCheckDistance, Color.blue);
   
@@ -78,7 +73,7 @@ public class wallrunning : MonoBehaviour
             if (!pm.Wallrunning)
             { StartWallRun(); }
 
-            if (Input.GetButtonDown("Jump")) { WallJump(); };
+            if (Input.GetButtonDown("Jump")) { WallJump(); return; };
         }
         //state 3 -none
         else
@@ -98,7 +93,7 @@ public class wallrunning : MonoBehaviour
     {
         //remove gravity and reset y velocity
         rb.velocity = new Vector3(rb.velocity.x,0,rb.velocity.z);
-        rb.useGravity= false;
+       // rb.useGravity= false;
 
 
         //adding force towards players y direction to allow for climbing walls
@@ -144,7 +139,7 @@ public class wallrunning : MonoBehaviour
     {
         print("JUMPINIG");
         Vector3 wallNormal = RightWall ? wallRightHit.normal : wallLeftHit.normal;
-            rb.velocity = wallNormal + new Vector3(0,JumpHeight);
+           rb.velocity = wallNormal * JumpHeight;
         StopWallRun();
 
 

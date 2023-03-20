@@ -14,6 +14,8 @@ using static UnityEngine.UI.Image;
 public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
+    wallrunning wr;
+
     //Assignables
     private Transform body;
     private Player player;
@@ -86,13 +88,17 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (!Wallrunning) { Movement(); }
             Look();
             if (wallTimer > 0)
-            { wallTimer -= Time.deltaTime;
+            {
+                wallTimer -= Time.deltaTime;
                 rb.useGravity = false;
-                isWalled = true; }
+                isWalled = true;
+            }
             else if (!rb.useGravity)
-            { rb.useGravity = true;
+            {
                 rb.useGravity = true;
-                isWalled = false; }
+                rb.useGravity = true;
+                isWalled = false;
+            }
 
             checkIsGrounded();
 
@@ -114,17 +120,20 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
                 rotateMe(back);
             if (Input.GetButton("Jump"))
             {
-                rb.velocity = player.camera.transform.forward * jumpForce;
+                rb.velocity = player.camera.transform.forward * wallDashForce;
                 isWalled = false;
                 rb.useGravity = true;
                 wallTimer = 0;
             }
             return;
         }
-    
+
         if (isCrouching && grounded) { rb.drag = 0; }
         else { rb.drag = 1; }
         float vertical = Input.GetAxisRaw("Horizontal");
+
+        //if (wr.RightWall || wr.LeftWall) { vertical = 0; }
+        
         float horizontal = Input.GetAxisRaw("Vertical");
         rb.velocity += vertical * body.right * moveSpeed * Time.deltaTime;
         rb.velocity += horizontal * body.forward * moveSpeed * Time.deltaTime;
@@ -290,14 +299,16 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             }
             else { rotating = false; back = Vector3.zero; }
         }
-    private void OnCollisionEnter(Collision collision) { 
-        //   //stick to wall if we are not on the ground and not grappling and hit into a wall
-        //    if (!grounded && !player.gun.IsGrappling()
-        //        && collision.gameObject.layer == LayerMask.NameToLayer("grapplable"))
-        //    { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
-        if (!Wallrunning &!grounded && !player.gun.IsGrappling()
+    private void OnCollisionEnter(Collision collision) {
+
+        //stick to wall if we are not on the ground and not grappling and hit into a wall
+        if (!Wallrunning &&!grounded && !player.gun.IsGrappling()
            && collision.gameObject.layer == LayerMask.NameToLayer("WallRunAble"))
         { wallTimer = wallTimerTime;   }
+        
+        if (!Wallrunning&&!grounded && !player.gun.IsGrappling()
+            && collision.gameObject.layer == LayerMask.NameToLayer("stickable"))
+        { wallTimer = wallTimerTime; rb.velocity = Vector3.zero; rotating = true; back = -transform.forward; }
 
         if (collision.gameObject.name == "fallOffPoint")
             { player.Dead(); }
