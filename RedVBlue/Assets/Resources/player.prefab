@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307323153ce477a4b87c6bce7037fbe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHurt: {fileID: 0}
   uiPrefab: {fileID: 4724719010912399748, guid: b120965941193a341a8c0e2a5029b1ff, type: 3}
   ui: {fileID: 0}
   points: 0
@@ -173,12 +174,15 @@ MonoBehaviour:
   superSpeedCounter: 0
   wallDashForce: 15
   wallTimerTime: 2
+  Wallrunning: 0
+  isWalled: 0
   isAbleToMove: 1
   grounded: 1
   canDoubleJump: 0
   dashCounter: 428
   distGround: 1.1
   standingSurface: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &1160854307763539614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,25 +817,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 6467799708665165372}
     m_Modifications:
     - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: ammo
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 8366367124508319713, guid: 26b489231ec356447b52b825fbda2438, type: 3}
-    - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 6467799708758683093}
-    - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 6467799708538487063}
-    - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: Gundamage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7585785956168722798, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -876,21 +864,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7586391691039640843, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 6467799708758683093}
-    - target: {fileID: 7586391691039640843, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 6467799708538487063}
     - target: {fileID: 7587621154167852752, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: m_Name
       value: GrappleGun
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7586391691039640845, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
-    - {fileID: 7586391691039640843, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
 --- !u!4 &6470646544967167222 stripped
 Transform:
