@@ -23,9 +23,10 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         print("finding existing players");
         spawnPoint = GameObject.Find("Spawn").transform.position;
     }
+    
     //delay event for two seconds to wait for player view instanciation
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer) 
-    {IEnumerator c =  AddPlayerListItem(newPlayer, 2); StartCoroutine(c); }
+    {IEnumerator c =  AddPlayerListItem(newPlayer, 3); StartCoroutine(c); }
     private IEnumerator AddPlayerListItem(Photon.Realtime.Player player, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -44,6 +45,10 @@ public class RoomLobby : MonoBehaviourPunCallbacks
         { SetActiveShooter(new System.Random().Next(2)); }
     }
 
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    {
+        SetActiveShooter(0);
+    }
     public void DisablePlayerShooting()
     {
         print("removing players ability to shoot");

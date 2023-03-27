@@ -12,28 +12,43 @@ using UnityEngine.SceneManagement;
 public class LobbyUI : MonoBehaviourPunCallbacks
 {
     public string username = "player";
-    public GameObject openScreen, hostPanel, joinPanel, back;
-    public List<Button> buttons = new List<Button>(); 
+    public GameObject openScreen, hostPanel, joinPanel, back, userNamePanel;
+    public List<Button> buttons = new List<Button>();
     int index = 1; float floatingIndex = 1;
-    
+
     public GameObject currentSelection;
-    
+
     public TextMeshProUGUI createInput;
     public TextMeshProUGUI joinInput;
+    public TextMeshProUGUI userNameInput;
 
     public Button joinBtn;
+    public Button enterUsernameBtn;
 
     public string map = null;
 
     public LobbyRoom selectedRoom;
-
-    private void Start() 
+    
+    private void Start()
     {
         if (!PhotonNetwork.IsConnected) { SceneManager.LoadScene("loading"); }
-        goBack(); 
+        userNamePanel.SetActive(true);
+        back.SetActive(false);
+        openScreen.SetActive(true);
+        hostPanel.SetActive(false);
+        joinPanel.SetActive(false);
+        openScreen.SetActive(false);
+        buttons.Add(enterUsernameBtn);
         EventSystem.current.SetSelectedGameObject(null);
+        
     }
 
+    public void enterUsername()
+    {
+        FindObjectOfType<userData>().Username = userNameInput.GetParsedText();
+        goBack();
+
+    }
     public void CreateRoom()
     { PhotonNetwork.CreateRoom(createInput.GetParsedText()); }
     public void JoinRoom()
@@ -116,7 +131,7 @@ public class LobbyUI : MonoBehaviourPunCallbacks
         openScreen.SetActive(true);
         hostPanel.SetActive(false);
         joinPanel.SetActive(false);
-
+        userNamePanel.SetActive(false);
         buttons.Clear();
         foreach (Button b in openScreen.GetComponentsInChildren<Button>())
         { buttons.Add(b); }
