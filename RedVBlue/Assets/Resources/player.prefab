@@ -174,14 +174,14 @@ MonoBehaviour:
   canSuperJump: 0
   superJumpCounter: 0
   superSpeedCounter: 0
-  wallDashForce: 32.2
+  wallDashForce: 30.5
   wallTimerTime: 2
   Wallrunning: 0
   isWalled: 0
   isAbleToMove: 1
   grounded: 1
   canDoubleJump: 0
-  dashCounter: 428
+  dashCounter: 0
   distGround: 1.1
   standingSurface: {fileID: 0}
   cam: {fileID: 0}
@@ -958,6 +958,10 @@ PrefabInstance:
     - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: Gundamage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744737347744216936, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
+      propertyPath: maxCharge
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7585785956168722798, guid: d589dac5731930d4bbdea096f917d8e7, type: 3}
       propertyPath: m_RootOrder

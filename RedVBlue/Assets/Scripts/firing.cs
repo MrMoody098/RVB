@@ -78,7 +78,8 @@ public class firing : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(camera.transform.position, camera.transform.forward);
         GameObject Nb = Instantiate(bullet.gameObject, transform.Find("tip").position, Quaternion.identity);
-        Nb.GetComponent<Bullet>().direction = transform.Find("tip").forward * 400 * Time.deltaTime;
+        Nb.GetComponent<CustomBullet>().direction = transform.Find("tip").forward * 400 * Time.deltaTime;
+
         if (Physics.Raycast(ray, out hit))
         {
             //if the object has an attributes script

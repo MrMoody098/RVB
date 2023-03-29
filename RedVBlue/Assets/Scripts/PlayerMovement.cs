@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKeyDown(KeyCode.F))
             {
                 GetComponent<AudioSource>().Play();
-                rb.velocity = player.camera.transform.forward * jumpForce;
+                rb.velocity = player.camera.transform.forward * jumpForce*0.8f;
                 dashCounter -= 1;
             }
             if (Input.GetKeyDown(KeyCode.F)&& Input.GetKey(KeyCode.D))

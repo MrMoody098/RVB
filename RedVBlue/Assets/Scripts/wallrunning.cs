@@ -128,6 +128,17 @@ public class wallrunning : MonoBehaviour
             rb.AddForce(-wallNormal * 10, ForceMode.Force);
         }
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("WallRunAble") && (RightWall || LeftWall) && Input.GetKeyDown(KeyCode.W) )
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(new Vector3(0, 10, 0), ForceMode.Force);
+        }
+    }
+
     private void StopWallRun() 
     {
         Debug.Log("StopWallRun called");
@@ -135,14 +146,12 @@ public class wallrunning : MonoBehaviour
         rb.useGravity = true; // enable gravity
         pm.Wallrunning = false; 
     }
+
     private void WallJump() 
     {
         print("JUMPINIG");
         Vector3 wallNormal = RightWall ? wallRightHit.normal : wallLeftHit.normal;
            rb.velocity = wallNormal * JumpHeight;
         StopWallRun();
-
-
-
     }
 }

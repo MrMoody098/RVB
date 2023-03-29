@@ -1,13 +1,7 @@
-﻿using UnityEngine;
+﻿using Photon.Realtime;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
-/// Thanks for downloading my custom bullets/projectiles script! :D
-/// Feel free to use it in any project you like!
-/// 
-/// The code is fully commented but if you still have any questions
-/// don't hesitate to write a yt comment
-/// or use the #coding-problems channel of my discord server
-/// 
-/// Dave
 public class CustomBullet : MonoBehaviour
 {
     //Assignables
@@ -25,27 +19,24 @@ public class CustomBullet : MonoBehaviour
     public float explosionRange;
     public float explosionForce;
     public float shootForce;
+    
     //Lifetime
     public int maxCollisions;
     public float maxLifetime;
     public bool explodeOnTouch = true;
-
+    public GameObject hitmark;
     int collisions;
     PhysicMaterial physics_mat;
     public Vector3 direction;
+
+
     // Update is called once per frame
    
-    private void Start()
-    
-    {
-        rb.AddForce(direction * shootForce, ForceMode.Force);
-        Setup();
-       
-    }
+ 
 
     private void Update()
     {
-        
+       
 
         //When to explode:
         if (collisions > maxCollisions) Explode();
@@ -90,11 +81,18 @@ public class CustomBullet : MonoBehaviour
         collisions++;
 
         //Explode if bullet hits an enemy directly and explodeOnTouch is activated
-        if (collision.collider.gameObject.GetComponent<Player>() && explodeOnTouch) Explode();
+        if (collision.collider.gameObject.GetComponent<Player>() && explodeOnTouch) 
+        {
+
+       
+            Explode();
+            collision.collider.gameObject.GetComponent<Player>().DownHealth(1);
+        }
     }
 
-    private void Setup()
+    public void Setup(float chargeM)
     {
+        rb.AddForce(direction * shootForce * chargeM, ForceMode.Impulse);
         //Create a new Physic material
         physics_mat = new PhysicMaterial();
         physics_mat.bounciness = bounciness;

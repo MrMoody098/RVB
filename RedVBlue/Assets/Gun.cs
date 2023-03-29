@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -18,6 +19,10 @@ public class Gun : MonoBehaviour
     public int ammo;
     public GameObject bullet;
     PhotonView view;
+    public bool isCharging;
+    public float chargeMultiplier=1;
+    public float maxCharge = 10;
+    private bool shotTaken = false;
     void Awake()
     {
         lineRenderer = GetComponentInChildren<LineRenderer>();
@@ -33,13 +38,33 @@ public class Gun : MonoBehaviour
     void LateUpdate() { DrawRope(); }
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)){  StartGrapple();} 
+        if (Input.GetMouseButtonDown(1)) { StartGrapple(); }
         else if (Input.GetMouseButtonUp(1)) { StopGrapple(); }
 
         if (!view.IsMine) { return; }
-       
-        if (Input.GetMouseButtonDown(0) && _ableToShoot)
-        { view.RPC("Shoot", RpcTarget.All); }
+
+        if (view.IsMine)
+        {
+            if (Input.GetMouseButtonDown(0)&& _ableToShoot)
+            {
+                isCharging = true;
+            }
+
+            if (Input.GetMouseButtonUp(0)&& _ableToShoot)
+            {
+                view.RPC("Shoot", RpcTarget.All, chargeMultiplier);
+                isCharging = false;
+                chargeMultiplier = 1f;
+            }
+
+            if (isCharging)
+            {
+                Debug.Log(chargeMultiplier);
+                if (chargeMultiplier < maxCharge)
+                { chargeMultiplier += Time.deltaTime; }
+            
+            }
+        }
     }
 
     private bool _ableToShoot;
@@ -78,36 +103,42 @@ public class Gun : MonoBehaviour
     }
 
     [PunRPC]
-    public void Shoot()
+    public void Shoot(float chargeMultiplier)
     {
-        //this makes the noise
+            RaycastHit hit;
+            Ray ray = new Ray(player.camera.transform.position, player.camera.transform.forward);
+            GameObject Nb = Instantiate(bullet.gameObject, transform.Find("tip").position, Quaternion.identity);
+            Nb.GetComponent<CustomBullet>().direction = transform.Find("tip").forward * 400 * Time.deltaTime;
+
+            Nb.GetComponent<CustomBullet>().Setup(chargeMultiplier);
+
+            if (player.lobbyPlayer.index == 1)
+            { FindObjectOfType<RoomLobby>().SetActiveShooter(0); }
+            else { FindObjectOfType<RoomLobby>().SetActiveShooter(1); }
+            _ableToShoot = false;
+            chargeMultiplier= 1;
         
-        RaycastHit hit;
-        Ray ray = new Ray(player.camera.transform.position, player.camera.transform.forward);
-        GameObject Nb = Instantiate(bullet.gameObject, transform.Find("tip").position, Quaternion.identity);
-        Nb.GetComponent<CustomBullet>().direction = transform.Find("tip").forward * 400 * Time.deltaTime;
-        if (Physics.Raycast(ray, out hit))
-        {
-            //if the object has an attributes script
-            if (hit.collider.GetComponent<Player>() != null)
-            {
-                Player enemy = hit.collider.GetComponent<Player>();
-                enemy.DownHealth(1, this);
-                enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal * 200 * -1, hit.point);
-
-                if (player.view.IsMine)
-                { hitMarker.SetActive(true);
-                    hitMarker.GetComponent<HitMarker>().Mark(player.camera, hit.point, 1);}
-
-                Debug.DrawLine(player.camera.transform.position, hit.point, Color.red, 1);
-                Debug.DrawLine(transform.Find("tip").position, hit.point, Color.green, 1);
-            }
-        }
-        if (player.lobbyPlayer.index == 1)
-        { FindObjectOfType<RoomLobby>().SetActiveShooter(0); }
-        else { FindObjectOfType<RoomLobby>().SetActiveShooter(1); }
-        _ableToShoot = false;
     }
+
+    //4THLINE AFTER RaycastHit hit;
+
+    //if (Physics.Raycast(ray, out hit))
+    //{
+    //    //if the object has an attributes script
+    //    if (hit.collider.GetComponent<Player>() != null)
+    //    {
+    //        Player enemy = hit.collider.GetComponent<Player>();
+    //        enemy.DownHealth(1, this);
+    //        enemy.GetComponent<Rigidbody>().AddForceAtPosition(hit.normal * 200 * -1, hit.point);
+
+    //        if (player.view.IsMine)
+    //        { hitMarker.SetActive(true);
+    //            hitMarker.GetComponent<HitMarker>().Mark(player.camera, hit.point, 1);}
+
+    //        Debug.DrawLine(player.camera.transform.position, hit.point, Color.red, 1);
+    //        Debug.DrawLine(transform.Find("tip").position, hit.point, Color.green, 1);
+    //    }
+    //}
 
     void StartGrapple() //this needs to be rewritten to acomidate moving closer and moving back to where you were
     {
