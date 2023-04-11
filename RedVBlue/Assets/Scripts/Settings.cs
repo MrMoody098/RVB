@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System;
+using UnityEngine.iOS;
 
 [System.Serializable]
 public class Controls 
@@ -40,6 +41,9 @@ public class Settings : MonoBehaviour
     public List<RectTransform> panels;
     public GameObject underliner;
     int currentPanelIndex = 0;
+
+    Button selectedMenu;
+    public Button lobbyBtn, videoBtn, audioBtn, controlsBtn;
     private void Awake()
     {
 
@@ -62,34 +66,22 @@ public class Settings : MonoBehaviour
 
     private void Update()
     {
-
         currentPanelIndex = Mathf.Clamp(currentPanelIndex, 0, panels.Count-1);
         Vector2 ul = underliner.GetComponent<RectTransform>().anchoredPosition;
         float newX = panels[currentPanelIndex].anchoredPosition.x;
         underliner.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(ul, new Vector2(newX, ul.y), (10 * Time.deltaTime) * MathF.Abs(newX - ul.x));
+        panels[currentPanelIndex].GetComponent<Button>().Select();
 
-        print(panels[currentPanelIndex].name + " x : " + newX);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) { currentPanelIndex--;  }
         if (Input.GetKeyDown(KeyCode.RightArrow)) { currentPanelIndex++;}
-
-
     }
 
-    public void OpenLobby()
-    {
-        print(EventSystem.current.currentSelectedGameObject.name);
-    }
-    public void OpenDisplay()
-    {
-
-    }
-    public void OpenAudio() 
-    {
-    }
-    public void OpenVideo() 
-    {
-    }
-
-   
-    
+    public void OpenLobby() { selectedMenu = lobbyBtn; ChangeSettingsPanel(); }
+    public void OpenControls() { selectedMenu = controlsBtn; ChangeSettingsPanel(); }
+    public void OpenAudio() { selectedMenu = audioBtn; ChangeSettingsPanel(); }
+    public void OpenVideo() { selectedMenu = videoBtn; ChangeSettingsPanel(); }
+    public void ChangeSettingsPanel()
+    {for(int i = 0; i < panels.Count; i++)
+        {if (panels[i].gameObject == selectedMenu.gameObject)
+            { currentPanelIndex = i;} }}
 }

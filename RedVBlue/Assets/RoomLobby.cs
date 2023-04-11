@@ -41,7 +41,7 @@ public class RoomLobby : MonoBehaviourPunCallbacks
             {roomPlayer.LinkPlayerInformation(p);  }
         }
 
-        if (PhotonNetwork.IsMasterClient)//if im the host
+        if (PhotonNetwork.IsMasterClient)//if im the hostPrinter-amusing astulusn);
         { SetActiveShooter(new System.Random().Next(2)); }
     }
 

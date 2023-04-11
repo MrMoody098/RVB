@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.5254902, g: 0.110137075, b: 0.13155368, a: 1}
     m_HighlightedColor: {r: 0.6037736, g: 0.5598628, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_SelectedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_DisabledColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -590,7 +590,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1736227824464520057}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1736227823824627426}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: OpenAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1736227823272681715
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +800,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.5254902, g: 0.110137075, b: 0.13155368, a: 1}
     m_HighlightedColor: {r: 0.6037736, g: 0.5598628, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_SelectedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_DisabledColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -808,7 +820,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1736227823999400120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1736227823824627426}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: OpenControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1736227823362592578
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +1006,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.5254902, g: 0.110137075, b: 0.13155368, a: 1}
     m_HighlightedColor: {r: 0.6037736, g: 0.5598628, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_SelectedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_DisabledColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1002,7 +1026,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1736227824497489540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1736227823824627426}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: OpenVideo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1736227823692466495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,6 +1453,10 @@ MonoBehaviour:
   - {fileID: 1736227823413906802}
   - {fileID: 1736227823173256339}
   underliner: {fileID: 1030655807966740820}
+  lobbyBtn: {fileID: 3325108848616953582}
+  videoBtn: {fileID: 1736227823413906803}
+  audioBtn: {fileID: 1736227823173256336}
+  controlsBtn: {fileID: 1736227823304720206}
 --- !u!114 &1736227823824627424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1963,7 +2003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -392.70868, y: 0.00091552734}
+  m_AnchoredPosition: {x: -392.70792, y: 0.000061035156}
   m_SizeDelta: {x: -653.9791, y: -28.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6978427791824302248
@@ -2569,7 +2609,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.5254902, g: 0.110137075, b: 0.13155368, a: 1}
     m_HighlightedColor: {r: 0.6037736, g: 0.5598628, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_SelectedColor: {r: 0.6039216, g: 0.56078434, b: 0, a: 1}
     m_DisabledColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.5019608}
     m_ColorMultiplier: 1
