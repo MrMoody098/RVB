@@ -57,50 +57,53 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
-    <Compile Include="Assets\healthP.cs" />
+    <Compile Include="Assets\Gun.cs" />
+    <Compile Include="Assets\userData.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
+    <Compile Include="Assets\Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
-    <Compile Include="Assets\Bullet.cs" />
-    <Compile Include="Assets\loadRoomList.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\loadRoomList.cs" />
+    <Compile Include="Assets\Scripts\HitMarker.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\firing.cs" />
-    <Compile Include="Assets\RoomUI.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\rot.cs" />
     <Compile Include="Assets\Scripts\newLineDrawerTest.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\levelGenerator.cs" />
-    <Compile Include="Assets\GloblalInputs.cs" />
+    <Compile Include="Assets\Scripts\GloblalInputs.cs" />
+    <Compile Include="Assets\Scripts\wallrunning.cs" />
+    <Compile Include="Assets\ROTATOR.cs" />
+    <Compile Include="Assets\Scripts\grabbable.cs" />
     <Compile Include="Assets\Scripts\CreateAndJoinRooms.cs" />
-    <Compile Include="Assets\LobbyUIElment.cs" />
     <Compile Include="Assets\Scripts\SpawnPlayers.cs" />
-    <Compile Include="Assets\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\LobbyUI.cs" />
     <Compile Include="Assets\Scripts\RotateGun.cs" />
+    <Compile Include="Assets\Spikes.cs" />
     <Compile Include="Assets\Scripts\rising.cs" />
+    <Compile Include="Assets\RoomLobby.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Scripts\GrapplingGun.cs" />
-    <Compile Include="Assets\superSpeed.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\GlobalTime.cs" />
-    <Compile Include="Assets\Dash.cs" />
-    <Compile Include="Assets\RoomPlayer.cs" />
+    <Compile Include="Assets\Scripts\PickUp.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\Obsticle.cs" />
-    <Compile Include="Assets\superJump.cs" />
     <Compile Include="Assets\Scripts\ConnectToServer.cs" />
+    <Compile Include="Assets\Scripts\CustomBullet.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\RoomPlayer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
-    <Compile Include="Assets\DoubleJumpP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets\TeleportP.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
-    <Compile Include="Assets\LobbyRoom.cs" />
-    <Compile Include="Assets\powerups.cs" />
-    <Compile Include="Assets\wallrunning.cs" />
+    <Compile Include="Assets\slidingDoor.cs" />
+    <Compile Include="Assets\Scripts\LobbyRoom.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\Shaders\ZShader.shader" />
@@ -108,6 +111,7 @@
     <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
+    <None Include="Assets\FireIceProjectileExplosion\Shader\S_ParticleAdd.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -799,8 +803,14 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
@@ -832,11 +842,17 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
@@ -855,10 +871,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{42BF9C07-5DBD-39DD-0815-0A37996CCD56}</Project>
-      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="PhotonChat.csproj">
       <Project>{9E04D7D5-9387-FA71-5CAD-594FF9D361AF}</Project>
       <Name>PhotonChat</Name>
@@ -875,13 +887,13 @@
       <Project>{466EEE4E-B743-FEF2-440B-728258A537FC}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
-    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{1F73049C-A89A-12E3-5D15-28F1E0260154}</Project>
-      <Name>PhotonUnityNetworking.Utilities</Name>
-    </ProjectReference>
     <ProjectReference Include="PunDemos.DemoHubEditor.csproj">
       <Project>{C360BAB2-E572-C835-80D3-D8E33977B8E6}</Project>
       <Name>PunDemos.DemoHubEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
+      <Project>{1F73049C-A89A-12E3-5D15-28F1E0260154}</Project>
+      <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
       <Project>{8F0262CC-AF0F-9945-A04A-13ABA0E651F3}</Project>
@@ -894,6 +906,10 @@
     <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
       <Project>{533AAACE-9920-EB3D-E10F-E2FFAEF89154}</Project>
       <Name>PunDemos.DemoSlotcarEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
+      <Project>{42BF9C07-5DBD-39DD-0815-0A37996CCD56}</Project>
+      <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

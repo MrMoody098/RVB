@@ -5,13 +5,11 @@ using UnityEngine;
 public class levelGenerator : MonoBehaviour
 {
     public List<GameObject> prefabs;
-    public GameObject lavaPrefab;
     public float spawnY = 50f;
     public float spawnInterval = 1f;
     public int initialPrefabCount = 4;
-
     private GameObject lastPrefab;
-    private GameObject lava;
+
 
     void Start()
     {

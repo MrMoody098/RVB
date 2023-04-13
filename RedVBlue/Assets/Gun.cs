@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     public Transform gunTip;
     [HideInInspector]
     public Player player;
-    private float maxDistance = 100f;
+    private float maxDistance = 40f;
     private SpringJoint joint;
     public GameObject hitMarker;
     public float Gundamage;
@@ -120,6 +120,8 @@ public class Gun : MonoBehaviour
         
     }
 
+
+
     //4THLINE AFTER RaycastHit hit;
 
     //if (Physics.Raycast(ray, out hit))
@@ -146,6 +148,7 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(player.camera.transform.position, player.camera.transform.forward, out hit, maxDistance, whatIsGrappleable))
         {
             grapplePoint = hit.point;
+            
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplePoint;

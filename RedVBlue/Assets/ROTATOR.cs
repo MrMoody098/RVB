@@ -1,22 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
 public class ROTATOR : MonoBehaviour
-
 {
-    public float rotateSpeed=3;
-    private Transform transform;
-    // Start is called before the first frame update
-    void Start()
+    public float speed = 10.0f;
+    public RotationAxis rotationAxis = RotationAxis.X;
+    public LineRenderer lineRenderer;
+    public enum RotationAxis
     {
-       transform = gameObject.transform;
+        X,
+        Y,
+        Z
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles += new Vector3(0, rotateSpeed, 0);
+        switch (rotationAxis)
+        {
+            case RotationAxis.X:
+                transform.Rotate(Vector3.right * speed * Time.deltaTime);
+                lineRenderer.SetPosition(0, transform.position);
+                break;
+            case RotationAxis.Y:
+                transform.Rotate(Vector3.up * speed * Time.deltaTime);
+                break;
+            case RotationAxis.Z:
+                transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+                break;
+        }
     }
 }

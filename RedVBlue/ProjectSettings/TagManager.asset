@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GROUND
+  - obsticle
+  - SpawnLayer
   layers:
   - Default
   - TransparentFX
@@ -15,10 +18,10 @@ TagManager:
   - ground
   - 
   - grapplable
-  - 
+  - SpawnLayer
   - player
-  - 
-  - 
+  - wallRunAble
+  - stickable
   - 
   - 
   - 

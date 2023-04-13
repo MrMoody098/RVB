@@ -9,7 +9,6 @@ public class Obsticle : MonoBehaviour
     void Start()
     {
   lava = GameObject.Find("fallOffPoint");
-
     }
 
     // Update is called once per frame

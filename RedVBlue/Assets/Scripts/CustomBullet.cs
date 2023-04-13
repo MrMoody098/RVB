@@ -28,16 +28,8 @@ public class CustomBullet : MonoBehaviour
     int collisions;
     PhysicMaterial physics_mat;
     public Vector3 direction;
-
-
-    // Update is called once per frame
-   
- 
-
     private void Update()
     {
-       
-
         //When to explode:
         if (collisions > maxCollisions) Explode();
 

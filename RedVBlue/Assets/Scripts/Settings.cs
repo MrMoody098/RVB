@@ -68,7 +68,7 @@ public class Settings : MonoBehaviour
         float newX = panels[currentPanelIndex].anchoredPosition.x;
         underliner.GetComponent<RectTransform>().anchoredPosition = Vector2.MoveTowards(ul, new Vector2(newX, ul.y), (10 * Time.deltaTime) * MathF.Abs(newX - ul.x));
 
-        print(panels[currentPanelIndex].name + " x : " + newX);
+       // print(panels[currentPanelIndex].name + " x : " + newX);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) { currentPanelIndex--;  }
         if (Input.GetKeyDown(KeyCode.RightArrow)) { currentPanelIndex++;}
 

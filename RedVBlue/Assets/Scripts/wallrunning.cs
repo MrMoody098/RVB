@@ -49,7 +49,7 @@ public class wallrunning : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
     }
-
+    
     private void WallCheck() 
     {
         Ray rightRay= new Ray (transform.position, orientation.right);
@@ -63,6 +63,7 @@ public class wallrunning : MonoBehaviour
     }
     private void StateMachine()
     {
+        //getting unity input this works for both pc and console as it is GetAxisRaw
         horInp = Input.GetAxisRaw("Horizontal");
         verInp = Input.GetAxisRaw("Vertical");
         //state 1 -wall running
@@ -105,9 +106,9 @@ public class wallrunning : MonoBehaviour
 
         Vector3 upForce = new Vector3(0,cameraYRotation,0);
         //when looking down in the downward range add force of -CameraYrotation this is because we want to go down
-        if (cameraYRotation <= 90) { rb.AddForce(-upForce*0.8f,ForceMode.Force); }
-        //otherwise if the player is looking up in a range of 
-        else if (cameraYRotation <= 360 && cameraYRotation >= 270) { cameraYRotation -= 360; rb.AddForce(upForce*0.8f,ForceMode.Force); Debug.LogWarning(cameraYRotation); }
+        if (cameraYRotation <= 90) { rb.AddForce(-upForce*1.5f,ForceMode.Force); }
+        //otherwise if the player is looking up in a range of a
+        else if (cameraYRotation <= 360 && cameraYRotation >= 270) { cameraYRotation -= 360; rb.AddForce(upForce*1.5f,ForceMode.Force); Debug.LogWarning(cameraYRotation); }
         
 
         //finding normal and forward direction of wall to allow player to run along it
@@ -115,7 +116,7 @@ public class wallrunning : MonoBehaviour
         Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
        
         //this script basicaly compares the two magniutes to find if the player should be running backwards or forwads on a wall using their orientation
-        if ((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
+        if ((orientation.forward - wallForward).magnitude > (orientation.forward - (-wallForward)).magnitude)
         { 
         wallForward= -wallForward;
         }
