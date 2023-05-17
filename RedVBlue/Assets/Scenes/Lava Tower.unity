@@ -354,7 +354,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25766
+  m_Name: pb_Mesh25768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3807,11 +3807,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 5214845323411912658, guid: f57b4bd8f46a19b49bf302147e0e702b, type: 3}
-  - {fileID: 6387191473940387003, guid: c1f7ccf305b528c448ac83883c21057c, type: 3}
-  - {fileID: 780124644220766631, guid: 54a356c2043349141b2c9f45c6e4e4a8, type: 3}
   spawnY: 50
   spawnInterval: 5
-  initialPrefabCount: 1
+  initialPrefabCount: 2
 --- !u!4 &2051044184
 Transform:
   m_ObjectHideFlags: 0
